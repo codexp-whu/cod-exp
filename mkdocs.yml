@@ -1,0 +1,86 @@
+site_name: 武汉大学2026年秋计算机组成与体系结构A
+site_url: https://mydomain.org/mysite
+site_description: 武汉大学计算机学院《计算机组成与体系结构A》课程讲义与实验指导
+site_author: 课程教学组
+copyright: Copyright &copy; 2026 武汉大学计算机学院
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs          # 顶层标签导航
+    - navigation.top           # 返回顶部按钮
+    - navigation.sections      # 导航按节折叠
+    - navigation.footer        # 页脚导航（上一页/下一页）
+    - content.code.annotate    # 代码块注释支持
+    - content.code.copy        # 代码复制按钮
+    - content.code.highlight   # 代码高亮
+    - content.code.tabbed      # 代码选项卡样式
+    - content.tabs.link        # 跨页标签同步
+    - navigation.indexes       # 为每个节启用索引页
+    - search.suggest           # 搜索建议
+    - search.highlight         # 搜索高亮
+    - search.share             # 搜索分享
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换至深色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换至浅色模式
+  font:
+    text: Noto Sans SC
+    code: JetBrains Mono
+
+# 导航结构（课程讲义大纲）
+nav:
+  - 首页: index.md
+  - Chisel入门: 
+      - 从Verilog到Chisel: chisel/简介.md
+      - 基本语法上: chisel/基本语法上.md
+      - 基本语法下: chisel/基本语法下.md
+      - CPU开发场景: chisel/CPU开发场景.md
+
+# Markdown 扩展
+markdown_extensions:
+  - admonition                      # 提示框 (!!! note)
+  - pymdownx.details                # 可折叠的详细信息块
+  - pymdownx.superfences            # 增强代码块（支持嵌套）
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite           # 行内代码高亮
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.arithmatex:            # 数学公式支持 (LaTeX)
+      generic: true
+  - pymdownx.snippets               # 代码片段包含
+  - toc:
+      permalink: true
+      title: 本页目录
+  - attr_list                       # 属性列表（用于图片大小等）
+  - md_in_html                      # 在HTML块中嵌套Markdown
+  - footnotes                       # 脚注
+  - def_list                        # 定义列表
+
+
+# 额外的CSS/JS（可定制）
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML  # 若使用MathJax
+
+# 社交链接与页脚信息
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-course-repo
+      name: 课程源码仓库
