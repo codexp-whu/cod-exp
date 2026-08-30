@@ -43,9 +43,14 @@ nav:
   - 首页: index.md
   - Chisel入门: 
       - 从Verilog到Chisel: chisel/简介.md
+      - 环境搭建: chisel/环境搭建.md
       - 基本语法上: chisel/基本语法上.md
+      - 基本语法中: chisel/基本语法中.md
       - 基本语法下: chisel/基本语法下.md
-      - CPU开发场景: chisel/CPU开发场景.md
+
+      - 进阶特性: chisel/进阶写法.md
+
+      
 
 # Markdown 扩展
 markdown_extensions:

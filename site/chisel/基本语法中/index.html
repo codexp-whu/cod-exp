@@ -1,0 +1,1829 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="武汉大学计算机学院《计算机组成与体系结构A》课程讲义与实验指导">
+      
+      
+        <meta name="author" content="课程教学组">
+      
+      
+        <link rel="canonical" href="https://mydomain.org/mysite/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/">
+      
+      
+        <link rel="prev" href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/">
+      
+      
+        <link rel="next" href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>基本语法中 - 武汉大学2026年秋计算机组成与体系结构A</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="武汉大学2026年秋计算机组成与体系结构A" class="md-header__button md-logo" aria-label="武汉大学2026年秋计算机组成与体系结构A" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            武汉大学2026年秋计算机组成与体系结构A
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              基本语法中
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Chisel入门
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="武汉大学2026年秋计算机组成与体系结构A" class="md-nav__button md-logo" aria-label="武汉大学2026年秋计算机组成与体系结构A" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    武汉大学2026年秋计算机组成与体系结构A
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chisel入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从Verilog到Chisel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法上
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法中
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法中
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      本页目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        组合逻辑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="组合逻辑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算术与比较运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        位运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        位提取与拼接
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mux_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mux 二选一
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muxlookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MuxLookup 多选一
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muxcase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MuxCase 条件优先级链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux1h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mux1H 独热码选择器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mux1H 独热码选择器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        译码器产生独热码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux1h_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mux1H 语法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muxlookup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与 MuxLookup 的对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时序逻辑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="时序逻辑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        寄存器声明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-elsewhen-otherwise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        when / elsewhen / otherwise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switch / is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        区分 := 和 =
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见时序模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见时序模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RegEnable
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真与测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    进阶特性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CPU开发场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流水线CPU串讲
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      本页目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        组合逻辑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="组合逻辑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算术与比较运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        位运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        位提取与拼接
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mux_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mux 二选一
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muxlookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MuxLookup 多选一
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muxcase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MuxCase 条件优先级链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux1h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mux1H 独热码选择器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mux1H 独热码选择器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        译码器产生独热码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux1h_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mux1H 语法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muxlookup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与 MuxLookup 的对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时序逻辑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="时序逻辑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        寄存器声明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-elsewhen-otherwise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        when / elsewhen / otherwise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switch / is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        区分 := 和 =
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见时序模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见时序模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RegEnable
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>基本语法中</h1>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>在这一节中，我们将要介绍如何在Chisel中描述组合逻辑和时序逻辑的硬件行为。</p>
+</div>
+<h2 id="_1">组合逻辑<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>有了信号声明的基础，现在来看如何用Chisel描述硬件的行为。</p>
+<p>先谈更为简单的组合逻辑。它没有时钟参与，输出完全由当前输入决定，等价于 Verilog 中的 <code>assign</code> 或 <code>always @(*)</code>。</p>
+<h3 id="_2">算术与比较运算<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// 算术运算</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">sum</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">        </span><span class="c1">// 加法</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">val</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="w">        </span><span class="c1">// 减法</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kd">val</span><span class="w"> </span><span class="n">prod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="w">        </span><span class="c1">// 乘法（综合出的硬件较大，CPU 中慎用）</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">// 除法综合出的硬件非常大，CPU 中通常不用，或用移位替代</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">// 比较</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1">// 注意等号数量！</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="kd">val</span><span class="w"> </span><span class="n">eq</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">b</span><span class="w">      </span><span class="c1">// 相等（三个等号！）</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="kd">val</span><span class="w"> </span><span class="n">neq</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=/=</span><span class="w"> </span><span class="n">b</span><span class="w">      </span><span class="c1">// 不等</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="kd">val</span><span class="w"> </span><span class="n">lt</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="w">        </span><span class="c1">// 小于（UInt 无符号，SInt 有符号）</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kd">val</span><span class="w"> </span><span class="n">gte</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">b</span><span class="w">       </span><span class="c1">// 大于等于</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">最易踩的坑：<code>===</code> vs <code>==</code></p>
+<p>Scala 自身的 <code>==</code> 比较的是两个 Scala 对象是不是同一个引用，<strong>不会生成硬件比较器</strong>。</p>
+<p>描述硬件相等必须用 Chisel 的 <code>===</code>，不等用 <code>=/=</code>。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 错误：a == b 不生成硬件，且比较结果恒为 false</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">when</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// 正确：a === b 生成硬件比较器</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">when</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>如果你发现某个相等判断"不生效"，先数一下等号个数是否正确。</p>
+</div>
+<h3 id="_3">位运算<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">and_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w">     </span><span class="c1">// 按位与</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">or_out</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">b</span><span class="w">     </span><span class="c1">// 按位或</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">val</span><span class="w"> </span><span class="n">xor_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">^</span><span class="w"> </span><span class="n">b</span><span class="w">     </span><span class="c1">// 按位异或</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">val</span><span class="w"> </span><span class="n">not_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">a</span><span class="w">        </span><span class="c1">// 按位取反</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kd">val</span><span class="w"> </span><span class="n">shift_l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w">    </span><span class="c1">// 左移</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kd">val</span><span class="w"> </span><span class="n">shift_r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="w">    </span><span class="c1">// 右移：UInt 逻辑右移，SInt 算术右移</span>
+</code></pre></div>
+<h3 id="_4">位提取与拼接<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>从指令中提取 opcode、rs1、rs2、funct3、funct7 等字段，全依赖这些提取与拼接语法：</p>
+<ul>
+<li>位提取</li>
+<li>位拼接(Cat)</li>
+<li>重复填充(Fill)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// 位提取</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">opcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inst</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">     </span><span class="c1">// 取 inst 的低 7 位 —— Verilog: inst[6:0]</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">val</span><span class="w"> </span><span class="n">rd</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">inst</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w">    </span><span class="c1">// 取 inst 第 11~7 位</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kd">val</span><span class="w"> </span><span class="n">bit5</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">inst</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w">        </span><span class="c1">// 取单比特</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1">// 拼接：Cat(a, b, c, ...)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kd">val</span><span class="w"> </span><span class="n">combined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Cat</span><span class="p">(</span><span class="n">high</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">)</span><span class="w">        </span><span class="c1">// Verilog: {high, low}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="kd">val</span><span class="w"> </span><span class="n">ext_imm</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Cat</span><span class="p">(</span><span class="n">inst</span><span class="p">(</span><span class="mi">31</span><span class="p">),</span><span class="w"> </span><span class="n">inst</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">),</span><span class="w"> </span><span class="n">inst</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="n">inst</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1">// 重复填充：Fill(n, signal)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="kd">val</span><span class="w"> </span><span class="n">sign_ext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Fill</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span><span class="w">       </span><span class="c1">// Verilog: {16{a[15]}}，16 位符号扩展</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="kd">val</span><span class="w"> </span><span class="n">zero_ext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Cat</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">16</span><span class="p">.</span><span class="nc">W</span><span class="p">),</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w">     </span><span class="c1">// 16 位零扩展</span>
+</code></pre></div>
+<h3 id="mux">Mux<a class="headerlink" href="#mux" title="Permanent link">&para;</a></h3>
+<p>Verilog 中选择逻辑有三种写法：<code>?:</code> 三目运算符、<code>case</code> 语句、<code>if-else</code> 语句。</p>
+<p>Chisel 用三种Mux一一对应。</p>
+<h4 id="mux_1">Mux 二选一<a class="headerlink" href="#mux_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Mux</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">// Verilog: assign result = sel ? a : b;</span>
+</code></pre></div>
+<p>这是最基础的选择器，嵌套后可以实现多路选择——CPU 中前递（Forwarding）的典型写法：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">aluA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Mux</span><span class="p">(</span><span class="n">forwardSel</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">Fwd_EX</span><span class="p">,</span><span class="w">  </span><span class="n">exResult</span><span class="p">,</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">           </span><span class="nc">Mux</span><span class="p">(</span><span class="n">forwardSel</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">Fwd_MEM</span><span class="p">,</span><span class="w"> </span><span class="n">memResult</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">           </span><span class="n">regData</span><span class="p">))</span><span class="w">  </span>
+</code></pre></div>
+<h4 id="muxlookup">MuxLookup 多选一<a class="headerlink" href="#muxlookup" title="Permanent link">&para;</a></h4>
+<p>上面的Mux如果面对较多的选择则写法比较繁琐，可以选择用MuxLookup实现多选一，语法更为简洁。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MuxLookup</span><span class="p">(</span><span class="n">select</span><span class="p">,</span><span class="w"> </span><span class="n">default</span><span class="p">)(</span><span class="nc">Seq</span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">key0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">value0</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">key1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">value1</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">key2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">value2</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">))</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1">// Verilog: always @(*) case(select) ... endcase</span>
+</code></pre></div>
+类似case语句的写法，select是要进行选择的信号，default是没有命中的默认值。</p>
+<p>这在 CPU 开发中常用 ，特别适合写<strong>ALU</strong>和<strong>译码器</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// ALU 操作：一张表覆盖所有运算</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">aluResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MuxLookup</span><span class="p">(</span><span class="n">aluOp</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))(</span><span class="nc">Seq</span><span class="p">(</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nc">ALU_ADD</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">),</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nc">ALU_SUB</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">),</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nc">ALU_AND</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">),</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nc">ALU_OR</span><span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">b</span><span class="p">),</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nc">ALU_SLT</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Mux</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">asSInt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">asSInt</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">),</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nc">ALU_SLL</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)),</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nc">ALU_SRL</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)),</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="nc">ALU_SRA</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">asSInt</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)).</span><span class="n">asUInt</span><span class="w"> </span><span class="c1">// asSInt是将a的类型转为有符号</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">))</span>
+</code></pre></div>
+<h4 id="muxcase">MuxCase 条件优先级链<a class="headerlink" href="#muxcase" title="Permanent link">&para;</a></h4>
+<p>与 <code>MuxLookup</code> 不同，<code>MuxCase</code> 的每个分支是一个<strong>条件表达式</strong>（Bool），按顺序检查，第一个满足的优先，即从前往后优先级依次降低。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MuxCase</span><span class="p">(</span><span class="n">default</span><span class="p">,</span><span class="w"> </span><span class="nc">Seq</span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="p">(</span><span class="n">cond1</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">value1</span><span class="p">,</span><span class="w">   </span><span class="c1">// 优先级最高</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="p">(</span><span class="n">cond2</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">value2</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="p">(</span><span class="n">cond3</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">value3</span><span class="w">    </span><span class="c1">// 优先级最低</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">))</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1">// Verilog: if (cond1) ... else if (cond2) ... else if (cond3) ... else default</span>
+</code></pre></div></p>
+<p>CPU开发中适合<strong>指令识别</strong>（多条指令可能共享相同 opcode，需要 funct3/funct7 进一步区分）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">instType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MuxCase</span><span class="p">(</span><span class="nc">INST_ILLEGAL</span><span class="p">,</span><span class="w"> </span><span class="nc">Seq</span><span class="p">(</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="p">(</span><span class="n">opcode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">OPC_R</span><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">funct3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F3_ADD</span><span class="w">  </span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">                        </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">funct7</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F7_NORMAL</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">INST_ADD</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="p">(</span><span class="n">opcode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">OPC_R</span><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">funct3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F3_ADD</span><span class="w">  </span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">                        </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">funct7</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F7_ALT</span><span class="p">)</span><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">INST_SUB</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="p">(</span><span class="n">opcode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">OPC_I</span><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">funct3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F3_ADDI</span><span class="p">)</span><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">INST_ADDI</span><span class="p">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="p">(</span><span class="n">opcode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">OPC_LW</span><span class="p">)</span><span class="w">                          </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">INST_LW</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="p">(</span><span class="n">opcode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">OPC_JAL</span><span class="p">)</span><span class="w">                         </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">INST_JAL</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="p">))</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">三种 Mux 的选择</p>
+<table>
+<thead>
+<tr>
+<th>你的需求</th>
+<th>用什么</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二选一</td>
+<td><code>Mux</code></td>
+<td>最简单直接</td>
+</tr>
+<tr>
+<td>多选一，基于一个 select 信号的值查表</td>
+<td><code>MuxLookup</code></td>
+<td>类似 Verilog 的 <code>case</code>，所有分支等优先级</td>
+</tr>
+<tr>
+<td>多选一，每个分支有独立条件表达式，有优先级顺序</td>
+<td><code>MuxCase</code></td>
+<td>类似 <code>if-else if</code> 链，前面分支优先</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="mux1h">Mux1H 独热码选择器<a class="headerlink" href="#mux1h" title="Permanent link">&para;</a></h4>
+<p>前面三种 Mux 的 select 信号都是<strong>二进制编码</strong>（如 <code>0.U</code>、<code>1.U</code>、<code>2.U</code> 表示"选第 0 / 1 / 2 个"）。</p>
+<p><code>Mux1H</code> 则用<strong>独热码</strong>做 select，每一位对应一个候选值，哪一位为 1 就选那个候选值。</p>
+<h5 id="_5">译码器产生独热码<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h5>
+<p>回顾译码器的工作方式。当你用 <code>MuxCase</code> 识别指令类型时，每条指令都会生成一个独立的 Bool 信号：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// 译码器中对每条指令的判断——以下信号互斥，天然是独热码</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">isAdd</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">opcode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">OPC_R</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">funct3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F3_ADD</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">funct7</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F7_NORMAL</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kd">val</span><span class="w"> </span><span class="n">isSub</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">opcode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">OPC_R</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">funct3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F3_ADD</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">funct7</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F7_ALT</span><span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="kd">val</span><span class="w"> </span><span class="n">isAnd</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">opcode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">OPC_R</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">funct3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F3_AND</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">funct7</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F7_NORMAL</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kd">val</span><span class="w"> </span><span class="n">isOr</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">opcode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">OPC_R</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">funct3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F3_OR</span><span class="p">)</span><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">funct7</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nc">F7_NORMAL</span><span class="p">)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1">// 对于任意一条合法指令，这四个信号中最多只有一个为 true</span>
+</code></pre></div>
+<p>按常规做法，你会把这些独热码信号使用 <code>MuxLookup</code>查表选择。</p>
+<p>先把它们转回二进制编码（"isAdd→0, isSub→1, isAnd→2, isOr→3"），再查表选择。</p>
+<p>这种做法麻烦很多，信号本来就是独热码，绕一圈转成二进制再解码回来。</p>
+<p>使用<code>Mux1H</code>则可以直接使用独热码进行选择。</p>
+<h5 id="mux1h_1">Mux1H 语法<a class="headerlink" href="#mux1h_1" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Mux1H：直接用独热码 isAdd/isSub/isAnd/isOr 选择对应的运算结果</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">aluResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Mux1H</span><span class="p">(</span><span class="nc">Seq</span><span class="p">(</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">isAdd</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">),</span><span class="w">       </span><span class="c1">// isAdd=1  时选中 a+b</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="n">isSub</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">),</span><span class="w">       </span><span class="c1">// isSub=1  时选中 a-b</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="n">isAnd</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">),</span><span class="w">       </span><span class="c1">// isAnd=1  时选中 a&amp;b</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="n">isOr</span><span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">        </span><span class="c1">// isOr=1  时选中 a|b</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="p">))</span>
+</code></pre></div>
+<p>综合后的电路：<code>isAdd ? (a+b) : isSub ? (a-b) : isAnd ? (a&amp;b) : isOr ? (a|b) : DontCare</code>。</p>
+<p>与 <code>MuxCase</code> 不同，<code>Mux1H</code> 明确告诉综合器"这些条件互斥"，综合器可以放心用更简洁的 LUT 链而非级联优先级 Mux。</p>
+<p>也可以采用另一种写法：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">sel</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">VecInit</span><span class="p">(</span><span class="n">isAdd</span><span class="p">,</span><span class="w"> </span><span class="n">isSub</span><span class="p">,</span><span class="w"> </span><span class="n">isAnd</span><span class="p">,</span><span class="w"> </span><span class="n">isOr</span><span class="p">)</span><span class="w">    </span><span class="c1">// 4 位独热码向量</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">vals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">VecInit</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">    </span><span class="c1">// 4 个候选值</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Mux1H</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span><span class="w"> </span><span class="n">vals</span><span class="p">)</span><span class="w">                      </span><span class="c1">// sel(i)=1 时选 vals(i)</span>
+</code></pre></div>
+<h5 id="muxlookup_1">与 MuxLookup 的对比<a class="headerlink" href="#muxlookup_1" title="Permanent link">&para;</a></h5>
+<p>以 ALU 为例，两种写法都能工作：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MuxLookup 写法</th>
+<th>Mux1H 写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>select 信号</td>
+<td>先把独热码转为二进制 ALU 操作码编号</td>
+<td>直接用译码产生的独热码</td>
+</tr>
+<tr>
+<td>写法</td>
+<td><code>MuxLookup(aluOp, 0.U)(Seq(ALU_ADD -&gt; (a+b), ...))</code></td>
+<td><code>Mux1H(Seq(isAdd -&gt; (a+b), ...))</code></td>
+</tr>
+<tr>
+<td>生成硬件</td>
+<td>二进制解码器 + Mux 树</td>
+<td>LUT 链（更简洁）</td>
+</tr>
+</tbody>
+</table>
+<p>如果你的译码器已经输出了 <code>isAdd</code> / <code>isSub</code> / <code>isAnd</code> / <code>isOr</code> 这类独热码信号，用 <code>Mux1H</code> 最简洁，你不需要再额外定义一个 ALU 操作码常量表来给它们编号。</p>
+<div class="admonition tip">
+<p class="admonition-title">选择指南</p>
+<table>
+<thead>
+<tr>
+<th>你的 select 信号是</th>
+<th>用什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二进制编码（如 <code>0.U</code>, <code>1.U</code>, <code>2.U</code>）</td>
+<td><code>MuxLookup</code></td>
+</tr>
+<tr>
+<td>独热码（译码直接产出的 <code>isAdd</code> / <code>isSub</code> / <code>isLw</code> 等）</td>
+<td><code>Mux1H</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<h2 id="_6">时序逻辑<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>组合逻辑描述的是"数据怎么流动"，但数据本身需要<strong>在时钟沿上更新</strong>，这就是时序逻辑。</p>
+<p>在 Verilog 中时序逻辑写在 <code>always @(posedge clk)</code> 里，用 <code>&lt;=</code> 赋值；Chisel 中用 <code>Reg</code> + <code>when</code> + <code>:=</code> 实现。</p>
+<h3 id="_7">寄存器声明<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>在基本语法上中我们已经介绍了<code>Reg</code>和<code>RegInit</code>, 并推荐同学们尽可能不使用<code>Reg</code>而应该使用<code>RegInit</code>。</p>
+<p>这一小节中再介绍一个新的寄存器声明方式：<code>RegNext</code></p>
+<p><code>RegNext</code>已经包含了打一拍的语义，表示将某个信号打一拍后的信号。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// 最常用：带复位值的寄存器</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="s">&quot;h80000000&quot;</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span><span class="w">      </span><span class="c1">// 复位后 = 0x80000000</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">pc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">nextPC</span><span class="w">                               </span><span class="c1">// 每个周期更新</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1">// 无复位值的寄存器（慎用，仿真时可能出 X 态）</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="kd">val</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Reg</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1">// RegNext：打一拍的简写</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="kd">val</span><span class="w"> </span><span class="n">delayed1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegNext</span><span class="p">(</span><span class="n">io</span><span class="p">.</span><span class="n">in</span><span class="p">)</span><span class="w">               </span><span class="c1">// 等价于 Reg + RegInit(in, 0.U)</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="kd">val</span><span class="w"> </span><span class="n">delayed2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegNext</span><span class="p">(</span><span class="n">io</span><span class="p">.</span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">)</span><span class="w">          </span><span class="c1">// 带复位值的打一拍</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">RegNext——流水线开发中最常用的原语</p>
+<p>流水线的每一级本质上就是把上一级组合逻辑的结果"打一拍"。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">id_pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegNext</span><span class="p">(</span><span class="n">if_pc</span><span class="p">)</span><span class="w">   </span><span class="c1">// 一句话实现</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1">// verilog版本</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1">// reg [31:0] id_pc;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">// always @(posedge clk) id_pc &lt;= if_pc;</span>
+</code></pre></div></p>
+</div>
+<h3 id="when-elsewhen-otherwise">when / elsewhen / otherwise<a class="headerlink" href="#when-elsewhen-otherwise" title="Permanent link">&para;</a></h3>
+<p>在 Chisel 代码中看到了这几个关键字，就说明是时序逻辑，无需像Verilog中一样再写<code>always @(posedge clk)</code>。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">when</span><span class="p">(</span><span class="n">cond1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">reg1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">value1</span><span class="w">       </span><span class="c1">// 注意是 := 不是 =</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="n">reg2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">value2</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">}</span><span class="w"> </span><span class="p">.</span><span class="n">elsewhen</span><span class="p">(</span><span class="n">cond2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="n">reg1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">value3</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="p">}</span><span class="w"> </span><span class="p">.</span><span class="n">otherwise</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="n">reg1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">value4</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="p">}</span>
+</code></pre></div></p>
+<p>这等价于 Verilog：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cond1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">        </span><span class="n">reg1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">value1</span><span class="p">;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">        </span><span class="n">reg2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">value2</span><span class="p">;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cond2</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">        </span><span class="n">reg1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">value3</span><span class="p">;</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">        </span><span class="n">reg1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">value4</span><span class="p">;</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="k">end</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title"><code>when</code> 块的"保持"语义</p>
+<p>如果你在 <code>when</code> 块的某个分支中没有对某个寄存器赋值，Chisel 会自动让该寄存器在对应条件下<strong>保持原值</strong>。但是综合后会在寄存器输入端加一个 Mux，选择新值还是旧值反馈。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">when</span><span class="p">(</span><span class="n">en</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">reg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">newValue</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1">// en=0 时 reg 保持原值</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1">// 综合结果：reg := Mux(en, newValue, reg)</span>
+</code></pre></div>
+<p>如果你希望寄存器在某种条件下<strong>清零</strong>而不是保持，必须在那个分支中<strong>显式赋值 0.U</strong>。</p>
+</div>
+<h3 id="switch-is"><code>switch</code> / <code>is</code><a class="headerlink" href="#switch-is" title="Permanent link">&para;</a></h3>
+<p>Verilog 中还有一种常见模式：<code>case</code> 语句放在 <code>always @(posedge clk)</code> 里，这在状态机中非常普遍。</p>
+<p>Chisel 用 <code>switch</code> / <code>is</code> 来实现这个模式：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">switch</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="n">is</span><span class="p">(</span><span class="nc">IDLE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nc">RUN</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="n">is</span><span class="p">(</span><span class="nc">RUN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="n">cnt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">cnt</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mi">10</span><span class="p">.</span><span class="nc">U</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nc">DONE</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">    </span><span class="n">is</span><span class="p">(</span><span class="nc">DONE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">ack</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nc">IDLE</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="p">}</span>
+</code></pre></div>
+<p>等价于 Verilog：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">        </span><span class="nl">IDLE:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">RUN</span><span class="p">;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">        </span><span class="nl">RUN:</span><span class="w">  </span><span class="k">begin</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cnt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">10</span><span class="p">)</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">DONE</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">        </span><span class="nl">DONE:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ack</span><span class="p">)</span><span class="w">  </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="k">endcase</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="k">end</span>
+</code></pre></div></p>
+<p><strong><code>switch</code>/<code>is</code> vs <code>when</code>/<code>elsewhen</code>：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>when</code> / <code>elsewhen</code></th>
+<th><code>switch</code> / <code>is</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对应 Verilog</td>
+<td><code>if-else if</code> 链</td>
+<td><code>case</code> 语句</td>
+</tr>
+<tr>
+<td>最适合</td>
+<td>条件表达式互不相同</td>
+<td>基于<strong>同一个信号</strong>的不同取值</td>
+</tr>
+<tr>
+<td>优先级</td>
+<td>有（上方的分支优先）</td>
+<td>无（所有分支互斥）</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">CPU 中的典型场景</p>
+<p><code>switch</code>/<code>is</code> 最适合<strong>多周期状态机</strong>，而转发单元的冒险检测需要优先级选择则更适合 <code>when</code>/<code>elsewhen</code>。</p>
+</div>
+<h3 id="_8">区分 <code>:=</code> 和 <code>=</code><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>这是 Chisel 初学者最容易混淆的地方。</p>
+<p><strong><code>=</code> 永远是组合连线；<code>:=</code> 的语义取决于赋值目标和所在位置</strong>。</p>
+<p>关键先理解 <code>:=</code> 在 <code>when</code> 块外对 <code>Reg</code> 的行为，它和 <code>Wire</code> 完全不同：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">// when 块外的 := 用于 Wire —— 组合连线</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Wire</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">sum</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">        </span><span class="c1">// 等价于 Verilog: assign sum = a + b;</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1">// when 块外的 := 用于 Reg —— 时序默认赋值！</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="kd">val</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="s">&quot;h80000000&quot;</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="n">pc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="nc">U</span><span class="w">      </span><span class="c1">// 等价于 Verilog: always @(posedge clk) pc &lt;= pc + 4;</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="c1">//                    每个时钟周期无条件更新！</span>
+</code></pre></div>
+<p>"时序默认赋值"的意思是：</p>
+<p>如果没有 <code>when</code> 块来覆盖这个行为，寄存器就按这个表达式无条件更新；如果后面有 <code>when</code> 块对同一个寄存器赋值，<code>when</code> 块的优先级更高：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="s">&quot;h80000000&quot;</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">pc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="nc">U</span><span class="w">           </span><span class="c1">// 默认：每个周期 +4</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">when</span><span class="p">(</span><span class="n">stall</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="n">pc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">pc</span><span class="w">              </span><span class="c1">// 覆盖：stall 时保持不变（when 内的优先级更高）</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="p">}</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1">// 等价于 Verilog:</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1">// always @(posedge clk) begin</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="c1">//     if (stall)  pc &lt;= pc;</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="c1">//     else        pc &lt;= pc + 4;</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="c1">// end</span>
+</code></pre></div>
+<p>理解了这一点，下面用一张完整的表格来总结 <code>=</code> 和 <code>:=</code> 的区别：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>目标类型</th>
+<th>生成什么硬件</th>
+<th>Verilog 等价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a = b</code></td>
+<td>Wire 或 IO</td>
+<td>组合连线</td>
+<td><code>assign a = b;</code></td>
+</tr>
+<tr>
+<td><code>a := b</code>（when 外）</td>
+<td>Wire 或 IO</td>
+<td>组合连线</td>
+<td><code>assign a = b;</code></td>
+</tr>
+<tr>
+<td><code>a := b</code>（when 外）</td>
+<td><strong>Reg</strong></td>
+<td><strong>时序默认赋值</strong>（每周期无条件更新，可被 when 覆盖）</td>
+<td><code>always @(posedge clk) a &lt;= b;</code></td>
+</tr>
+<tr>
+<td><code>a := b</code>（when 内）</td>
+<td>Reg</td>
+<td>时序条件赋值（条件满足时才更新）</td>
+<td><code>always @(posedge clk) if (...) a &lt;= b;</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">关键记忆点</p>
+<ul>
+<li><code>=</code> 永远是组合连线，目标只能是 Wire 或 IO，不能是 Reg。</li>
+<li><code>:=</code> 在 when 外：<strong>看目标是什么</strong>——Wire/IO 就是组合连线，<strong>Reg 就是时序默认赋值</strong>。</li>
+<li><code>:=</code> 在 when 内：<strong>目标必须是 Reg</strong>，是时序条件赋值，优先级高于 when 外的默认赋值。</li>
+<li><code>io.out := expr</code>：IO 的 Output 端口用 <code>:=</code> 驱动，等价于组合连线。</li>
+</ul>
+</div>
+<p>下面是<code>=</code>和<code>:=</code>的代码示例：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1">// 场景 1：Wire 的 := — 组合连线</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">aluOut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Wire</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">aluOut</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">           </span><span class="c1">// assign aluOut = a + b;</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c1">// 场景 2：Reg 默认赋值 — 每周期更新</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="kd">val</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="n">cnt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span><span class="w">          </span><span class="c1">// always @(posedge clk) cnt &lt;= cnt + 1;</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="c1">// 场景 3：Reg 在 when 内赋值 — 条件更新（优先级高于默认赋值）</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="n">when</span><span class="p">(</span><span class="n">reset</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="w">    </span><span class="n">cnt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="w">            </span><span class="c1">// reset 时清零，覆盖默认的 +1</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="p">}</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="c1">// 场景 4：错误的用法</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="kd">val</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Wire</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="n">when</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">value</span><span class="w">            </span><span class="c1">// 编译错误！Wire 不能放在 when 内</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="p">}</span>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="kd">val</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span><span class="w">               </span><span class="c1">// 编译错误！Reg 不能用 = 赋值</span>
+</code></pre></div></p>
+<h3 id="_9">常见时序模式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>在Chisel中，可以快速实现三种常见的时序模式：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1">// 模式 1：带使能的寄存器</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">when</span><span class="p">(</span><span class="n">en</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="n">reg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">newValue</span><span class="w">        </span><span class="c1">// en=1 时更新，en=0 时保持</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="p">}</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1">// 模式 2：计数器</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="kd">val</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="n">cnt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span><span class="w">           </span><span class="c1">// 每个周期自增（不需要 when）</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="c1">// 模式 3：条件更新</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="n">when</span><span class="p">(</span><span class="n">reset</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="w">    </span><span class="n">reg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="p">}</span><span class="w"> </span><span class="p">.</span><span class="n">elsewhen</span><span class="p">(</span><span class="n">load</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">    </span><span class="n">reg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">loadData</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="p">}</span><span class="w"> </span><span class="p">.</span><span class="n">otherwise</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="w">    </span><span class="n">reg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">reg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="p">}</span>
+</code></pre></div></p>
+<h4 id="regenable"><strong>RegEnable</strong><a class="headerlink" href="#regenable" title="Permanent link">&para;</a></h4>
+<p>带使能寄存器 <code>RegEnable</code> 是模式 1 的语法糖，一行替代 <code>RegInit</code> + <code>when(en)</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegEnable</span><span class="p">(</span><span class="n">nextValue</span><span class="p">,</span><span class="w"> </span><span class="n">initValue</span><span class="p">,</span><span class="w"> </span><span class="n">en</span><span class="p">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1">// 等价于：</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1">// val reg = RegInit(initValue)</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1">// when(en) { reg := nextValue }</span>
+</code></pre></div>
+<p>流水线 CPU 中，PC 在 stall 时需要保持不变。<code>RegEnable</code> 很自然地表达这个语义：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegEnable</span><span class="p">(</span><span class="n">nextPC</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;h80000000&quot;</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">),</span><span class="w"> </span><span class="o">!</span><span class="n">stall</span><span class="p">)</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1">// stall=0 时正常更新为 nextPC，stall=1 时保持</span>
+</code></pre></div>
+<p>对比手写 <code>when</code> 版本：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kd">val</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="s">&quot;h80000000&quot;</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">when</span><span class="p">(</span><span class="o">!</span><span class="n">stall</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="n">pc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">nextPC</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="p">}</span>
+</code></pre></div></p>
+<p>两种写法生成完全相同的硬件，<code>RegEnable</code> 更为简洁。</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 基本语法上">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                基本语法上
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/" class="md-footer__link md-footer__link--next" aria-label="下一页: 基本语法下">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                基本语法下
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 武汉大学计算机学院
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/your-course-repo" target="_blank" rel="noopener" title="课程源码仓库" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.footer", "content.code.annotate", "content.code.copy", "content.code.highlight", "content.code.tabbed", "content.tabs.link", "navigation.indexes", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

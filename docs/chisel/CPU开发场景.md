@@ -1,380 +1,382 @@
+# CPU 开发场景速查
 
-前面两节的基础语法涵盖了 Chisel 的所有常用语法，已经足够支撑你完成一个五级流水线CPU的设计了。下面按照**你在开发五级流水线 CPU 时会实际遇到的问题**，将语法点重新组织为十个开发场景。你可以将这一节作为速查手册，边写边翻。
+这一页把前面的语法放回五级流水线 CPU 中。代码是局部示例，重点是连接方式和时序关系，不是一份可以直接提交的完整 Core。
 
-## 程序计数器（PC）
+## 先约定存储器时序
+
+下面采用课程中常见的经典五级流水线假设：指令存储器和数据存储器的读数据在本拍返回。CPU 通过外部接口访问存储器，例如：
 
 ```scala
-val pc = RegInit("h80000000".U(32.W))  // 复位后从 0x80000000 开始取指
-pc := nextPC                            // 下一个周期更新
+val io = IO(new Bundle {
+  val imemAddr = Output(UInt(32.W))
+  val imemInst = Input(UInt(32.W))
+
+  val dmemAddr  = Output(UInt(32.W))
+  val dmemRdata = Input(UInt(32.W))
+})
 ```
 
-用到：`RegInit`、字面量、`:=`
+如果课程平台提供 ready/valid、SRAM 或 AXI 接口，应以平台接口为准。不要把示例中的存储器直接换成 `SyncReadMem`：同步读会增加一拍，需要同时延迟 PC、目的寄存器和控制信号。
 
-## 指令存储器（取指）
+## 程序计数器
+
+PC 是寄存器。正常情况加 4，重定向时跳到目标地址，暂停时保持：
 
 ```scala
-class IMem extends Module {
-    val io = IO(new Bundle {
-        val addr = Input(UInt(32.W))
-        val inst = Output(UInt(32.W))
-    })
-    val mem = SyncReadMem(4096, UInt(32.W))
-    io.inst := mem.read(io.addr >> 2)
+val pc = RegInit("h80000000".U(32.W))
+
+when(redirect) {
+  pc := redirectTarget
+}.elsewhen(!stall) {
+  pc := pc + 4.U
 }
 ```
 
-用到：`Module`、`IO`、`Bundle`、`Input`/`Output`、`SyncReadMem`
+分支重定向来自更老的指令，通常应比针对年轻指令的暂停拥有更高优先级。
 
-## 译码器（指令识别 + 控制信号生成）
-
-译码有两种组织方式：
-
-**方式 A（简单）：每个控制信号一个 MuxLookup**——信号少时够用。
+## 指令字段
 
 ```scala
-val regWrite = MuxLookup(opcode, false.B)(Seq(
-    OPC_R  -> true.B,
-    OPC_I  -> true.B,
-    OPC_LW -> true.B
-))
+val opcode = inst(6, 0)
+val rd     = inst(11, 7)
+val funct3 = inst(14, 12)
+val rs1    = inst(19, 15)
+val rs2    = inst(24, 20)
+val funct7 = inst(31, 25)
 ```
 
-**方式 B（推荐）：先识别指令类型，再查表生成控制信号。**
+这些表达式都是组合逻辑，不需要先声明 Wire。给表达式起一个 `val` 名字只是方便后面引用。
+
+## 译码器
+
+下面的控制 Bundle 只列出本页会用到的字段：
 
 ```scala
-// 第一步：opcode + funct3 + funct7 —— 指令枚举
-val instType = MuxCase(INST_ILLEGAL, Seq(
-    (opcode === OPC_R  && funct3 === F3_ADD && funct7 === F7_NORMAL) -> INST_ADD,
-    (opcode === OPC_R  && funct3 === F3_ADD && funct7 === F7_ALT)    -> INST_SUB,
-    (opcode === OPC_I  && funct3 === F3_ADDI)                        -> INST_ADDI,
-    (opcode === OPC_LW)                                               -> INST_LW,
-    (opcode === OPC_SW)                                               -> INST_SW,
-    (opcode === OPC_B  && funct3 === F3_BEQ)                         -> INST_BEQ,
-    (opcode === OPC_JAL)                                              -> INST_JAL
-))
-
-// 第二步：instType —— 各控制信号
-val regWrite = MuxLookup(instType, false.B)(Seq(
-    INST_ADD  -> true.B,
-    INST_SUB  -> true.B,
-    INST_ADDI -> true.B,
-    INST_LW   -> true.B,
-    INST_JAL  -> true.B
-))
-
-val aluOp = MuxLookup(instType, ALU_NOP)(Seq(
-    INST_ADD  -> ALU_ADD,
-    INST_SUB  -> ALU_SUB,
-    INST_ADDI -> ALU_ADD,
-    INST_BEQ  -> ALU_SUB
-))
+class ControlSignals extends Bundle {
+  val regWrite = Bool()
+  val memRead  = Bool()
+  val memWrite = Bool()
+  val usesRs1  = Bool()
+  val usesRs2  = Bool()
+  val aluOp    = UInt(4.W)
+  val immType  = UInt(3.W)
+  val memSize  = UInt(3.W)
+}
 ```
 
-!!! tip "两种方式的选择"
-    五级流水线 CPU 约 40 条指令，**推荐方式 B**。它把"指令识别"和"控制信号生成"解耦：
-    - 新增指令 —— 在 `MuxCase` 中加一行条件 + 在各 `MuxLookup` 中加一行输出
-    - 修改某条指令的控制信号 —— 只需改对应 `MuxLookup` 的那一行
-    
-    方式 A 每新增一条指令都需逐个信号修改，容易在某个信号处遗漏。
+指令较少时，可以直接写条件：
 
-用到：`MuxCase`（指令识别）+ `MuxLookup`（控制信号生成）、`===`、`&&`、`Bool`
+```scala
+val isAdd = opcode === Opc.R &&
+  funct3 === "b000".U && funct7 === "b0000000".U
+
+val isSub = opcode === Opc.R &&
+  funct3 === "b000".U && funct7 === "b0100000".U
+```
+
+控制信号先给安全默认值，再按指令覆盖：
+
+```scala
+val ctrl = WireDefault(0.U.asTypeOf(new ControlSignals))
+
+when(isAdd || isSub) {
+  ctrl.regWrite := true.B
+  ctrl.usesRs1  := true.B
+  ctrl.usesRs2  := true.B
+}
+```
+
+`usesRs1`、`usesRs2` 很有用。冒险检测不能只比较指令字段，因为 U 型、J 型等指令中的同一比特位置未必真的是源寄存器。
+
+指令较多时，建议使用 `BitPat` 和 `ListLookup` 组织译码表，见“进阶写法”。
 
 ## 立即数生成器
 
+I 型立即数：
+
 ```scala
-val imm = MuxLookup(instType, 0.U(32.W))(Seq(
-    INST_I -> Cat(Fill(20, inst(31)), inst(31, 20)).asUInt,
-    INST_S -> Cat(Fill(20, inst(31)), inst(31, 25), inst(11, 7)).asUInt,
-    INST_B -> Cat(Fill(19, inst(31)), inst(31), inst(7), inst(30, 25), inst(11, 8), 0.U(1.W)).asUInt,
-    INST_U -> Cat(inst(31, 12), Fill(12, 0.U)).asUInt,
-    INST_J -> Cat(Fill(11, inst(31)), inst(31), inst(19, 12), inst(20), inst(30, 21), 0.U(1.W)).asUInt
-))
+val immI = Cat(Fill(20, inst(31)), inst(31, 20))
 ```
 
-用到：`MuxLookup`、`Cat`、`Fill`、`asUInt`、位提取 `inst(x, y)`
+S 型与 B 型立即数：
+
+```scala
+val immS = Cat(Fill(20, inst(31)), inst(31, 25), inst(11, 7))
+
+val immB = Cat(
+  Fill(19, inst(31)), inst(31), inst(7),
+  inst(30, 25), inst(11, 8), 0.U(1.W)
+)
+```
+
+U 型与 J 型立即数：
+
+```scala
+val immU = Cat(inst(31, 12), 0.U(12.W))
+
+val immJ = Cat(
+  Fill(11, inst(31)), inst(31), inst(19, 12),
+  inst(20), inst(30, 21), 0.U(1.W)
+)
+```
+
+最后根据译码结果选择：
+
+```scala
+val imm = MuxLookup(ctrl.immType, 0.U(32.W))(Seq(
+  ImmType.I -> immI,
+  ImmType.S -> immS,
+  ImmType.B -> immB,
+  ImmType.U -> immU,
+  ImmType.J -> immJ
+))
+```
 
 ## ALU
 
 ```scala
 val aluResult = MuxLookup(aluOp, 0.U(32.W))(Seq(
-    ALU_ADD  -> (a + b),
-    ALU_SUB  -> (a - b),
-    ALU_AND  -> (a & b),
-    ALU_OR   -> (a | b),
-    ALU_XOR  -> (a ^ b),
-    ALU_SLT  -> Mux(a.asSInt < b.asSInt, 1.U, 0.U),
-    ALU_SLTU -> Mux(a < b, 1.U, 0.U),
-    ALU_SLL  -> (a << b(4, 0)),
-    ALU_SRL  -> (a >> b(4, 0)),
-    ALU_SRA  -> (a.asSInt >> b(4, 0)).asUInt
+  AluOp.ADD  -> (a + b),
+  AluOp.SUB  -> (a - b),
+  AluOp.AND  -> (a & b),
+  AluOp.OR   -> (a | b),
+  AluOp.XOR  -> (a ^ b)
 ))
 ```
 
-用到：`MuxLookup`、算术/位运算、`asSInt` / `asUInt`、`Mux`
-
-## 数据存储器（load / store 扩展）
+有符号比较与算术右移要显式转换：
 
 ```scala
-class DMem extends Module {
-    val io = IO(new Bundle {
-        val addr   = Input(UInt(32.W))
-        val wdata  = Input(UInt(32.W))
-        val wen    = Input(Bool())
-        val memExt = Input(UInt(3.W))       // lb / lh / lw / lbu / lhu
-        val rdata  = Output(UInt(32.W))
-    })
-    val mem = SyncReadMem(4096, UInt(32.W))
+val slt = (a.asSInt < b.asSInt).asUInt
+val sra = (a.asSInt >> b(4, 0)).asUInt
+```
 
-    when(io.wen) { mem.write(io.addr >> 2, io.wdata) }
-    val rawData = mem.read(io.addr >> 2)
+ALU 输出若固定为 32 位，应测试加法回绕、负数比较和大移位量等边界情况。
 
-    // 字节/半字扩展
-    io.rdata := MuxLookup(io.memExt, rawData)(Seq(
-        MEM_LB  -> Cat(Fill(24, rawData(7)),  rawData(7, 0)),
-        MEM_LBU -> Cat(0.U(24.W),             rawData(7, 0)),
-        MEM_LH  -> Cat(Fill(16, rawData(15)), rawData(15, 0)),
-        MEM_LHU -> Cat(0.U(16.W),             rawData(15, 0)),
-        MEM_LW  -> rawData
-    ))
+## 寄存器堆
+
+```scala
+val regs = RegInit(VecInit(Seq.fill(32)(0.U(32.W))))
+
+io.rdata1 := Mux(io.rs1 === 0.U, 0.U, regs(io.rs1))
+io.rdata2 := Mux(io.rs2 === 0.U, 0.U, regs(io.rs2))
+```
+
+写 x0 时直接忽略：
+
+```scala
+when(io.wen && io.rd =/= 0.U) {
+  regs(io.rd) := io.wdata
 }
 ```
 
-用到：`Module`、`SyncReadMem`、`when`、`MuxLookup`、`Cat`、`Fill`
+建议单独测试“同拍写回 x5、译码级读取 x5”的行为，确认它与你的转发设计一致。
 
-## 流水线寄存器——五级流水线的骨架
+## Load 的字节选择与扩展
 
-这是整个 CPU 最核心的结构。四级流水线寄存器（IF——ID, ID——EX, EX——MEM, MEM——WB）统一定义为 Bundle：
+若数据存储器返回包含目标地址的 32 位字，需要先根据地址低两位把目标字节移到最低位：
 
 ```scala
-// === 定义各级 Bundle ===
+val byteShift = Cat(memAddr(1, 0), 0.U(3.W))
+val shifted   = io.dmemRdata >> byteShift
+
+val byte = shifted(7, 0)
+val half = shifted(15, 0)
+```
+
+然后做符号扩展或零扩展：
+
+```scala
+val loadData = MuxLookup(memSize, io.dmemRdata)(Seq(
+  MemSize.B  -> Cat(Fill(24, byte(7)), byte),
+  MemSize.BU -> Cat(0.U(24.W), byte),
+  MemSize.H  -> Cat(Fill(16, half(15)), half),
+  MemSize.HU -> Cat(0.U(16.W), half)
+))
+```
+
+原稿中直接使用 `rawData(7, 0)` 的写法只对字内偏移为 0 的地址正确。
+
+## Store 的写掩码
+
+字节写入要根据地址低两位产生 4 位掩码：
+
+```scala
+val byteMask = (1.U(4.W) << memAddr(1, 0))(3, 0)
+val halfMask = (3.U(4.W) << memAddr(1, 0))(3, 0)
+
+val wmask = MuxLookup(memSize, "b1111".U)(Seq(
+  MemSize.B -> byteMask,
+  MemSize.H -> halfMask
+))
+```
+
+写数据也要移动到对应字节通道：
+
+```scala
+val storeShift = Cat(memAddr(1, 0), 0.U(3.W))
+val storeData  = (rs2Data << storeShift)(31, 0)
+```
+
+半字和字访问通常要求地址对齐。课程若不处理非对齐访问，应使用 `assert` 检查，而不是静默地产生错误结果。
+
+## 流水线 Bundle
+
+每级流水线数据建议携带 `valid`。气泡就是 `valid = false` 的一拍，不必依赖控制信号的零编码。
+
+```scala
 class IF2ID extends Bundle {
-    val pc   = UInt(32.W)
-    val inst = UInt(32.W)
+  val valid = Bool()
+  val pc    = UInt(32.W)
+  val inst  = UInt(32.W)
 }
+```
 
+ID/EX 需要保留源寄存器编号，供转发和冒险检测使用：
+
+```scala
 class ID2EX extends Bundle {
-    val pc       = UInt(32.W)
-    val rs1Data  = UInt(32.W)
-    val rs2Data  = UInt(32.W)
-    val imm      = UInt(32.W)
-    val rd       = UInt(5.W)
-    val aluOp    = UInt(4.W)
-    val regWrite = Bool()
-    val memRead  = Bool()
-    val memWrite = Bool()
-    val memExt   = UInt(3.W)
-    val rs1      = UInt(5.W)   // 保留 rs1/rs2 编号用于转发判断
-    val rs2      = UInt(5.W)
-}
-
-class EX2MEM extends Bundle {
-    val pcNext    = UInt(32.W)
-    val aluResult = UInt(32.W)
-    val storeData = UInt(32.W)
-    val rd        = UInt(5.W)
-    val regWrite  = Bool()
-    val memRead   = Bool()
-    val memWrite  = Bool()
-    val memExt    = UInt(3.W)
-}
-
-class MEM2WB extends Bundle {
-    val aluResult = UInt(32.W)
-    val memData   = UInt(32.W)
-    val rd        = UInt(5.W)
-    val regWrite  = Bool()
+  val valid   = Bool()
+  val pc      = UInt(32.W)
+  val rs1     = UInt(5.W)
+  val rs2     = UInt(5.W)
+  val rd      = UInt(5.W)
+  val rs1Data = UInt(32.W)
+  val rs2Data = UInt(32.W)
+  val imm     = UInt(32.W)
+  val ctrl    = new ControlSignals
 }
 ```
 
+流水线寄存器可以整包更新：
+
 ```scala
-// === 在顶层模块中实例化 ===
-val if2id_wire  = Wire(new IF2ID)
-val if2id_reg   = RegInit(0.U.asTypeOf(new IF2ID))
+val ifId = RegInit(0.U.asTypeOf(new IF2ID))
+val ifIdNext = WireDefault(0.U.asTypeOf(new IF2ID))
 
-val id2ex_wire  = Wire(new ID2EX)
-val id2ex_reg   = RegInit(0.U.asTypeOf(new ID2EX))
-
-val ex2mem_wire = Wire(new EX2MEM)
-val ex2mem_reg  = RegInit(0.U.asTypeOf(new EX2MEM))
-
-val mem2wb_wire = Wire(new MEM2WB)
-val mem2wb_reg  = RegInit(0.U.asTypeOf(new MEM2WB))
-
-// === 流水线推进：wire —— reg ===
-if2id_reg  := if2id_wire
-id2ex_reg  := id2ex_wire
-ex2mem_reg := ex2mem_wire
-mem2wb_reg := mem2wb_wire
+ifId := ifIdNext
 ```
 
-!!! success "从这里感受 Chisel 真正的优势"
-    注意 `RegInit(0.U.asTypeOf(new ID2EX))` 这一行——它生成了一个包含 **十几个信号的流水线寄存器组**，推进时只需 `id2ex_reg := id2ex_wire` **一行**。
-    
-    Verilog 中需要：十几条 `reg` 声明 + 十几条 `always @(posedge clk)` 逐行赋值。
-    
-    日后需要新增一个传递信号（比如 CSR 异常码），Chisel 只需在 `ID2EX` Bundle 中加一行 `val excCode = UInt(4.W)`——**所有实例化、连线、推进全部自动生效，零遗漏、零连线成本。**
+新增 Bundle 字段后，整包连接会自动携带该字段；产生 `ifIdNext` 的逻辑仍要为新字段提供正确值。
 
-用到：`Bundle`、`Wire`、`RegInit`、`asTypeOf`、`:=`
+## 转发
 
-## 转发单元（Forwarding Unit）
-
-转发逻辑用 `when` 链检测冒险条件，用 `Mux` 选择转发源：
+EX/MEM 中的 ALU 结果可以前递，但 load 的数据此时通常还没有返回，所以不能把 load 当作普通 ALU 结果转发：
 
 ```scala
-// 检测：前面指令的目标寄存器 == 当前指令的源寄存器
-val forwardA = WireDefault(0.U(2.W))   // 00: 不转发, 01: EX级, 10: MEM级
-val forwardB = WireDefault(0.U(2.W))
+val exCanForward = exMem.valid && exMem.ctrl.regWrite &&
+  !exMem.ctrl.memRead && exMem.rd =/= 0.U
 
-// 优先级：EX > MEM（最近的指令转发优先）
-when(ex2mem_reg.regWrite && ex2mem_reg.rd === id2ex_reg.rs1 && ex2mem_reg.rd =/= 0.U) {
-    forwardA := 1.U   // 从 EX/MEM 转发
-} .elsewhen(mem2wb_reg.regWrite && mem2wb_reg.rd === id2ex_reg.rs1 && mem2wb_reg.rd =/= 0.U) {
-    forwardA := 2.U   // 从 MEM/WB 转发
-}
-// rs2 同理...
-
-// ALU 输入选择：转发数据 or 寄存器数据
-val aluA = Mux(forwardA === 1.U, ex2mem_reg.aluResult,
-           Mux(forwardA === 2.U, mem2wb_reg.aluResult,
-           id2ex_reg.rs1Data))
-val aluB = Mux(forwardB === 1.U, ex2mem_reg.aluResult,
-           Mux(forwardB === 2.U, mem2wb_reg.aluResult,
-           id2ex_reg.rs2Data))
+val wbCanForward = memWb.valid && memWb.ctrl.regWrite &&
+  memWb.rd =/= 0.U
 ```
 
-用到：`WireDefault`、`when`/`elsewhen`、`Mux`、`===`、`=/=`
-
-## 冒险检测与流水线控制（Stall & Flush）
+对 rs1 选择数据源：
 
 ```scala
-// Load-use 冒险：上一条是 load，目标是当前指令的源寄存器 —— 需暂停
-val loadStall = id2ex_reg.memRead &&
-    (id2ex_reg.rd === if2id_reg.rs1 || id2ex_reg.rd === if2id_reg.rs2) &&
-    (id2ex_reg.rd =/= 0.U)
+val hitEx1 = exCanForward && exMem.rd === idEx.rs1
+val hitWb1 = wbCanForward && memWb.rd === idEx.rs1
 
-// 分支预测失败 —— 需冲刷
-val branchFlush = branchTaken && (branchTarget =/= predictedPC)
-
-// 流水线控制
-when(loadStall) {
-    // IF——ID 保持，ID——EX 插入气泡（NOP）
-    id2ex_reg := 0.U.asTypeOf(new ID2EX)
-} .elsewhen(branchFlush) {
-    // 冲刷 IF——ID 和 ID——EX
-    if2id_reg := 0.U.asTypeOf(new IF2ID)
-    id2ex_reg := 0.U.asTypeOf(new ID2EX)
-} .otherwise {
-    // 正常推进
-    if2id_reg := if2id_wire
-    id2ex_reg := id2ex_wire
-}
+val src1 = MuxCase(idEx.rs1Data, Seq(
+  hitEx1 -> exMem.aluResult,
+  hitWb1 -> wbData
+))
 ```
 
-!!! tip "插入气泡 = 写入全零 Bundle"
-    `0.U.asTypeOf(new ID2EX)` 将 Bundle 的所有字段清零，等效于向流水线中插入一条 **NOP 指令**（regWrite=0, memRead=0, memWrite=0 —— 不产生任何副作用）。
+rs2 使用同样逻辑。store 写入内存的数据来自 rs2，也必须使用转发后的 `src2`。
 
-用到：`when`/`elsewhen`/`otherwise`、`asTypeOf`、`&&`、`||`、`=/=`
+## Load-use 冒险
 
-## 参数化——一处定义，全局使用
+当前 EX 级是 load，ID 级马上要使用其目的寄存器时，需要暂停一拍：
 
 ```scala
-object Config {
-    val XLEN      = 32
-    val REG_COUNT = 32
-    val PC_INIT   = "h80000000"
-    val IMEM_SIZE = 4096
-    val DMEM_SIZE = 4096
-}
+val idRs1 = ifId.inst(19, 15)
+val idRs2 = ifId.inst(24, 20)
 
-// 使用
-val a = UInt((Config.XLEN).W)
-val rf = RegInit(VecInit(Seq.fill(Config.REG_COUNT)(0.U((Config.XLEN).W))))
-val imem = SyncReadMem(Config.IMEM_SIZE, UInt((Config.XLEN).W))
+val hitRs1 = idCtrl.usesRs1 && idRs1 === idEx.rd
+val hitRs2 = idCtrl.usesRs2 && idRs2 === idEx.rd
 ```
 
-之后如果要改为 64 位 CPU，只需把 `XLEN = 32` 改为 `XLEN = 64`，其余代码全部自动适配。
-
----
-
-## 常见陷阱与排错
-
-### `===` vs `==`
-
 ```scala
-// 错误：== 比较 Scala 对象引用，不生成硬件，结果恒为 false
-when(a == b) { ... }
-
-// 正确
-when(a === b) { ... }
+val loadUse = idEx.valid && idEx.ctrl.memRead &&
+  idEx.rd =/= 0.U && ifId.valid && (hitRs1 || hitRs2)
 ```
 
-### 位宽不匹配
+这里使用了真实存在的 `ifId.inst` 字段来提取 rs1/rs2，并用 `usesRs1` / `usesRs2` 排除不读取该源操作数的指令。
 
-Chisel 在编译/仿真时会报错——这是好事，帮你提前发现 Verilog 中会隐式截断的 bug：
+## Stall 与 Flush 的优先级
+
+EX/MEM 和 MEM/WB 中都是更老的指令，应继续推进：
 
 ```scala
-val a = UInt(32.W)
-val b = UInt(16.W)
-val c = a + b                      // 编译报错：位宽不匹配
-val c = a + Cat(Fill(16, 0.U), b)  // 显式扩展
+exMem := exMemNext
+memWb := memWbNext
 ```
 
-### 把 Wire 放进 when 块内赋值
+PC、IF/ID、ID/EX 按“重定向优先，其次 load-use 暂停，最后正常推进”控制：
 
 ```scala
-val x = Wire(UInt(32.W))
-when(cond) {
-    x := value    // 编译报错：Wire 不能放在 when 内
-}
-
-// 修正：
-val x = RegInit(0.U(32.W))
-when(cond) {
-    x := value    // Reg 可以放在 when 内
+when(redirect) {
+  pc := redirectTarget
+  ifId.valid := false.B
+  idEx.valid := false.B
+}.elsewhen(loadUse) {
+  pc := pc
+  ifId := ifId
+  idEx.valid := false.B
+}.otherwise {
+  pc   := pc + 4.U
+  ifId := ifIdNext
+  idEx := idExNext
 }
 ```
 
-**判据**：`when` 块内 `:=` —— 目标必须是 `Reg`；`when` 块外 `:=` —— 目标是 `Wire` 或 `IO`。
+这段代码假定本节开头的“当拍返回指令”接口。若取指接口有请求/响应延迟，暂停和冲刷还要管理在途请求，不能直接照搬。
 
-### 忘记 x0 硬连线为 0
+## 参数化
 
-```scala
-// 错误：读 rf(0) 可能读到之前写入的非零值，违反 RISC-V 规范
-val rdata1 = rf(rs1)
-
-// 正确
-val rdata1 = Mux(rs1 === 0.U, 0.U, rf(rs1))
-```
-
-### 用软件思维写硬件
+配置值可以放在 Scala `case class` 中，并通过模块构造参数传入：
 
 ```scala
-// 错误：以为 for 循环是"串行累加"
-var sum = 0.U
-for (i <- 0 until 4) {
-    sum = sum + data(i)   // 实际上是组合逻辑展开！
+case class CpuConfig(
+  xlen: Int = 32,
+  resetVector: BigInt = 0x80000000L
+)
+
+class Core(cfg: CpuConfig) extends Module {
+  val pc = RegInit(cfg.resetVector.U(cfg.xlen.W))
 }
-
-// 正确：用 reduce 明确表达树形加法
-val sum = data.reduce(_ + _)
 ```
 
-每次写 `for` / `while` 时，问自己：**展开后是什么电路？**
+参数化只能帮你统一位宽和结构。把 `xlen` 从 32 改为 64，并不会自动补齐 RV64 指令、立即数规则、访存宽度和测试。
 
----
+## 常见排错点
 
-## 小结
+### Wire 在 `when` 中未覆盖所有路径
 
-| 你需要做的事 | 主要使用的 Chisel 语法 |
-|-------------|----------------------|
-| 声明信号 | `Wire`（组合）、`RegInit`（时序）、`IO`（端口） |
-| 端口和级间打包 | `Bundle`、`Input`、`Output` |
-| 纯组合逻辑（ALU、译码、转发 Mux） | `MuxLookup`、`MuxCase`、`Mux`、`===`、`=/=`、`Cat`、`Fill` |
-| 时序逻辑（PC、寄存器堆、流水线寄存器） | `RegInit`、`RegNext`、`when` + `:=` |
-| 信号阵列（寄存器堆、译码 ROM） | `VecInit`、`RegInit(VecInit(...))`、`Seq.fill` |
-| 模块封装 | `class Xxx extends Module`、`IO(new Bundle{...})` |
-| 参数化 | Scala `object` 常量 |
+```scala
+val result = WireDefault(0.U(32.W))
+when(valid) {
+  result := data
+}
+```
 
-从语法层面看，你只需要掌握上面这张表的内容，就能独立写出一颗五级流水线 CPU。Chisel 的学习曲线前陡后缓——一开始要习惯 `===`、`.U`、`.W`、`:=` 这些与 Verilog 不同的写法，但一旦上手，你会发现自己的开发效率**成倍提升**，代码量**大幅减少**，而主要精力得以聚焦在旁路、冒险等真正的架构设计上。
+Wire 可以在 `when` 中连接，关键是先给默认值或覆盖全部路径。
 
-接下来，让我们从一条一条指令开始，搭建属于你的流水线 CPU。
+### 把位宽差异误当成编译错误
+
+```scala
+val a = Wire(UInt(32.W))
+val b = Wire(UInt(16.W))
+val sum = a + b
+```
+
+这类表达式通常可以生成硬件。应检查 `sum.getWidth` 对应的规则以及接收端位宽，确认扩展和截断是否符合设计。
+
+### 只比较寄存器编号，不看指令是否使用该源
+
+冒险检测应同时检查 `usesRs1` / `usesRs2`。否则立即数字段碰巧与前一条指令的 rd 相同，也可能造成无意义暂停。
+
+### 把代码短等同于硬件小
+
+`Vec` 的动态索引、动态移位、乘法和很长的 `MuxCase` 都可能生成较大的组合逻辑。完成仿真后还要查看生成 RTL、综合资源和关键路径。

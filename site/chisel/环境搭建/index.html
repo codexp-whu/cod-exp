@@ -1,0 +1,1681 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="武汉大学计算机学院《计算机组成与体系结构A》课程讲义与实验指导">
+      
+      
+        <meta name="author" content="课程教学组">
+      
+      
+        <link rel="canonical" href="https://mydomain.org/mysite/chisel/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+      
+      
+        <link rel="prev" href="../%E7%AE%80%E4%BB%8B/">
+      
+      
+        <link rel="next" href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>环境搭建 - 武汉大学2026年秋计算机组成与体系结构A</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chisel" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="武汉大学2026年秋计算机组成与体系结构A" class="md-header__button md-logo" aria-label="武汉大学2026年秋计算机组成与体系结构A" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            武汉大学2026年秋计算机组成与体系结构A
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              环境搭建
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Chisel入门
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="武汉大学2026年秋计算机组成与体系结构A" class="md-nav__button md-logo" aria-label="武汉大学2026年秋计算机组成与体系结构A" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    武汉大学2026年秋计算机组成与体系结构A
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chisel入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从Verilog到Chisel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境搭建
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      本页目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chisel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chisel 是怎么变成电路的
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装工具链
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安装工具链">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各平台安装方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        验证安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建立你的第一个项目
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="建立你的第一个项目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buildsbt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        build.sbt——项目的"配料表"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hello-chisel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hello, Chisel：一个加法器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hello, Chisel：一个加法器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运行它，看见 Verilog
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verilog_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        把 Verilog 写到文件里
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sbt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用 sbt 的正确姿势
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mill-sbt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用 Mill 构建（sbt 之外的另一选择）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="用 Mill 构建（sbt 之外的另一选择）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装 Mill
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mill_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mill 的项目结构与配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sbt-mill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sbt ↔ Mill 命令对照
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见报错自查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录：国内镜像加速（可选）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法上
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法中
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真与测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    进阶特性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CPU开发场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流水线CPU串讲
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      本页目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chisel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chisel 是怎么变成电路的
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装工具链
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安装工具链">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各平台安装方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        验证安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建立你的第一个项目
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="建立你的第一个项目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buildsbt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        build.sbt——项目的"配料表"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hello-chisel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hello, Chisel：一个加法器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hello, Chisel：一个加法器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运行它，看见 Verilog
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verilog_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        把 Verilog 写到文件里
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sbt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用 sbt 的正确姿势
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mill-sbt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用 Mill 构建（sbt 之外的另一选择）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="用 Mill 构建（sbt 之外的另一选择）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装 Mill
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mill_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mill 的项目结构与配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sbt-mill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sbt ↔ Mill 命令对照
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见报错自查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录：国内镜像加速（可选）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>环境搭建</h1>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>在开始学习语法之前，我们先花一节的时间把开发环境搭好，并亲手跑通第一个 Chisel 模块——从写代码，到生成 Verilog，再到看见结果。<strong>这一节的目标不是让你看懂每一行代码</strong>（语法后面几节会细讲），而是让你的电脑先能"跑起来"，这样后面学语法时你可以随时改一改、跑一跑，学得更快。</p>
+<p>如果你此刻只想先了解语法、环境稍后再装，可以先跳到下一节，但强烈建议在正式写 CPU 之前回来把环境跑通。</p>
+</div>
+<hr />
+<h2 id="chisel">Chisel 是怎么变成电路的<a class="headerlink" href="#chisel" title="Permanent link">&para;</a></h2>
+<p>先建立一张"全景图"，理解你敲下的 Chisel 代码到底经历了什么，后面的每一步操作你才知道自己在干什么。</p>
+<p>回忆你写 Verilog 的流程：写 <code>.v</code> 文件 → 丢给 Vivado/Verilator → 综合仿真。Chisel 只是在最前面多了两步转换：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>你写的 Scala/Chisel 代码
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        │  ① sbt 编译并运行你的 Scala 程序
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        ▼
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   Chisel 电路描述（内存中的电路对象）
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        │  ② Chisel 生成 FIRRTL（一种电路中间表示）
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        ▼
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>      FIRRTL
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        │  ③ firtool 把 FIRRTL 编译成 Verilog
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        ▼
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   Verilog / SystemVerilog（.sv 文件）
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        │  ④ 和你以前一样：丢给 Vivado / Verilator
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        ▼
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>   综合、仿真、上板
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">关键认知：Chisel 程序是一个"电路生成器"</p>
+<p>这是 Verilog 转 Chisel 的同学<strong>最需要扭转的观念</strong>。</p>
+<p>你写的 Chisel 代码<strong>本身是一段会被运行的 Scala 程序</strong>。运行它，程序会"搭建"出一个电路对象，再把这个电路对象翻译成 Verilog。所以你能用 <code>if</code>、<code>for</code>、函数、类这些编程手段去<strong>生成</strong>电路——这正是 Chisel 强大的根源。</p>
+<p>换句话说：<strong>Verilog 是"描述"电路，Chisel 是用程序"生成"电路。</strong> 这句话现在可能有点抽象，等你写到参数化流水线时会有切身体会。</p>
+<p>好消息是：上面 ①②③ 这几步转换，你只需要一条命令就能全部触发，平时根本不用手动操心 FIRRTL 长什么样。</p>
+</div>
+<hr />
+<h2 id="_1">安装工具链<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Chisel 是 Scala 的库，Scala 又跑在 Java 虚拟机（JVM）上，所以你需要装三样东西。<strong>三者都装好后，你就再也不用单独和它们打交道了</strong>，日常只用 <code>sbt</code> 一个命令。</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>作用</th>
+<th>推荐版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JDK</strong>（Java 开发工具包）</td>
+<td>提供 JVM，Scala 运行的地基</td>
+<td>JDK 17 或 JDK 21（LTS 版本）</td>
+</tr>
+<tr>
+<td><strong>构建工具</strong>（<strong>sbt</strong> 或 <strong>Mill</strong>，二选一）</td>
+<td>Scala 的"构建工具"，相当于 C 的 make、Python 的 pip</td>
+<td>最新版即可</td>
+</tr>
+<tr>
+<td><strong>firtool</strong></td>
+<td>把 FIRRTL 编译成 Verilog（通常由构建工具自动下载，一般无需手动装）</td>
+<td>跟随 Chisel 版本</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">构建工具：sbt 还是 Mill？</p>
+<p>Scala 世界有两个主流构建工具，<strong>功能上完全可以互相替代</strong>，你的 Chisel 项目用哪个都能写 CPU：</p>
+<ul>
+<li><strong>sbt</strong>：Scala 官方老牌工具，资料最多，本讲义正文默认用它。</li>
+<li><strong>Mill</strong>：更年轻、启动更快、配置更简洁的工具。<strong>国内知名的开源 RISC-V 处理器（香山 XiangShan、果壳 NutShell）都用 Mill</strong>，如果你打算参考它们的代码，会经常见到 Mill。</li>
+</ul>
+<p>下面我们先以 sbt 走一遍完整流程；本节末尾有专门的 <strong>"用 Mill 构建"</strong> 一节，把同样的事用 Mill 再讲一遍，并给出两者的命令对照表。<strong>跟着课程模板走</strong>——模板用哪个你就学哪个，两者思路是相通的。</p>
+</div>
+<h3 id="_2">各平台安装方式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>最省心的方式是用 <strong>Coursier</strong>（Scala 官方一键安装器），它会帮你把 JDK、sbt、scala 全部装好并配好环境变量：</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">macOS</label><label for="__tabbed_1_3">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>在 <a href="https://get-coursier.io/docs/cli-installation">Coursier 官网</a> 下载 <code>cs-x86_64-pc-win32.exe</code>，重命名为 <code>cs.exe</code>，然后在 PowerShell 中运行：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">.\</span><span class="n">cs</span><span class="p">.</span><span class="n">exe</span> <span class="n">setup</span>
+</code></pre></div>
+<p>它会自动安装 JDK、sbt 等，并把它们加进 PATH。装完<strong>重启一下终端</strong>让环境变量生效。</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew<span class="w"> </span>install<span class="w"> </span>coursier/formulas/coursier<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cs<span class="w"> </span>setup
+</code></pre></div>
+<p>（若没有 Homebrew，先装 Homebrew，或从 Coursier 官网下载对应的安装脚本。）</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>curl<span class="w"> </span>-fL<span class="w"> </span><span class="s2">&quot;https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>-d<span class="w"> </span>&gt;<span class="w"> </span>cs
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>chmod<span class="w"> </span>+x<span class="w"> </span>cs<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./cs<span class="w"> </span>setup
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="_3">验证安装<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>打开一个<strong>新的</strong>终端，依次运行：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>java<span class="w"> </span>-version<span class="w">     </span><span class="c1"># 应显示 17 或 21</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sbt<span class="w"> </span>--version<span class="w">     </span><span class="c1"># 应显示 sbt 的版本号（第一次运行会下载一些依赖，稍等片刻）</span>
+</code></pre></div>
+<p>只要这两条命令都能正常输出版本号，你的地基就打好了。</p>
+<div class="admonition warning">
+<p class="admonition-title">第一次运行 sbt 会很慢</p>
+<p>sbt 第一次启动会从网络下载 Scala 编译器和一大堆依赖包（几百 MB），可能要等几分钟甚至更久，这是正常现象。<strong>请务必保证网络通畅</strong>（国内同学建议配置国内镜像源，见文末附录）。下载过一次后就会缓存到本地，以后就快了。</p>
+</div>
+<hr />
+<h2 id="_4">建立你的第一个项目<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>一个最小的 Chisel 项目长这样：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>my-cpu/
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>├── build.sbt                       # 项目配置：依赖哪些库、用哪个 Scala 版本
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├── project/
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│   └── build.properties            # 指定 sbt 版本
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>└── src/
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    ├── main/
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    │   └── scala/                   # 你的 Chisel 源码放这里
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    │       └── Adder.scala
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    └── test/
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        └── scala/                   # 你的测试代码放这里
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>            └── AdderSpec.scala
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">别自己一个个建文件夹</p>
+<p>绝大多数课程会直接提供一个配好的项目模板（骨架仓库），你只需要 <code>git clone</code> 下来，把代码写进 <code>src/main/scala/</code> 即可。<strong>如果助教发了模板，请优先使用模板</strong>，下面手动建项目的内容仅供你理解每个文件的作用。</p>
+</div>
+<h3 id="buildsbt"><code>build.sbt</code>——项目的"配料表"<a class="headerlink" href="#buildsbt" title="Permanent link">&para;</a></h3>
+<p><code>build.sbt</code> 告诉 sbt：这个项目用哪个版本的 Scala、依赖哪些库。对我们来说，最重要的就是引入 Chisel。把下面内容存为项目根目录下的 <code>build.sbt</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// build.sbt</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nc">ThisBuild</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">scalaVersion</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;2.13.16&quot;</span><span class="w">       </span><span class="c1">// Chisel 6 需要 Scala 2.13</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nc">ThisBuild</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">version</span><span class="w">      </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;0.1.0&quot;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">lazy</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">project</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">))</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="p">.</span><span class="n">settings</span><span class="p">(</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;my-cpu&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">libraryDependencies</span><span class="w"> </span><span class="o">++=</span><span class="w"> </span><span class="nc">Seq</span><span class="p">(</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">      </span><span class="c1">// Chisel 本体</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">      </span><span class="s">&quot;org.chipsalliance&quot;</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="s">&quot;chisel&quot;</span><span class="w">    </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;6.7.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">      </span><span class="c1">// 测试框架（下一节讲仿真时用，放在 test 作用域）</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">      </span><span class="s">&quot;edu.berkeley.cs&quot;</span><span class="w">   </span><span class="o">%%</span><span class="w"> </span><span class="s">&quot;chiseltest&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;6.0.0&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nc">Test</span><span class="p">,</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="p">),</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="c1">// Chisel 依赖一个编译器插件才能正常工作，这一行必不可少</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="n">addCompilerPlugin</span><span class="p">(</span><span class="s">&quot;org.chipsalliance&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;chisel-plugin&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;6.7.0&quot;</span><span class="w"> </span><span class="n">cross</span><span class="w"> </span><span class="nc">CrossVersion</span><span class="p">.</span><span class="n">full</span><span class="p">),</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="n">scalacOptions</span><span class="w"> </span><span class="o">++=</span><span class="w"> </span><span class="nc">Seq</span><span class="p">(</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">      </span><span class="s">&quot;-language:reflectiveCalls&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">      </span><span class="s">&quot;-Ymacro-annotations&quot;</span><span class="p">,</span><span class="w">     </span><span class="c1">// 支持 Bundle 里用到的一些高级特性</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="p">),</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">  </span><span class="p">)</span>
+</code></pre></div>
+<p><code>project/build.properties</code> 指定 sbt 自身的版本：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="na">sbt.version</span><span class="o">=</span><span class="s">1.10.7</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">这些版本号会随时间更新</p>
+<p>Chisel、sbt、Scala 的版本号会不断迭代。上面给的是本讲义编写时的稳定组合。如果课程模板里的版本号和这里不同，<strong>以课程模板为准</strong>——版本号不必和讲义完全一致，只要能编译通过即可。</p>
+</div>
+<hr />
+<h2 id="hello-chisel">Hello, Chisel：一个加法器<a class="headerlink" href="#hello-chisel" title="Permanent link">&para;</a></h2>
+<p>现在写下你的第一个 Chisel 模块。把下面代码存为 <code>src/main/scala/Adder.scala</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// src/main/scala/Adder.scala</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">chisel3</span><span class="p">.</span><span class="n">_</span><span class="w">                 </span><span class="c1">// 引入 Chisel 核心库</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">circt</span><span class="p">.</span><span class="nn">stage</span><span class="p">.</span><span class="nc">ChiselStage</span><span class="w">   </span><span class="c1">// 引入生成 Verilog 的工具</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">// 一个 8 位加法器模块</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">Adder</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">Module</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">io</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">IO</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">Bundle</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="n">a</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Input</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="n">b</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Input</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Output</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="p">})</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">  </span><span class="n">io</span><span class="p">.</span><span class="n">sum</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">b</span><span class="w">     </span><span class="c1">// 把 a + b 的结果连到输出端口</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="p">}</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="c1">// 一个&quot;主程序&quot;，负责把 Adder 翻译成 Verilog 并打印出来</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="k">object</span><span class="w"> </span><span class="nc">AdderMain</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">App</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">  </span><span class="n">println</span><span class="p">(</span><span class="nc">ChiselStage</span><span class="p">.</span><span class="n">emitSystemVerilog</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">Adder</span><span class="p">))</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="p">}</span>
+</code></pre></div>
+<p>先别纠结每一行——语法后面会细讲。你现在只需要感知到几件事：</p>
+<ul>
+<li><code>class Adder extends Module</code>：定义一个模块，等价于 Verilog 的 <code>module Adder ... endmodule</code>。</li>
+<li><code>io = IO(new Bundle {...})</code>：这个模块的输入输出端口。</li>
+<li><code>io.sum := io.a + io.b</code>：把加法结果连到输出。<code>:=</code> 是 Chisel 的连线符号（后面会专门讲它和 <code>=</code> 的区别）。</li>
+<li><code>object AdderMain extends App</code>：一个可运行的入口程序，<code>emitSystemVerilog</code> 就是触发前面全景图里 ①②③ 那三步转换的"总开关"。</li>
+</ul>
+<h3 id="verilog">运行它，看见 Verilog<a class="headerlink" href="#verilog" title="Permanent link">&para;</a></h3>
+<p>在项目根目录打开终端，运行：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sbt<span class="w"> </span><span class="s2">&quot;runMain AdderMain&quot;</span>
+</code></pre></div>
+<p>第一次会编译一会儿，随后你会在终端里看到生成的 SystemVerilog，大致长这样：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">module</span><span class="w"> </span><span class="n">Adder</span><span class="p">(</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="k">input</span><span class="w">        </span><span class="n">clock</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="k">input</span><span class="w">        </span><span class="n">reset</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="k">input</span><span class="w">  </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">io_a</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="k">input</span><span class="w">  </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">io_b</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">io_sum</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">);</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="k">assign</span><span class="w"> </span><span class="n">io_sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">io_a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">io_b</span><span class="p">;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">endmodule</span>
+</code></pre></div>
+<p><strong>恭喜——你已经完整跑通了"Chisel 代码 → Verilog"的全流程！</strong> 看，你写的 <code>io.sum := io.a + io.b</code> 变成了熟悉的 <code>assign io_sum = io_a + io_b;</code>。</p>
+<div class="admonition note">
+<p class="admonition-title">为什么凭空多出了 clock 和 reset？</p>
+<p>你在 Chisel 里没写时钟和复位，但生成的 Verilog 里却有 <code>clock</code> 和 <code>reset</code> 两个端口。这是因为<strong>凡是 <code>extends Module</code> 的模块，Chisel 都会自动帮你接上一个隐式的时钟和复位</strong>——你以后写寄存器（<code>Reg</code>）时，它们会自动挂到这个时钟上，你再也不用像 Verilog 那样在每个 <code>always @(posedge clk)</code> 里手写 <code>clk</code> 了。</p>
+<p>对于这个纯组合逻辑的加法器，clock/reset 用不上，但接口里仍然会保留它们。这是 Chisel 的正常行为，无需担心。</p>
+</div>
+<h3 id="verilog_1">把 Verilog 写到文件里<a class="headerlink" href="#verilog_1" title="Permanent link">&para;</a></h3>
+<p><code>emitSystemVerilog</code> 只是打印到屏幕。真正开发时，你会想把 Verilog 落到磁盘上，好丢给 Vivado。改用 <code>emitSystemVerilogFile</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">object</span><span class="w"> </span><span class="nc">AdderMain</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">App</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nc">ChiselStage</span><span class="p">.</span><span class="n">emitSystemVerilogFile</span><span class="p">(</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nc">Adder</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="n">firtoolOpts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Array</span><span class="p">(</span><span class="s">&quot;-disable-all-randomization&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-strip-debug-info&quot;</span><span class="p">),</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Array</span><span class="p">(</span><span class="s">&quot;--target-dir&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;generated&quot;</span><span class="p">),</span><span class="w">   </span><span class="c1">// 输出到 generated/ 目录</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="p">}</span>
+</code></pre></div>
+<p>再次 <code>sbt "runMain AdderMain"</code>，你会在 <code>generated/Adder.sv</code> 找到生成的文件。这个 <code>.sv</code> 文件就可以像你以前的 Verilog 一样，加入 Vivado 工程综合、上板。</p>
+<div class="admonition tip">
+<p class="admonition-title">工作流小结</p>
+<p>从今往后，你的日常开发循环就是这三步：</p>
+<ol>
+<li>在 <code>src/main/scala/</code> 里写/改 Chisel 代码</li>
+<li><code>sbt test</code> 跑仿真验证逻辑对不对（下一节详解）</li>
+<li>逻辑没问题后，<code>sbt "runMain XxxMain"</code> 生成 Verilog，交给 Vivado 综合上板</li>
+</ol>
+<p>绝大部分时间你都泡在第 1、2 步，只有最后要上板时才碰第 3 步。</p>
+</div>
+<hr />
+<h2 id="sbt">用 sbt 的正确姿势<a class="headerlink" href="#sbt" title="Permanent link">&para;</a></h2>
+<p><code>sbt</code> 每次启动都要加载 JVM，比较慢。更舒服的用法是<strong>进入 sbt 交互式命令行</strong>，之后所有命令都在里面敲，省去反复启动的开销：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sbt<span class="w">            </span><span class="c1"># 进入 sbt 交互式 shell（提示符变成 sbt:my-cpu&gt;）</span>
+</code></pre></div>
+<p>进去以后：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sbt:my-cpu&gt; compile              # 只编译，检查语法错误
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>sbt:my-cpu&gt; runMain AdderMain    # 运行主程序生成 Verilog
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>sbt:my-cpu&gt; test                 # 跑所有测试（下一节讲）
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>sbt:my-cpu&gt; ~test                # 加 ~：进入&quot;监视模式&quot;，你一存文件就自动重跑测试
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>sbt:my-cpu&gt; exit                 # 退出
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title"><code>~</code> 监视模式：写 CPU 的神器</p>
+<p><code>~test</code> 前面加个波浪号，sbt 会盯着你的源文件，<strong>每次你 Ctrl+S 保存，它就自动重新编译并跑测试</strong>。写 CPU 时开着它，改一行看一次结果，反馈飞快，强烈推荐。</p>
+</div>
+<hr />
+<h2 id="mill-sbt">用 Mill 构建（sbt 之外的另一选择）<a class="headerlink" href="#mill-sbt" title="Permanent link">&para;</a></h2>
+<p>前面整套流程用的是 sbt。如果你的课程模板用的是 <strong>Mill</strong>，或者你想参考香山、果壳这类国内开源处理器的写法，这一节把同样的事用 Mill 再走一遍。<strong>核心概念（生成 Verilog、跑测试）完全一样，只是配置文件和命令换了个样子。</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Mill 好在哪</p>
+<p>Mill 相比 sbt 的直观优势：<strong>启动快</strong>（不用每次都等 JVM 慢慢热身）、<strong>配置更像普通 Scala 代码</strong>（增量、可组合）、<strong>输出目录 <code>out/</code> 结构清晰</strong>。缺点是资料相对少一些、老项目仍以 sbt 为主。对写 CPU 而言，两者都够用，<strong>看模板、看喜好</strong>即可。</p>
+</div>
+<h3 id="mill">安装 Mill<a class="headerlink" href="#mill" title="Permanent link">&para;</a></h3>
+<p>最省事的还是用 Coursier（前面装 sbt 时已经装过 Coursier 了）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>cs<span class="w"> </span>install<span class="w"> </span>mill
+</code></pre></div>
+<p>装好后验证：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>mill<span class="w"> </span>--version
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">更常见的方式：项目自带 <code>mill</code> 引导脚本</p>
+<p>很多 Mill 项目会在仓库根目录放一个叫 <code>mill</code> 的<strong>引导脚本</strong>（Windows 上还有 <code>mill.bat</code>），并用一个 <code>.mill-version</code> 文件锁定 Mill 版本。这样你<strong>连 Mill 都不用单独装</strong>——直接在项目里运行 <code>./mill ...</code>（Windows 用 <code>.\mill.bat ...</code>），脚本会自动下载对应版本的 Mill。如果课程模板里有这个 <code>mill</code> 脚本，优先用它，版本最省心。</p>
+</div>
+<h3 id="mill_1">Mill 的项目结构与配置<a class="headerlink" href="#mill_1" title="Permanent link">&para;</a></h3>
+<p>Mill 项目和 sbt 项目长得差不多，只是<strong>配置文件从 <code>build.sbt</code> 换成了 <code>build.mill</code></strong>（老一点的项目里叫 <code>build.sc</code>，语法基本一致）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>my-cpu/
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>├── build.mill           # Mill 的配置文件（相当于 sbt 的 build.sbt）
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>├── .mill-version        # 锁定 Mill 版本（可选）
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>└── src/                 # 源码；测试放在下面的 test/ 里
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    ├── Adder.scala
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    └── test/
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        └── AdderSpec.scala
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Mill 的源码目录和 sbt 不一样</p>
+<p>这是从 sbt 切到 Mill 时最容易踩的坑：Mill 默认的源码目录是模块目录下的 <code>src/</code>，测试在 <code>test/src/</code>，<strong>不像 sbt 那样是 <code>src/main/scala</code> 和 <code>src/test/scala</code></strong>。具体以你的 <code>build.mill</code> 里各模块的定义为准，不确定时看模板的目录结构照着放。</p>
+</div>
+<p>一个最小的 <code>build.mill</code>，实现和前面 sbt 版<strong>完全相同</strong>的功能：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// build.mill</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">package</span><span class="w"> </span><span class="n">build</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">mill</span><span class="p">.</span><span class="n">_</span><span class="err">,</span><span class="w"> </span><span class="nn">scalalib</span><span class="p">.</span><span class="n">_</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="k">object</span><span class="w"> </span><span class="nc">mycpu</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">ScalaModule</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">scalaVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;2.13.16&quot;</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">  </span><span class="c1">// 相当于 sbt 的 libraryDependencies</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">ivyDeps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Agg</span><span class="p">(</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">    </span><span class="n">ivy</span><span class="s">&quot;org.chipsalliance::chisel:6.7.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">  </span><span class="c1">// Chisel 的编译器插件（相当于 sbt 的 addCompilerPlugin）</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">scalacPluginIvyDeps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Agg</span><span class="p">(</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">    </span><span class="n">ivy</span><span class="s">&quot;org.chipsalliance:::chisel-plugin:6.7.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">scalacOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Seq</span><span class="p">(</span><span class="s">&quot;-Ymacro-annotations&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">  </span><span class="c1">// 测试子模块（相当于 sbt 的 test 作用域）</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">  </span><span class="k">object</span><span class="w"> </span><span class="nc">test</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">ScalaTests</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nc">TestModule</span><span class="p">.</span><span class="nc">ScalaTest</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">ivyDeps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Agg</span><span class="p">(</span>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">      </span><span class="n">ivy</span><span class="s">&quot;edu.berkeley.cs::chiseltest:6.0.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><code>::</code> 和 <code>:::</code> 的区别——别写错</p>
+<p>Mill 的依赖写法里，冒号数量有讲究，对应 sbt 里的 <code>%%</code> 和 <code>cross CrossVersion.full</code>：</p>
+<ul>
+<li><code>ivy"组织::库名:版本"</code>（<strong>两个</strong>冒号）：库要按 Scala 大版本交叉编译，等价于 sbt 的 <code>%%</code>。Chisel 本体、chiseltest 用它。</li>
+<li><code>ivy"组织:::库名:版本"</code>（<strong>三个</strong>冒号）：按 Scala <strong>完整</strong>版本交叉，等价于 sbt 的 <code>cross CrossVersion.full</code>。<strong>编译器插件 <code>chisel-plugin</code> 必须用三个冒号</strong>，写成两个会报找不到依赖。</li>
+</ul>
+</div>
+<h3 id="sbt-mill">sbt ↔ Mill 命令对照<a class="headerlink" href="#sbt-mill" title="Permanent link">&para;</a></h3>
+<p>你在前面 sbt 部分学的操作，换成 Mill 是这样：</p>
+<table>
+<thead>
+<tr>
+<th>你想做的事</th>
+<th>sbt</th>
+<th>Mill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只编译、查语法错误</td>
+<td><code>compile</code></td>
+<td><code>mill mycpu.compile</code></td>
+</tr>
+<tr>
+<td>运行主程序生成 Verilog</td>
+<td><code>runMain AdderMain</code></td>
+<td><code>mill mycpu.runMain AdderMain</code></td>
+</tr>
+<tr>
+<td>跑所有测试</td>
+<td><code>test</code></td>
+<td><code>mill mycpu.test</code></td>
+</tr>
+<tr>
+<td>保存即自动重跑（监视模式）</td>
+<td><code>~test</code></td>
+<td><code>mill -w mycpu.test</code></td>
+</tr>
+<tr>
+<td>进交互式、少等 JVM</td>
+<td>进 <code>sbt</code> shell</td>
+<td>加 <code>--bsp</code> 或用 <code>./mill</code> 常驻，多数时候单命令已经够快</td>
+</tr>
+</tbody>
+</table>
+<p><code>mycpu</code> 就是 <code>build.mill</code> 里 <code>object mycpu</code> 的名字——Mill 的命令格式是 <code>mill 模块名.任务名</code>。</p>
+<div class="admonition tip">
+<p class="admonition-title">本讲义后续命令怎么翻译</p>
+<p>后面几节（尤其"仿真与测试"）里出现的 <code>sbt test</code>、<code>sbt "runMain Xxx"</code>，如果你用 Mill，一律按上表换成 <code>mill 模块名.test</code>、<code>mill 模块名.runMain Xxx</code> 即可，<strong>其余 Chisel/测试代码一个字都不用改</strong>——构建工具只管"怎么编译运行"，不影响你写的电路本身。</p>
+</div>
+<hr />
+<h2 id="_5">常见报错自查<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>初次搭环境难免踩坑，这里列几个最常见的：</p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>可能原因</th>
+<th>解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sbt: command not found</code> / <code>mill: command not found</code></td>
+<td>构建工具没装好或没进 PATH</td>
+<td>重装 Coursier，<strong>重启终端</strong>；Mill 项目试试仓库自带的 <code>./mill</code> 脚本</td>
+</tr>
+<tr>
+<td>卡在 <code>Resolving ...</code> / <code>downloading</code> 很久</td>
+<td>在下载依赖，网络慢</td>
+<td>耐心等；国内配镜像源（见附录）</td>
+</tr>
+<tr>
+<td><code>not found: value chisel3</code> / <code>object chisel3 is not a member</code></td>
+<td>配置文件里没正确引入 Chisel，或没加编译器插件</td>
+<td>sbt 查 <code>libraryDependencies</code> + <code>addCompilerPlugin</code>；Mill 查 <code>ivyDeps</code> + <code>scalacPluginIvyDeps</code>（插件记得用<strong>三个</strong>冒号）</td>
+</tr>
+<tr>
+<td><code>java.lang.UnsupportedClassVersionError</code></td>
+<td>JDK 版本太低</td>
+<td>装 JDK 17 或 21</td>
+</tr>
+<tr>
+<td>生成 Verilog 时报 <code>firtool not found</code></td>
+<td>firtool 没下载成功</td>
+<td>检查网络；或按 Chisel 文档手动安装 firtool</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">编译错误 ≠ 环境问题</p>
+<p>环境跑通之后，你写 Chisel 时仍会遇到大量<strong>编译错误</strong>——比如位宽不匹配、类型不对、<code>===</code> 写成 <code>==</code>。这些<strong>不是环境坏了，而是 Chisel 编译器在帮你抓 bug</strong>。这恰恰是 Chisel 相对 Verilog 的一大优势：很多在 Verilog 里要仿真才暴露的错误，Chisel 在编译期就拦住了。看到红色报错别慌，仔细读它指向的行号和信息。</p>
+</div>
+<hr />
+<h2 id="_6">附录：国内镜像加速（可选）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>国内同学如果下载依赖极慢，可以给 sbt 配置国内镜像。新建（或编辑）<code>~/.sbt/repositories</code> 文件（Windows 在 <code>C:\Users\你的用户名\.sbt\repositories</code>），填入：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>[repositories]
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  local
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  huaweicloud-maven: https://repo.huaweicloud.com/repository/maven/
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>  maven-central: https://repo1.maven.org/maven2/
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>  sbt-plugin-repo: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+</code></pre></div>
+<p>配好后依赖下载会快很多。</p>
+<div class="admonition note">
+<p class="admonition-title">用 Mill 的同学</p>
+<p>上面那个 <code>~/.sbt/repositories</code> 是 sbt 专用的。Mill 底层走的是 <strong>Coursier</strong>，镜像要配在 Coursier 这边——新建 <code>~/.config/coursier/mirror.properties</code>（Windows 在 <code>C:\Users\你的用户名\AppData\Roaming\Coursier\config\mirror.properties</code>）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="na">central.from</span><span class="o">=</span><span class="s">https://repo1.maven.org/maven2</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="na">central.to</span><span class="o">=</span><span class="s">https://repo.huaweicloud.com/repository/maven</span>
+</code></pre></div>
+<p>这样 Mill/Coursier 拉依赖也会走国内镜像。</p>
+</div>
+<hr />
+<p>环境搭好、第一个模块也跑通了，接下来我们正式进入 Chisel 的语法。学习过程中，随时可以回到你的项目里改一改、<code>sbt "runMain XxxMain"</code>（或 <code>mill mycpu.runMain XxxMain</code>）看看生成的 Verilog——<strong>动手实验永远是学硬件描述语言最快的方式</strong>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E7%AE%80%E4%BB%8B/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 从Verilog到Chisel">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                从Verilog到Chisel
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/" class="md-footer__link md-footer__link--next" aria-label="下一页: 基本语法上">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                基本语法上
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 武汉大学计算机学院
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/your-course-repo" target="_blank" rel="noopener" title="课程源码仓库" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.footer", "content.code.annotate", "content.code.copy", "content.code.highlight", "content.code.tabbed", "content.tabs.link", "navigation.indexes", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1483 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="武汉大学计算机学院《计算机组成与体系结构A》课程讲义与实验指导">
+      
+      
+        <meta name="author" content="课程教学组">
+      
+      
+        <link rel="canonical" href="https://mydomain.org/mysite/chisel/%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/">
+      
+      
+        <link rel="prev" href="../CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>流水线CPU串讲 - 武汉大学2026年秋计算机组成与体系结构A</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="武汉大学2026年秋计算机组成与体系结构A" class="md-header__button md-logo" aria-label="武汉大学2026年秋计算机组成与体系结构A" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            武汉大学2026年秋计算机组成与体系结构A
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              流水线CPU串讲
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Chisel入门
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="武汉大学2026年秋计算机组成与体系结构A" class="md-nav__button md-logo" aria-label="武汉大学2026年秋计算机组成与体系结构A" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    武汉大学2026年秋计算机组成与体系结构A
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chisel入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从Verilog到Chisel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法上
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法中
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真与测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    进阶特性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CPU开发场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流水线CPU串讲
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流水线CPU串讲
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      本页目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先看全景：五级流水线长什么样
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        顶层模块的整体骨架
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IF 级：取指
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ID 级：译码 + 读寄存器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ex-alu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EX 级：转发 + ALU 执行
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EX 级：转发 + ALU 执行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：转发单元
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：ALU 运算与分支
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MEM 级：访存
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WB 级：写回
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stall-flush" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        冒险控制：Stall 与 Flush
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        把控制信号也归拢进 Bundle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎么让它跑起来
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        结语
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      本页目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先看全景：五级流水线长什么样
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        顶层模块的整体骨架
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IF 级：取指
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ID 级：译码 + 读寄存器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ex-alu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EX 级：转发 + ALU 执行
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EX 级：转发 + ALU 执行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：转发单元
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：ALU 运算与分支
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MEM 级：访存
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WB 级：写回
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stall-flush" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        冒险控制：Stall 与 Flush
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        把控制信号也归拢进 Bundle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎么让它跑起来
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        结语
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>流水线CPU串讲</h1>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>到这里，语法你已经学齐了，各个部件（PC、译码器、ALU、寄存器堆、流水线寄存器、转发、冒险控制）在"CPU 开发场景"一节里也都见过。但那些是<strong>零件</strong>，这一节我们要做的是<strong>把它们装成一台完整的机器</strong>。</p>
+<p>这一节不再引入新语法，而是带你从头到尾<strong>走一遍五级流水线 CPU 的顶层数据通路</strong>，看清数据是怎么在五级之间流动、控制信号是怎么串起来的。读完你应该建立起"全局观"——知道每个零件装在哪、和谁相连。建议对照着"CPU 开发场景"一节一起看。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">先说清楚：这是一份"骨架"，不是可以直接交的完整代码</p>
+<p>下面的代码为了讲清结构，简化/省略了不少细节（异常处理、完整指令集、部分边界情况）。它的作用是<strong>给你一张清晰的装配图</strong>，帮你理解各级如何咬合。真正实现时，你需要把每个模块的内部逻辑补全、把指令集补齐、把每个场景测充分。别指望复制粘贴就能跑通——<strong>动手把它补全、调通的过程，才是这门课真正要练的</strong>。</p>
+</div>
+<hr />
+<h2 id="_1">先看全景：五级流水线长什么样<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>经典的 RISC-V 五级流水线把一条指令的执行拆成五个阶段，每个阶段占一个时钟周期，相邻阶段之间用<strong>流水线寄存器</strong>隔开：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>   IF          ID          EX          MEM         WB
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> 取指   →→→   译码   →→→   执行   →→→   访存   →→→   写回
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   │           │           │           │           │
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> [PC]        [译码器]     [ALU]       [DMem]      [写回选择]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> [IMem]      [寄存器堆读]  [转发Mux]              [寄存器堆写]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   │           │           │           │           │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   └─IF/ID─────┴─ID/EX─────┴─EX/MEM────┴─MEM/WB─────┘
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>     寄存器      寄存器       寄存器       寄存器
+</code></pre></div>
+<ul>
+<li><strong>IF（取指）</strong>：用 PC 从指令存储器取出一条指令。</li>
+<li><strong>ID（译码）</strong>：解析指令，读寄存器堆，生成控制信号和立即数。</li>
+<li><strong>EX（执行）</strong>：ALU 做运算（算术、比较、算地址、判断分支）。</li>
+<li><strong>MEM（访存）</strong>：load/store 访问数据存储器。</li>
+<li><strong>WB（写回）</strong>：把结果写回寄存器堆。</li>
+</ul>
+<p>数据像流水线上的产品一样，每个周期往前挪一级。理想情况下，五级同时各处理一条指令，吞吐率是单周期的接近 5 倍——<strong>这正是流水线的意义</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">两大麻烦：相关与冒险</p>
+<p>流水线不是免费的午餐。因为多条指令同时在跑，会出现两类问题，它们是这一节的重点，也是流水线 CPU 真正难的地方：</p>
+<ul>
+<li><strong>数据相关</strong>：后一条指令要用前一条还没写回的结果。解决办法：<strong>转发（Forwarding）</strong>，把结果提前从中间级"抄近道"送过去。</li>
+<li><strong>冒险（Hazard）</strong>：转发也救不了的情况（load 指令的结果本周期还没从内存拿到）用<strong>暂停（Stall）</strong>；分支跳转导致already取错的指令用<strong>冲刷（Flush）</strong>。</li>
+</ul>
+<p>把这两件事处理干净，你的流水线才能既快又对。</p>
+</div>
+<hr />
+<h2 id="_2">顶层模块的整体骨架<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>我们把整颗 CPU 写成一个 <code>Core</code> 模块，里面例化各个子模块（译码器、ALU、寄存器堆等），并声明四组流水线寄存器把五级串起来。先看骨架，再逐级填内容：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">chisel3</span><span class="p">.</span><span class="n">_</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">chisel3</span><span class="p">.</span><span class="nn">util</span><span class="p">.</span><span class="n">_</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Core</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">Module</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">io</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">IO</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">Bundle</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="c1">// 和外部指令/数据存储器的接口（这里为简化，直接内置存储器）</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="n">debug_pc</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Output</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span><span class="w">   </span><span class="c1">// 方便测试观察</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p">})</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="c1">// ========== 子模块例化 ==========</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">regfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Module</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">RegFile</span><span class="p">)</span><span class="w">     </span><span class="c1">// 寄存器堆</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">decoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Module</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">Decoder</span><span class="p">)</span><span class="w">     </span><span class="c1">// 译码器</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">alu</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nc">Module</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">Alu</span><span class="p">)</span><span class="w">         </span><span class="c1">// ALU</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">imem</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nc">SyncReadMem</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="nc">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span><span class="w">   </span><span class="c1">// 指令存储器</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">dmem</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nc">SyncReadMem</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="nc">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span><span class="w">   </span><span class="c1">// 数据存储器</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="c1">// ========== 四组流水线寄存器 ==========</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="c1">// 每组都用 &quot;wire 存本级算出的值，reg 打一拍传给下一级&quot; 的模式</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">if2id_wire</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Wire</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">IF2ID</span><span class="p">);</span><span class="w">   </span><span class="kd">val</span><span class="w"> </span><span class="n">if2id_reg</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">.</span><span class="n">asTypeOf</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">IF2ID</span><span class="p">))</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">id2ex_wire</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Wire</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">ID2EX</span><span class="p">);</span><span class="w">   </span><span class="kd">val</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">.</span><span class="n">asTypeOf</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">ID2EX</span><span class="p">))</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">ex2mem_wire</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Wire</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">EX2MEM</span><span class="p">);</span><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">.</span><span class="n">asTypeOf</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">EX2MEM</span><span class="p">))</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">mem2wb_wire</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Wire</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">MEM2WB</span><span class="p">);</span><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">mem2wb_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">.</span><span class="n">asTypeOf</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">MEM2WB</span><span class="p">))</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="c1">// ========== 五级逻辑（下面逐级展开） ==========</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="c1">// IF  级：...</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">  </span><span class="c1">// ID  级：...</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="c1">// EX  级：...</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="c1">// MEM 级：...</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="c1">// WB  级：...</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span><span class="c1">// ========== 冒险控制（stall / flush） ==========</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="c1">// ...</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">记住这个"一 wire 一 reg"的套路</p>
+<p>每一级流水线寄存器都是一对：<code>xxx_wire</code> 装<strong>本级组合逻辑算出来的新值</strong>，<code>xxx_reg</code> 是<strong>打一拍之后、供下一级使用的值</strong>。默认情况下 <code>xxx_reg := xxx_wire</code> 让数据自然往前流；需要 stall/flush 时，我们再改写这几条赋值（本节最后详解）。</p>
+<p>这就是"CPU 开发场景"里 <code>RegInit(0.U.asTypeOf(new ID2EX))</code> 那行的威力——十几个信号的流水线寄存器，一行声明，一行推进。</p>
+</div>
+<hr />
+<h2 id="if">IF 级：取指<a class="headerlink" href="#if" title="Permanent link">&para;</a></h2>
+<p>IF 级只做一件事：拿 PC 去 IMem 取指令，同时算好下一个 PC。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// ---------- IF 级 ----------</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RegInit</span><span class="p">(</span><span class="s">&quot;h00000000&quot;</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span><span class="w">    </span><span class="c1">// 程序计数器</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// 取指：同步读，指令下一拍才到（正好被 IF/ID 寄存器这一拍吸收）</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kd">val</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imem</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">pc</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">// 默认下一条 PC = PC + 4（顺序执行）；跳转时会被 EX 级覆盖（见后）</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="kd">val</span><span class="w"> </span><span class="n">pcPlus4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="nc">U</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="kd">val</span><span class="w"> </span><span class="n">nextPC</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Wire</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">nextPC</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">pcPlus4</span><span class="w">                          </span><span class="c1">// 默认顺序，后面分支逻辑会改写它</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">pc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">nextPC</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1">// 把 pc 和 inst 交给 IF/ID 寄存器</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">if2id_wire</span><span class="p">.</span><span class="n">pc</span><span class="w">   </span><span class="o">:=</span><span class="w"> </span><span class="n">pc</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">if2id_wire</span><span class="p">.</span><span class="n">inst</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">inst</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">io</span><span class="p">.</span><span class="n">debug_pc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">pc</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">SyncReadMem 的"晚一拍"正好合流水线的拍</p>
+<p><code>imem.read</code> 是同步读，PC 给出去、指令下一个周期才回来。在流水线里这不是问题——反而<strong>天然契合</strong>：这一拍取指，下一拍指令恰好落进 ID 级。这也是为什么大存储器用 <code>SyncReadMem</code> 而非组合读的 <code>Mem</code>。</p>
+</div>
+<hr />
+<h2 id="id">ID 级：译码 + 读寄存器<a class="headerlink" href="#id" title="Permanent link">&para;</a></h2>
+<p>ID 级从 IF/ID 寄存器拿到指令，做三件事：拆出寄存器编号、读寄存器堆、生成控制信号和立即数。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// ---------- ID 级 ----------</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">id_inst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">if2id_reg</span><span class="p">.</span><span class="n">inst</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">val</span><span class="w"> </span><span class="n">id_rs1</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">id_inst</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span><span class="w">     </span><span class="c1">// 从指令里拆出源/目标寄存器编号</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kd">val</span><span class="w"> </span><span class="n">id_rs2</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">id_inst</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kd">val</span><span class="w"> </span><span class="n">id_rd</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">id_inst</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">// 译码器：输入指令，输出控制信号</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">decoder</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">inst</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">id_inst</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="kd">val</span><span class="w"> </span><span class="n">ctrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">decoder</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">ctrl</span><span class="w">        </span><span class="c1">// 控制信号组（一个 Bundle，见下）</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1">// 读寄存器堆（组合读，本周期就拿到）</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">regfile</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">rs1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">id_rs1</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="n">regfile</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">rs2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">id_rs2</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1">// 立即数（根据指令类型拼装，逻辑见&quot;CPU 开发场景 - 立即数生成器&quot;）</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="kd">val</span><span class="w"> </span><span class="n">id_imm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ImmGen</span><span class="p">(</span><span class="n">id_inst</span><span class="p">,</span><span class="w"> </span><span class="n">ctrl</span><span class="p">.</span><span class="n">immType</span><span class="p">)</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1">// 把这一级的成果打包送进 ID/EX 寄存器</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="n">id2ex_wire</span><span class="p">.</span><span class="n">pc</span><span class="w">       </span><span class="o">:=</span><span class="w"> </span><span class="n">if2id_reg</span><span class="p">.</span><span class="n">pc</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="n">id2ex_wire</span><span class="p">.</span><span class="n">rs1Data</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="n">regfile</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">rdata1</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="n">id2ex_wire</span><span class="p">.</span><span class="n">rs2Data</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="n">regfile</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">rdata2</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="n">id2ex_wire</span><span class="p">.</span><span class="n">imm</span><span class="w">      </span><span class="o">:=</span><span class="w"> </span><span class="n">id_imm</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="n">id2ex_wire</span><span class="p">.</span><span class="n">rd</span><span class="w">       </span><span class="o">:=</span><span class="w"> </span><span class="n">id_rd</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="n">id2ex_wire</span><span class="p">.</span><span class="n">rs1</span><span class="w">      </span><span class="o">:=</span><span class="w"> </span><span class="n">id_rs1</span><span class="w">     </span><span class="c1">// 保留编号，EX 级转发要用</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="n">id2ex_wire</span><span class="p">.</span><span class="n">rs2</span><span class="w">      </span><span class="o">:=</span><span class="w"> </span><span class="n">id_rs2</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="n">id2ex_wire</span><span class="p">.</span><span class="n">ctrl</span><span class="w">     </span><span class="o">:=</span><span class="w"> </span><span class="n">ctrl</span><span class="w">       </span><span class="c1">// 整组控制信号一次传递</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">为什么要把 rs1/rs2 编号也往下传？</p>
+<p>EX 级做转发时，需要判断"当前指令的源寄存器"是不是"前面指令的目标寄存器"。所以源寄存器编号 <code>rs1</code>/<code>rs2</code> 必须跟着指令一路传到 EX 级，供转发单元比对。这就是 <code>ID2EX</code> Bundle 里除了 <code>rs1Data</code>（寄存器的值）还要有 <code>rs1</code>（寄存器的编号）的原因。</p>
+</div>
+<hr />
+<h2 id="ex-alu">EX 级：转发 + ALU 执行<a class="headerlink" href="#ex-alu" title="Permanent link">&para;</a></h2>
+<p>EX 级是流水线里最"热闹"的一级：先做<strong>转发选择</strong>（决定 ALU 的两个输入到底从哪来），再用 ALU 算，最后处理分支。</p>
+<h3 id="_3">第一步：转发单元<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// ---------- EX 级：转发 ----------</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">// forwardA/B: 00=用寄存器原值, 01=从 EX/MEM 转发, 10=从 MEM/WB 转发</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kd">val</span><span class="w"> </span><span class="n">forwardA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">WireDefault</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">val</span><span class="w"> </span><span class="n">forwardB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">WireDefault</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">// rs1 的转发判断（优先用更近的 EX/MEM 级结果）</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">when</span><span class="p">(</span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">regWrite</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">=/=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">     </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rs1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="n">forwardA</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">}.</span><span class="n">elsewhen</span><span class="p">(</span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">regWrite</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">=/=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">           </span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rs1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="n">forwardA</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="nc">U</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">}</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1">// rs2 的转发判断（同理）</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="n">when</span><span class="p">(</span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">regWrite</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">=/=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">     </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rs2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span><span class="n">forwardB</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="p">}.</span><span class="n">elsewhen</span><span class="p">(</span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">regWrite</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">=/=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">           </span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rs2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span><span class="n">forwardB</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="nc">U</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="c1">// 写回级最终要写的值（WB 级会算，这里提前引用，见 WB 级）</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="kd">val</span><span class="w"> </span><span class="n">wbData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Wire</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">.</span><span class="nc">W</span><span class="p">))</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="c1">// 根据转发选择，决定 ALU 两个操作数的真正来源</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="kd">val</span><span class="w"> </span><span class="n">fwdA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MuxLookup</span><span class="p">(</span><span class="n">forwardA</span><span class="p">,</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rs1Data</span><span class="p">)(</span><span class="nc">Seq</span><span class="p">(</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">  </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">aluResult</span><span class="p">,</span><span class="w">   </span><span class="c1">// 从 EX/MEM 抄</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">  </span><span class="mi">2</span><span class="p">.</span><span class="nc">U</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">wbData</span><span class="p">,</span><span class="w">                 </span><span class="c1">// 从 MEM/WB 抄</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="p">))</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="kd">val</span><span class="w"> </span><span class="n">fwdB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MuxLookup</span><span class="p">(</span><span class="n">forwardB</span><span class="p">,</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rs2Data</span><span class="p">)(</span><span class="nc">Seq</span><span class="p">(</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">  </span><span class="mi">1</span><span class="p">.</span><span class="nc">U</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">aluResult</span><span class="p">,</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">  </span><span class="mi">2</span><span class="p">.</span><span class="nc">U</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">wbData</span><span class="p">,</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="p">))</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">转发在"抄"什么？</p>
+<p>数据相关的本质是：前一条指令的结果算出来了（在 EX/MEM 或 MEM/WB 寄存器里躺着），但还没写回寄存器堆，而后一条指令已经读了寄存器堆、拿到的是旧值。转发就是<strong>绕过寄存器堆，把新结果直接从中间级"抄"到 ALU 输入端</strong>，省去等它写回再读出的两三拍。</p>
+<p>优先级 <code>EX/MEM &gt; MEM/WB</code>：如果两级都命中同一个寄存器，要用<strong>更新（更近）</strong>的那个，也就是 EX/MEM 级。所以代码里用 <code>when...elsewhen</code>，EX/MEM 的判断在前。</p>
+</div>
+<h3 id="alu">第二步：ALU 运算与分支<a class="headerlink" href="#alu" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// ---------- EX 级：ALU ----------</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// ALU 的第二个操作数：R 型用寄存器值，I 型/load/store 用立即数</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kd">val</span><span class="w"> </span><span class="n">aluB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Mux</span><span class="p">(</span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">aluSrc</span><span class="p">,</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">imm</span><span class="p">,</span><span class="w"> </span><span class="n">fwdB</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">alu</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">a</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="n">fwdA</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">alu</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">b</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="n">aluB</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">alu</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">op</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">aluOp</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="kd">val</span><span class="w"> </span><span class="n">aluResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">out</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1">// 分支/跳转判断</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="kd">val</span><span class="w"> </span><span class="n">branchTaken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">isBranch</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">alu</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">zero</span><span class="w">   </span><span class="c1">// 例：BEQ 看 zero 标志</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="kd">val</span><span class="w"> </span><span class="n">branchTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">imm</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1">// 把 EX 级成果送进 EX/MEM 寄存器</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">ex2mem_wire</span><span class="p">.</span><span class="n">aluResult</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">aluResult</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">ex2mem_wire</span><span class="p">.</span><span class="n">storeData</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">fwdB</span><span class="w">          </span><span class="c1">// store 要写内存的数据（注意也用转发后的值！）</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="n">ex2mem_wire</span><span class="p">.</span><span class="n">rd</span><span class="w">        </span><span class="o">:=</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rd</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">ex2mem_wire</span><span class="p">.</span><span class="n">ctrl</span><span class="w">      </span><span class="o">:=</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">ctrl</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">store 的数据也要走转发</p>
+<p>容易漏的一点：<code>sw x5, 0(x6)</code> 里，要写进内存的是 <code>x5</code> 的值。如果 <code>x5</code> 恰好是前一条指令刚算出来的，它也存在数据相关，<strong>同样需要转发</strong>。所以上面 <code>ex2mem_wire.storeData := fwdB</code> 用的是转发后的 <code>fwdB</code>，而不是 <code>id2ex_reg.rs2Data</code>。这类细节，正是自己动手调试时最容易踩的坑。</p>
+</div>
+<hr />
+<h2 id="mem">MEM 级：访存<a class="headerlink" href="#mem" title="Permanent link">&para;</a></h2>
+<p>MEM 级只有 load/store 指令真正干活，其余指令这一级"路过"，把 ALU 结果原样往下传。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// ---------- MEM 级 ----------</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">val</span><span class="w"> </span><span class="n">memAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">aluResult</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">// store：写内存</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">when</span><span class="p">(</span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">memWrite</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="n">dmem</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">memAddr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">storeData</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1">// load：读内存（同步读，下一拍到）</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="kd">val</span><span class="w"> </span><span class="n">memData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dmem</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">memAddr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1">// 送进 MEM/WB 寄存器</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="n">mem2wb_wire</span><span class="p">.</span><span class="n">aluResult</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">aluResult</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="n">mem2wb_wire</span><span class="p">.</span><span class="n">memData</span><span class="w">   </span><span class="o">:=</span><span class="w"> </span><span class="n">memData</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="n">mem2wb_wire</span><span class="p">.</span><span class="n">rd</span><span class="w">        </span><span class="o">:=</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">rd</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="n">mem2wb_wire</span><span class="p">.</span><span class="n">ctrl</span><span class="w">      </span><span class="o">:=</span><span class="w"> </span><span class="n">ex2mem_reg</span><span class="p">.</span><span class="n">ctrl</span>
+</code></pre></div>
+<hr />
+<h2 id="wb">WB 级：写回<a class="headerlink" href="#wb" title="Permanent link">&para;</a></h2>
+<p>WB 级决定"到底把什么值写回寄存器堆"——是 ALU 的结果，还是从内存读来的数据。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// ---------- WB 级 ----------</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">// memToReg=1 表示 load 指令，写回内存数据；否则写回 ALU 结果</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">wbData</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nc">Mux</span><span class="p">(</span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">memToReg</span><span class="p">,</span><span class="w"> </span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">memData</span><span class="p">,</span><span class="w"> </span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">aluResult</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1">// 写回寄存器堆</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">regfile</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">wen</span><span class="w">   </span><span class="o">:=</span><span class="w"> </span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">regWrite</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">regfile</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">rd</span><span class="w">    </span><span class="o">:=</span><span class="w"> </span><span class="n">mem2wb_reg</span><span class="p">.</span><span class="n">rd</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">regfile</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">wdata</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">wbData</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">"写在前、读在后"的经典处理</p>
+<p>还有一种数据相关：WB 级正在写 <code>x5</code>，同一拍 ID 级正在读 <code>x5</code>。常见做法是让寄存器堆<strong>内部</strong>做"写优先"（同周期写的值直接旁路给读端口），或者干脆让写发生在时钟上升沿、读是组合逻辑，从而这一拍读到的还是旧值、靠转发补上。实现时你要想清楚自己的寄存器堆是哪种行为——这也是必须写测试专门验证的点。</p>
+</div>
+<hr />
+<h2 id="stall-flush">冒险控制：Stall 与 Flush<a class="headerlink" href="#stall-flush" title="Permanent link">&para;</a></h2>
+<p>最后，把 stall 和 flush 逻辑加上，它决定了那几组流水线寄存器<strong>到底是正常推进、保持、还是清零</strong>。这是整颗 CPU 逻辑上最精妙的部分。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// ---------- 冒险控制 ----------</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1">// (1) Load-use 冒险：EX 级是 load，且它的目标寄存器正是 ID 级要用的源寄存器</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1">//     → 转发来不及（数据还没从内存读出），只能暂停一拍</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kd">val</span><span class="w"> </span><span class="n">loadUseHazard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">memRead</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">=/=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="p">(</span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">id_rs1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">rd</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">id_rs2</span><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1">// (2) 分支跳转：EX 级确定要跳，之前顺序取的两条指令是错的 → 冲刷</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="kd">val</span><span class="w"> </span><span class="n">doJump</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">branchTaken</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">isJump</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1">// 默认：各级正常往前推进</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">if2id_reg</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="n">if2id_wire</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">id2ex_reg</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="n">id2ex_wire</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="n">ex2mem_reg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ex2mem_wire</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">mem2wb_reg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">mem2wb_wire</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="n">when</span><span class="p">(</span><span class="n">loadUseHazard</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">  </span><span class="c1">// 暂停：PC 和 IF/ID 保持不动，往 ID/EX 里塞一个气泡（NOP）</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">  </span><span class="n">pc</span><span class="w">         </span><span class="o">:=</span><span class="w"> </span><span class="n">pc</span><span class="w">                            </span><span class="c1">// PC 冻结</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">  </span><span class="n">if2id_reg</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="n">if2id_reg</span><span class="w">                     </span><span class="c1">// IF/ID 冻结</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">  </span><span class="n">id2ex_reg</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">.</span><span class="n">asTypeOf</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">ID2EX</span><span class="p">)</span><span class="w">       </span><span class="c1">// 插入气泡</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="p">}</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="n">when</span><span class="p">(</span><span class="n">doJump</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">  </span><span class="c1">// 冲刷：把已经错误取进来的两条指令清成气泡，PC 跳到目标</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">  </span><span class="n">nextPC</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nc">Mux</span><span class="p">(</span><span class="n">id2ex_reg</span><span class="p">.</span><span class="n">ctrl</span><span class="p">.</span><span class="n">isJump</span><span class="p">,</span><span class="w"> </span><span class="n">aluResult</span><span class="p">,</span><span class="w"> </span><span class="n">branchTarget</span><span class="p">)</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">  </span><span class="n">if2id_reg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">.</span><span class="n">asTypeOf</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">IF2ID</span><span class="p">)</span><span class="w">        </span><span class="c1">// 冲刷 IF/ID</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">  </span><span class="n">id2ex_reg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="nc">U</span><span class="p">.</span><span class="n">asTypeOf</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">ID2EX</span><span class="p">)</span><span class="w">        </span><span class="c1">// 冲刷 ID/EX</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">气泡 = 全零 Bundle = 一条 NOP</p>
+<p><code>0.U.asTypeOf(new ID2EX)</code> 把整个流水线寄存器清零，意味着 <code>regWrite=0</code>、<code>memWrite=0</code>……所有控制信号都为 0。这样的一"包"信号流到后面各级，什么副作用都不产生——<strong>这正是一条 NOP 指令的效果</strong>。用它填补暂停/冲刷留下的空档，既干净又不会遗漏某个控制位（对比 Verilog 里逐个信号清零，极易漏）。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">stall 和 flush 的优先级、边界，要靠测试反复打磨</p>
+<p>上面的控制逻辑是<strong>教学简化版</strong>。真实实现里还要考虑：跳转和暂停同一拍发生怎么办？PC 用 <code>SyncReadMem</code> 取指时暂停会不会取重复/丢指令？冲刷要冲几级？这些边界情况<strong>很难一次想全</strong>，标准做法就是：<strong>为每个冒险场景单独写测试</strong>（回顾上一节"CPU 测试的组织建议"），出错了看波形逐拍分析。把这些边界磨对，你的流水线才算真正立住。</p>
+</div>
+<hr />
+<h2 id="bundle">把控制信号也归拢进 Bundle<a class="headerlink" href="#bundle" title="Permanent link">&para;</a></h2>
+<p>你可能注意到上面反复出现 <code>xxx.ctrl.regWrite</code>、<code>xxx.ctrl.aluOp</code>——这就是"基本语法下"讲的 <strong>Bundle 嵌套</strong>。我们把一整组控制信号定义成一个 <code>ControlSignals</code> 子 Bundle，让它随指令在各级之间流动：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ControlSignals</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">Bundle</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">regWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w">      </span><span class="c1">// 是否写回寄存器堆</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">memRead</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w">      </span><span class="c1">// 是否读内存（load）</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">memWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w">      </span><span class="c1">// 是否写内存（store）</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">memToReg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w">      </span><span class="c1">// 写回的是内存数据(1)还是 ALU 结果(0)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">aluSrc</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w">      </span><span class="c1">// ALU 第二操作数用立即数(1)还是寄存器(0)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">aluOp</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nc">UInt</span><span class="p">(</span><span class="mi">4</span><span class="p">.</span><span class="nc">W</span><span class="p">)</span><span class="w">   </span><span class="c1">// ALU 操作码</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">isBranch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w">      </span><span class="c1">// 是否分支指令</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">isJump</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w">      </span><span class="c1">// 是否无条件跳转</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">immType</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">UInt</span><span class="p">(</span><span class="mi">3</span><span class="p">.</span><span class="nc">W</span><span class="p">)</span><span class="w">   </span><span class="c1">// 立即数类型（I/S/B/U/J）</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="p">}</span>
+</code></pre></div>
+<p>于是每个流水线寄存器只需嵌一个 <code>val ctrl = new ControlSignals</code>，各级用 <code>xxx_reg.ctrl.某信号</code> 取用。<strong>将来要给某类新指令加一个控制位，只改这一个 Bundle，所有级自动携带</strong>——这正是 Chisel 相对 Verilog 在流水线开发中最爽的地方。</p>
+<hr />
+<h2 id="_4">怎么让它跑起来<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>骨架装好后，按"仿真与测试"一节的方法验证。最实用的做法是<strong>灌一段小程序、跑若干周期、查寄存器</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">CoreSpec</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">AnyFlatSpec</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nc">ChiselScalatestTester</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="s">&quot;Core&quot;</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="s">&quot;run a tiny program&quot;</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="c1">// 假设 Core 提供了从文件加载 IMem 的方式，或在测试里预置几条指令</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">test</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="nc">Core</span><span class="p">).</span><span class="n">withAnnotations</span><span class="p">(</span><span class="nc">Seq</span><span class="p">(</span><span class="nc">WriteVcdAnnotation</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dut</span><span class="w"> </span><span class="o">=&gt;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="c1">// 跑 50 个周期，让几条指令走完流水线</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">      </span><span class="n">dut</span><span class="p">.</span><span class="n">clock</span><span class="p">.</span><span class="n">step</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">      </span><span class="c1">// 检查 PC 是否推进到预期位置（更完整的测试会检查寄存器堆的值）</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">      </span><span class="c1">// dut.io.debug_pc.expect(...)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">开发顺序建议</p>
+<ol>
+<li><strong>先搭无冒险的"裸流水线"</strong>：假装没有相关，五级直连，用互相无关的指令（如连续 <code>addi</code> 到不同寄存器）测通基本流动。</li>
+<li><strong>加转发</strong>：写一段有数据相关的程序（<code>add x1,...</code> 紧跟 <code>add x2, x1, ...</code>），验证 EX 转发正确。</li>
+<li><strong>加 load-use 暂停</strong>：<code>lw</code> 紧跟用它结果的指令，验证会正确暂停一拍。</li>
+<li><strong>加分支冲刷</strong>：带 <code>beq</code>/<code>jal</code> 的程序，验证跳转后错误指令被冲掉。</li>
+<li><strong>跑 riscv-tests 等回归测试</strong>收尾。</li>
+</ol>
+<p><strong>每一步都建立在上一步测通的基础上</strong>。别跳步——跳步的代价是最后面对一个哪都可能错的黑箱。</p>
+</div>
+<hr />
+<h2 id="_5">结语<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>至此，从"为什么学 Chisel"，到语法，到测试，再到这一节把所有零件装成一台完整的流水线 CPU，整条学习路径就走完了。</p>
+<p>回头看，Chisel 帮你省掉的，正是 Verilog 里最磨人的那部分——<strong>几十上百根信号的重复连线、逐级复制的流水线寄存器、改一个信号要动好几处的痛苦</strong>。省下来的精力，你可以投到真正有含金量的地方：转发怎么设计更快、冒险怎么处理更省、流水线怎么切分更均衡。</p>
+<p><strong>这，就是我们从 Chisel 重新出发的理由。</strong> 现在，去把你自己的流水线 CPU 搭起来吧——祝你玩得开心！</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/" class="md-footer__link md-footer__link--prev" aria-label="上一页: CPU开发场景">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                CPU开发场景
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 武汉大学计算机学院
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/your-course-repo" target="_blank" rel="noopener" title="课程源码仓库" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.footer", "content.code.annotate", "content.code.copy", "content.code.highlight", "content.code.tabbed", "content.tabs.link", "navigation.indexes", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
