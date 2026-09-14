@@ -40,8 +40,23 @@ theme:
 
 # 导航结构（课程讲义大纲）
 nav:
-  - 首页: index.md
-  - Chisel入门: 
+  - 首页: 
+    - 计算机组成与体系结构实验: index.md
+  - 实验准备:
+    - 介绍: pre/介绍.md
+    - 实验模板: pre/实验模板.md
+  - 数字电路基础:
+      - 栏目简介: labs/01-数字电路基础/index.md
+      - 实验1：跑马灯: labs/01-数字电路基础/实验1-跑马灯.md
+      - 实验2：寄存器堆仿真: labs/01-数字电路基础/实验2-寄存器堆仿真.md
+      - 实验3：同步RAM和异步RAM: labs/01-数字电路基础/实验3-同步RAM和异步RAM.md
+      - 实验4：数字逻辑电路设计与调试: labs/01-数字电路基础/实验4-数字逻辑电路设计与调试.md
+
+  - 单周期CPU设计:
+      - 栏目简介: labs/02-单周期CPU设计/index.md
+      - 实验5：5条指令单周期CPU: labs/02-单周期CPU设计/实验5-5条指令单周期CPU.md
+      - 实验6：20条指令单周期CPU: labs/02-单周期CPU设计/实验6-20条指令单周期CPU.md
+  - Chisel入门:
       - 从Verilog到Chisel: chisel/简介.md
       - 环境搭建: chisel/环境搭建.md
       - 基本语法上: chisel/基本语法上.md
@@ -49,8 +64,34 @@ nav:
       - 基本语法下: chisel/基本语法下.md
 
       - 进阶特性: chisel/进阶写法.md
+  - 流水线CPU设计:
+      - 栏目简介: labs/04-流水线CPU设计/index.md
+      - 实验7：简单流水线CPU: labs/04-流水线CPU设计/实验7-简单流水线CPU.md
+      - 实验8：阻塞解决冲突: labs/04-流水线CPU设计/实验8-阻塞解决冲突.md
+      - 实验9：前递解决冲突: labs/04-流水线CPU设计/实验9-前递解决冲突.md
+      - 实验10：算术逻辑与乘除法指令: labs/04-流水线CPU设计/实验10-算术逻辑与乘除法指令.md
+      - 实验11：转移和访存指令: labs/04-流水线CPU设计/实验11-转移和访存指令.md
+  - 异常与中断:
+      - 栏目简介: labs/05-异常与中断/index.md
+      - 实验12：系统调用异常: labs/05-异常与中断/实验12-系统调用异常.md
+      - 实验13：其它异常: labs/05-异常与中断/实验13-其它异常.md
+  - AXI总线接口:
+      - 栏目简介: labs/06-AXI总线接口/index.md
+      - 实验14：类SRAM总线: labs/06-AXI总线接口/实验14-类SRAM总线.md
+      - 实验15：AXI总线: labs/06-AXI总线接口/实验15-AXI总线.md
+      - 实验16：AXI随机延迟验证: labs/06-AXI总线接口/实验16-AXI随机延迟验证.md
+  - 存储管理单元(TLB):
+      - 栏目简介: labs/07-存储管理单元TLB/index.md
+      - 实验17：TLB模块设计: labs/07-存储管理单元TLB/实验17-TLB模块设计.md
+      - 实验18：TLB指令和CSR: labs/07-存储管理单元TLB/实验18-TLB指令和CSR.md
+      - 实验19：TLB相关例外: labs/07-存储管理单元TLB/实验19-TLB相关例外.md
+  - 高速缓存(Cache):
+      - 栏目简介: labs/08-高速缓存Cache/index.md
+      - 实验20：Cache模块设计: labs/08-高速缓存Cache/实验20-Cache模块设计.md
+      - 实验21：集成ICache: labs/08-高速缓存Cache/实验21-集成ICache.md
+      - 实验22：集成DCache: labs/08-高速缓存Cache/实验22-集成DCache.md
+      - 实验23：CACOP指令: labs/08-高速缓存Cache/实验23-CACOP指令.md
 
-      
 
 # Markdown 扩展
 markdown_extensions:
