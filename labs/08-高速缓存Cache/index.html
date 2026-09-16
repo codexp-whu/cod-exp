@@ -1917,6 +1917,8 @@
       
         
       
+        
+      
     
     
     
@@ -2089,6 +2091,34 @@
     
   
     基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chisel/BlackBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BlackBox：
   
 
     
@@ -2285,7 +2315,7 @@
 
 
 <h1 id="cache">高速缓存（Cache）<a class="headerlink" href="#cache" title="Permanent link">&para;</a></h1>
-<p><strong>后续所有的实验请先阅读《CPU设计实战：LoongArch版》相关章节的讲解部分，再返回当前实验讲义阅读实验要求并完成。</strong></p>
+<p><strong>请先阅读《CPU设计实战：LoongArch版》相关章节的讲解部分，再返回当前实验讲义阅读实验要求并完成。</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>所有实验要求请以当前实验讲义为准，请不要参考《CPU设计实战：LoongArch版》中的实验要求！</strong></p>
@@ -2294,7 +2324,8 @@
 <p class="admonition-title">原书参考</p>
 <p>本栏实验对应《CPU设计实战：LoongArch版》<a href="https://bookdown.org/loongson/_book3/chapter-cache-design.html">第 10 章 高速缓存设计</a>。</p>
 </div>
-<p>CPU 与主存的速度差距以数量级计，Cache 用局部性原理弥补这一鸿沟。本栏先实现独立的 Cache 模块（含 AXI 总线接口与未命中处理状态机），再把 ICache、DCache 集成进 CPU，并添加 CACHE 指令维护。</p>
+<p>CPU 与主存的速度差距以数量级计，Cache 用局部性原理加速CPU速度，减少等待主存数据时CPU阻塞的时间。</p>
+<p>本栏先实现独立的 Cache 模块（含 AXI 总线接口与未命中处理状态机），再把 ICache、DCache 集成进 CPU，并添加 CACOP 指令维护。</p>
 <h2 id="_1">实验列表<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

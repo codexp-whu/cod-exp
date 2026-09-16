@@ -2010,6 +2010,8 @@
       
         
       
+        
+      
     
     
     
@@ -2182,6 +2184,34 @@
     
   
     基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chisel/BlackBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BlackBox：
   
 
     
@@ -2417,16 +2447,15 @@
 </div>
 <h2 id="_1">实验目标<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li>在已有的流水线CPU上添加转移指令和非对齐粒度的访存指令。</li>
+<li>在已有的流水线CPU上添加转移指令和访存指令。</li>
 </ul>
 <h2 id="_2">实验内容<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本实践任务要求在实验十实现的CPU基础上完成以下工作：</p>
 <p>添加转移指令：<strong>blt、bge、bltu、bgeu</strong>。</p>
 <p>添加访存指令：<strong>ld.b、ld.h、ld.bu、ld.hu、st.b、st.h</strong>。</p>
 <div class="admonition warning">
-<p class="admonition-title">延迟槽与字节使能</p>
+<p class="admonition-title">字节使能</p>
 <ul>
-<li>LoongArch 的所有转移指令都带<strong>延迟槽</strong>：跳转指令之后的那条指令先于跳转目标执行。新分支指令的冲刷逻辑必须与实验七~九中 <code>beq</code>/<code>bne</code> 的处理保持一致；</li>
 <li><code>ld.b</code>/<code>ld.bu</code>/<code>ld.h</code>/<code>ld.hu</code> 读出后要做<strong>符号/零扩展</strong>；<code>st.b</code>/<code>st.h</code> 要正确生成 <code>data_sram_we</code> 的<strong>字节写使能</strong>，不能波及同字的其他字节。</li>
 </ul>
 </div>

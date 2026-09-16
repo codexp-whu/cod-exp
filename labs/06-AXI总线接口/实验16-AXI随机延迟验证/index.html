@@ -2010,6 +2010,8 @@
       
         
       
+        
+      
     
     
     
@@ -2182,6 +2184,34 @@
     
   
     基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chisel/BlackBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BlackBox：
   
 
     
@@ -2446,10 +2476,6 @@
 <summary>上板验证要求</summary>
 <p>上板验证时，要求<strong>"随意切换拨码开关后按复位键"</strong>均能正确运行func（复位期间的拨码开关状态作为初始随机种子）。如果出现"仿真通过，上板不过"的现象，请按照实验十四介绍的方法进行调试：将出错的种子写入 <code>confreg.v</code> 的 <code>RANDOM_SEED</code> 后仿真复现；无法复现时，排查代码规范性问题或使用 Vivado 逻辑分析仪在线调试。</p>
 </details>
-<div class="admonition tip">
-<p class="admonition-title">报告建议</p>
-<p>记录每个暴露并修复的 bug：出错的 <code>RANDOM_SEED</code> 值、错误现象、根因与修复方式。这份记录是本实验报告的核心内容。</p>
-</div>
 
 
 

@@ -2021,6 +2021,8 @@
       
         
       
+        
+      
     
     
     
@@ -2193,6 +2195,34 @@
     
   
     基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chisel/BlackBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BlackBox：
   
 
     
@@ -2471,13 +2501,9 @@
 <li>将CPU顶层接口修改为<strong>AXI总线接口</strong>。CPU对外只有一个AXI接口，需在内部完成<strong>取指和数据访问的仲裁</strong>。</li>
 <li>推荐实现一个<strong>类SRAM-AXI的2×1转接桥</strong>：对内提供两个类SRAM端口（取指、访存）并完成仲裁，对外封装为AXI接口，与实验十四完成的类SRAM接口CPU拼接。</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">AXI握手铁律</p>
-<ul>
-<li><code>VALID</code> 一旦置起，在对应的 <code>READY</code> 到来之前<strong>不得撤销</strong>；</li>
-<li>写事务必须等到 <strong>B 通道响应</strong>才算完成；读事务以 <strong>R 通道的最后一个数据（RLAST）</strong>为完成标志；</li>
-<li>AR/AW/W/R/B 五个通道各自独立握手，注意通道间的时序依赖。</li>
-</ul>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>可以参考OpenLA500处理器核的AXI总线实现！</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">测试程序请选择EXP15</p>
@@ -2499,12 +2525,8 @@
 </ul>
 <details class="tips">
 <summary>上板验证要求</summary>
-<p>上板验证时，要求8个拨码开关处于<strong>"高4个拨下，低4个拨上"</strong>的状态（对应访存随机延迟类型为<strong>无延迟</strong>），能正确运行func。</p>
+<p>上板验证时，要求低8个拨码开关处于<strong>"高4个拨下，低4个拨上"</strong>的状态（对应访存随机延迟类型为<strong>无延迟</strong>），能正确运行func。</p>
 </details>
-<div class="admonition tip">
-<p class="admonition-title">实现提示</p>
-<p>建议先让转接桥在<strong>固定延迟</strong>应答下工作（本实验），随机延迟留到实验十六再验证——一次只引入一个变量，调试效率更高。</p>
-</div>
 
 
 

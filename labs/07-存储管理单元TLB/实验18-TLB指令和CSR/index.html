@@ -2010,6 +2010,8 @@
       
         
       
+        
+      
     
     
     
@@ -2182,6 +2184,34 @@
     
   
     基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chisel/BlackBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BlackBox：
   
 
     
@@ -2426,10 +2456,6 @@
 <li>在CPU中增加TLB操作指令：<strong>TLBSRCH、TLBRD、TLBWR、TLBFILL、INVTLB</strong>。</li>
 <li>在CPU中增加CSR寄存器：<strong>TLBIDX、TLBEHI、TLBELO0、TLBELO1、ASID、TLBRENTRY</strong>。</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">查与写的并发</p>
-<p>取指和访存每拍都可能查找 TLB，而 TLBWR/TLBFILL 又会写 TLB——同拍"查找+写入"的冲突需要仲裁（简单做法：TLB 写入当拍阻塞取指/访存查找一拍）。</p>
-</div>
 <div class="admonition info">
 <p class="admonition-title">测试程序请选择EXP18</p>
 </div>

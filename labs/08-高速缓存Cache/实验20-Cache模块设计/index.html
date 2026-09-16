@@ -2021,6 +2021,8 @@
       
         
       
+        
+      
     
     
     
@@ -2193,6 +2195,34 @@
     
   
     基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chisel/BlackBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BlackBox：
   
 
     
@@ -2485,8 +2515,18 @@
 </ul>
 <details class="tips">
 <summary>仿真验证结果判断</summary>
-<p>验证环境从 index=0 开始，对每个 index 生成四组随机的 tag 和 data：先写入 Cache（此时应观察到 miss→读请求→替换写回），再读出校验。一个 index 测试完成后打印 <code>index XX finishd</code>，直至 index==0xff 全部完成并打印 <code>PASS!!!</code>。验证环境会检查<strong>替换写回的数据</strong>和<strong>读出的数据</strong>两 类错误，出错时控制台会打印原因。</p>
+<p>模块级验证会从index=0的时候开始验证，针对每个index，生成四组随机的tag和data对。首先生成写请求将这四组数写进cache，然后再生成读请求读它们。如果中间没有发生错误，index递增，重新生成tag和data对进行相同的测试，直到index==ff的测试完成为止。</p>
+<p>对于写cache请求。验证环境期望看到的结果是，写请求发出后会出现Cache miss，Cache模块会发出rd请求，验证环境返回全1值（0xFFFFFFFF）。写请求可能会引发替换操作，这时验证环境会拿wr_addr和wr_data和前述的tag/data组合做对比，如果replace的值有错，测试会中止。</p>
+<p>写操作全部进行完之后会有读操作，验证环境会做同样的检测。当cache返回读操作的结果之后，验证环境会检测读到的结果与之前写入的结果是否相同。</p>
+<p>在仿真时，会对每一个index生成四个cache行的先写再读的操作，所有操作都完成后会打印PASS，如下所示：</p>
 </details>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    [   2705 ns] index 00 finishd
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    …………
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    =========================================================
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    Test end!
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    ----PASS!!!
+</code></pre></div>
+    如果在仿真中发现错误，请进行调试，控制台会打印出错误的原因。验证环境只会检查替换时的数据错误和Cache read的数据错误。</p>
 <details class="tips">
 <summary>上板验证结果判断</summary>
 <p>上板运行时，数码管的<strong>左边两位显示当前测试的 index 值</strong>，逐步递增至 0xff 后测试停止。</p>

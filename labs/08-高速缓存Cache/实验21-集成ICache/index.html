@@ -2010,6 +2010,8 @@
       
         
       
+        
+      
     
     
     
@@ -2182,6 +2184,34 @@
     
   
     基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chisel/BlackBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BlackBox：
   
 
     
@@ -2425,14 +2455,6 @@
 <li>将实践任务20完成的Cache模块作为ICache集成到实践任务19完成的CPU中。</li>
 <li>修改CPU中的AXI转换桥，以支持<strong>Burst传输</strong>。</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">集成要点</p>
-<ul>
-<li>CPU流水线向 ICache 发类SRAM请求（表10.2接口），未命中时流水线冻结等待；</li>
-<li>ICache 缺失行的 Refill 需要 AXI 一次读回整行 16 字节——这就是转换桥要支持 Burst 的原因；</li>
-<li>ICache 不写数据，<code>wr_rdy</code> 可恒置 1（MISS 状态只持续一拍）。</li>
-</ul>
-</div>
 <div class="admonition info">
 <p class="admonition-title">测试程序请选择EXP21</p>
 </div>
@@ -2451,10 +2473,6 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 实验21 测试程序（n1~n72，共72个功能点）仿真PASS。</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 上板两个双色LED全为绿色，数码管显示"4800 0048"。</li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">实现提示</p>
-<p>建议在报告中对比集成 ICache 前后的仿真运行时间——这是你第一次能量化 Cache 带来的性能收益。</p>
-</div>
 
 
 

@@ -2010,6 +2010,8 @@
       
         
       
+        
+      
     
     
     
@@ -2182,6 +2184,34 @@
     
   
     基本语法下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chisel/BlackBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BlackBox：
   
 
     
@@ -2424,14 +2454,6 @@
 <ul>
 <li>将实践任务20完成的Cache模块作为DCache集成到实践任务21完成的CPU中。</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">集成要点</p>
-<ul>
-<li>DCache 是读写两个方向的：load 走 Look Up，store 命中走 Hit Write（写缓冲一拍后写入 Cache 并置脏位），store 缺失走写分配流程（Refill 时把待写数据与总线返回数据拼合后一并写入）；</li>
-<li>store 的字节使能（<code>st.b</code>/<code>st.h</code>）要正确映射到 Bank RAM 的字节写使能；</li>
-<li>注意"与 Hit Write 冲突"的 load 请求要阻塞（写后读同字），这是 Cache 模块内部状态机已定义的行为，集成时保证流水线正确接收 <code>addr_ok</code>/<code>data_ok</code> 即可。</li>
-</ul>
-</div>
 <div class="admonition info">
 <p class="admonition-title">测试程序请选择EXP22</p>
 </div>
@@ -2452,7 +2474,7 @@
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">实现提示</p>
-<p>集成 DCache 后，整 CPU 的访存路径变为：流水线 → DCache（类SRAM）→ AXI 转换桥（含 16 字节写缓存与 Burst 读）。建议报告中再次对比运行时间，观察 DCache 的收益。</p>
+<p>集成 DCache 后，整 CPU 的访存路径变为：流水线 → DCache（类SRAM）→ AXI 转换桥（含 16 字节写缓存与 Burst 读）。建议再次对比运行时间，观察 DCache 的收益。</p>
 </div>
 
 
