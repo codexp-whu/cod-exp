@@ -1,8 +1,14 @@
 # AXI总线接口
 
-本栏实验对应《CPU设计实战：LoongArch版》[第 8 章 AXI总线接口设计](https://bookdown.org/loongson/_book3/chapter-axi-bus.html)。
+**请先阅读《CPU设计实战：LoongArch版》相关章节的讲解部分，再返回当前实验讲义阅读实验要求并完成。**
 
-真实系统中，CPU 并不直接连着存储器，而是通过总线协议与外界交互。本栏从自定义的类 SRAM 总线过渡到工业标准 **AXI 协议**，并引入随机延迟验证——这是从"教学 CPU"走向"能对接真实外设的 CPU"的一步。
+!!! warning
+    **所有实验要求请以当前实验讲义为准，请不要参考《CPU设计实战：LoongArch版》中的实验要求！**
+
+!!! info "原书参考"
+    本栏实验对应《CPU设计实战：LoongArch版》[第 8 章 AXI总线接口设计](https://bookdown.org/loongson/_book3/chapter-axi-bus.html)。
+
+真实系统中，CPU 并不直接连着存储器，而是通过总线协议与外界交互。本栏从自定义的类 SRAM 总线过渡到 **AXI 协议**，并引入随机延迟验证。
 
 ## 实验列表
 

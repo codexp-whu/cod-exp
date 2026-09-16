@@ -2,54 +2,39 @@
 
 !!! info "原书参考"
 
-    [《CPU设计实战：LoongArch版》9.2.2 实践任务18：添加TLB相关指令和CSR寄存器](https://bookdown.org/loongson/_book3/chapter-mmu-design.html)
+    [《CPU设计实战：LoongArch版》9.2.2 实践任务18：添加TLB相关指令和CSR寄存器](https://bookdown.org/loongson/_book3/chapter-mmu-design.html#subsec-exp18)
 
 ## 实验目标
 
-- 实现 TLB 探查与读写指令：`tlbsrch`、`tlbwr`、`tlbfill`（以及 `invtlb`，视课程清单）。
-- 实现配套 CSR：`TLBIDX`、`TLBEHI`、`TLBELO0/1`、`ASID`、`PGDL/PGDH/PGD`。
-- 将 CSR 写→TLB 操作之间的数据通路与前递接好。
+- 将实验十七完成的TLB模块集成到CPU中，添加TLB相关指令和CSR寄存器。
 
-## 知识背景
+## 实验内容
 
-### 软件如何管理 TLB
+本实践任务要求在实验十六和实验十七的基础上完成以下工作：
 
-LoongArch 采用**软件管理 TLB**：硬件提供表项存储和基本指令，填表、换页、刷新全由内核程序完成。三件套配合的典型流程：
+- 将实践任务17完成的TLB模块集成到实践任务16完成的CPU中。
+- 在CPU中增加TLB操作指令：**TLBSRCH、TLBRD、TLBWR、TLBFILL、INVTLB**。
+- 在CPU中增加CSR寄存器：**TLBIDX、TLBEHI、TLBELO0、TLBELO1、ASID、TLBRENTRY**。
 
-```text
-tlbsrch   : 把 CSR.TLBEHI 中的虚页号拿去 TLB 里查，命中则把表项号写入 CSR.TLBIDX.Index
-tlbwr     : 把 CSR.TLBEHI/TLBELO0/1 组装的表项，写到 CSR.TLBIDX.Index 指定的表项（覆盖）
-tlbfill   : 同 tlbwr，但写入位置由替换算法（你实验 17 的 LRU）决定
-```
 
-### 涉及的 CSR
+!!! info "测试程序请选择EXP18"
 
-| CSR | 职责 |
-| --- | ---- |
-| `TLBIDX` | 表项号；`Ne` 位记录 tlbsrch 是否命中 |
-| `TLBEHI` | 待查/待写的虚页号（VPN、VPPN） |
-| `TLBELO0/1` | 奇偶两个页表项：PPN、权限、标志位 |
-| `ASID` | 当前地址空间标识 |
-| `PGDL/PGDH/PGD` | 页目录基址（供内核走页表用） |
+## 实验步骤
 
-### 流水线集成难点
-
-- 这些指令都在 **EX/WB 级才真正动 TLB**，而取指、访存每拍都在查 TLB——**查与写的并发**需要仲裁（简单做法：TLB 写时冻结取指/访存一拍）；
-- CSR→TLB 的操作数来自寄存器堆读出值，前递网络要覆盖"写 CSR 后紧跟 tlbwr"的序列。
-
-## 任务要求
-
-1. 实现上述全部指令与 CSR；
-2. 编写仿真测试：软件填表（`csrwr`+`tlbfill`）→ 触发查找 → `tlbsrch` 命中/未命中 → `tlbwr` 定点更新；
-3. 验证 TLB 写入与取指/访存查找并发时的行为正确性。
+1. 将所实现CPU的代码更新至`mycpu_env/myCPU/`目录中。
+2. 修改func配置文件——`mycpu_env/func/include/test_config.h`，选择exp18的配置，编译。（`make EXP=18`）
+3. 打开`gettrace` 工程——`mycpu_env/gettrace/gettrace.xpr`。运行`gettrace` 工程的仿真（进入仿真界面后，直接点击run all等待仿真运行完成），生成新的参考trace文件`golden_trace.txt`（`mycpu_env/gettrace/golden_trace.txt`）。要等仿真运行完成，`golden_trace.txt`才有完整的内容。
+4. 进入 `mycpu_env/soc_verify/soc_axi/run_vivado/` 目录下启动验证myCPU的工程。如果该目录下尚未创建工程，请利用该目录下的 `create_project.tcl` 文件创建工程。如果该目录下已有前一实践任务创建过的工程，可以在打开工程后，更新项目中CPU实现文件的列表。
+5. 对工程中的`axi_ram`重新定制。
+6. 在验证myCPU的工程中运行仿真（进入仿真界面后，直接点击run all），进行功能验证与调试，直至仿真测试通过。
+7. 在验证myCPU的工程中综合实现后生成bit流文件，进行上板验证。
 
 ## 验收标准
 
-- [ ] 全部 TLB 指令、CSR 的功能测试通过；
-- [ ] 并发场景（TLB 写入的同时有访存请求）无冲突错误；
-- [ ] 提交源码与实验报告。
+- [ ] 实验18 测试程序（n1~n70，共70个功能点）仿真PASS。
+- [ ] 上板两个双色LED全为绿色，数码管显示"4600 0046"。
 
-!!! question "思考题"
+!!! tip "实现提示"
 
-    1. `tlbwr` 与 `tlbfill` 分别适用什么场景？为什么内核缺页处理常用 `tlbfill`？
-    2. TLB 比较需要 ASID + G 位共同决定命中。全 0 的 ASID 会不会误命中所有表项？如何避免？
+    - 五条 TLB 指令的操作数与结果都通过 CSR 传递（TLBEHI 放待查 VPPN、TLBELO0/1 放表项内容、TLBIDX 放表项号与查询结果），CSR→TLB、TLB→CSR 两条通路都要接好；
+    - 本实验还**不需要**实现虚实地址转换——CPU 仍工作在直接映射模式，func 测试验证的是指令与 CSR 本身的正确性。

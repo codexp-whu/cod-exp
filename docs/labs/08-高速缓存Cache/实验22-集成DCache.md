@@ -2,49 +2,35 @@
 
 !!! info "原书参考"
 
-    [《CPU设计实战：LoongArch版》10.2.3 实践任务22：CPU中集成DCache](https://bookdown.org/loongson/_book3/chapter-cache-design.html)
+    [《CPU设计实战：LoongArch版》10.2.3 实践任务22：CPU中集成DCache](https://bookdown.org/loongson/_book3/chapter-cache-design.html#subsec-exp22)
 
 ## 实验目标
 
-- 把 Cache 模块接入 MEM 级访存通路，成为 DCache。
-- 处理**非对齐粒度访存**（`ld.b/h`、`st.b/h`）与行粒度数据搬运的衔接。
-- 实现必要的**写缓冲（store buffer）**，缓解 store 的性能损失。
+- 将实验二十完成的Cache模块作为 **DCache** 集成到CPU访存通路中。
 
-## 知识背景
+## 实验内容
 
-### DCache 与 ICache 的本质差异
+本实践任务要求在实验二十一完成的基础上完成以下工作：
 
-| | ICache | DCache |
-| --- | ------ | ------ |
-| 请求粒度 | 固定 4B（一条指令） | 1B/2B/4B 不等 |
-| 有无写 | 只读 | 读 + 写（含掩码） |
-| 写策略 | — | 写直达/写回 + 分配策略 |
-| 一致性麻烦 | 少 | 自修改代码、DMA…
+- 将实践任务20完成的Cache模块作为DCache集成到实践任务21完成的CPU中。
 
-store 带**字节使能**（实验 11）进入写直达 Cache 时要拆分合并：未命中分配整行，写入时只动目标字节。
+!!! info "测试程序请选择EXP22"
 
-### store 的性能问题与写缓冲
+## 实验步骤
 
-store 未命中要等整行取回再写入，流水线全程冻结代价高。写缓冲的思路：**先把 store 扔进缓冲队列，MEM 级立刻放行**，队列稍后自己完成未命中流程：
-
-- 队列必须保序（或按地址冲突规则处理）；
-- **load 必须能看见队列里未落地的 store**（地址命中队列时前递/等待）——这是本实验最大的正确性陷阱；
-- 队列满时的反压（阻塞 MEM 级）要接回流水线冻结逻辑。
-
-## 任务要求
-
-1. 将 Cache 模块接入 MEM 级，支持 1/2/4 字节读写与字节使能；
-2. 实现 store 缓冲（或按课程要求论证可不做的条件）；
-3. 全量功能测试通过（含随机总线延迟回归）；
-4. 量化 DCache 带来的周期数收益。
+1. 将所实现CPU的代码更新至`mycpu_env/myCPU/`目录中。
+2. 修改func配置文件——`mycpu_env/func/include/test_config.h`，选择exp22的配置，编译。（`make EXP=22`）
+3. 打开`gettrace` 工程——`mycpu_env/gettrace/gettrace.xpr`。运行`gettrace` 工程的仿真（进入仿真界面后，直接点击run all等待仿真运行完成），生成新的参考trace文件`golden_trace.txt`（`mycpu_env/gettrace/golden_trace.txt`）。要等仿真运行完成，`golden_trace.txt`才有完整的内容。
+4. 进入 `mycpu_env/soc_verify/soc_axi/run_vivado/` 目录下启动验证myCPU的工程。如果该目录下尚未创建工程，请利用该目录下的 `create_project.tcl` 文件创建工程。如果该目录下已有前一实践任务创建过的工程，可以在打开工程后，更新项目中CPU实现文件的列表。
+5. 对工程中的`axi_ram`重新定制。
+6. 在验证myCPU的工程中运行仿真（进入仿真界面后，直接点击run all），进行功能验证与调试，直至仿真测试通过。
+7. 在验证myCPU的工程中综合实现后生成bit流文件，进行上板验证。
 
 ## 验收标准
 
-- [ ] 全量功能测试通过；
-- [ ] store 缓冲的地址冲突处理正确（load-after-store 序列数据一致）；
-- [ ] 提供性能对比数据；提交源码与实验报告。
+- [ ] 实验22 测试程序（n1~n72，共72个功能点）仿真PASS。
+- [ ] 上板两个双色LED全为绿色，数码管显示"4800 0048"。
 
-!!! question "思考题"
+!!! tip "实现提示"
 
-    1. 写缓冲里积压的 store 与后续 load 同地址：不处理会出什么 bug？给出能抓住它的测试序列。
-    2. 自修改代码（store 写指令区域后跳转执行）在你的 ICache+DCache 上为什么可能出错？硬件或软件各有什么解法？
+    集成 DCache 后，整 CPU 的访存路径变为：流水线 → DCache（类SRAM）→ AXI 转换桥（含 16 字节写缓存与 Burst 读）。建议再次对比运行时间，观察 DCache 的收益。

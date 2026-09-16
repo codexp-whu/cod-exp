@@ -1,6 +1,7 @@
 # 单周期CPU设计
 
-本栏实验对应《CPU设计实战：LoongArch版》[第 4 章 单周期CPU设计](https://bookdown.org/loongson/_book3/chapter-single-cycle-cpu.html)。
+!!! info "原书参考"
+    本栏实验对应《CPU设计实战：LoongArch版》[第 4 章 单周期CPU设计](https://bookdown.org/loongson/_book3/chapter-single-cycle-cpu.html)。
 
 单周期 CPU 是你的第一个完整处理器：一条指令在一个时钟周期内完成取指、译码、执行、访存、写回全部动作。
 

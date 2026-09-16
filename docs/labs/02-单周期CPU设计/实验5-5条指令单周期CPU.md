@@ -24,7 +24,7 @@
 |  |--inst_ram.mif      测试程序对应功能仿真用的二进制纯数据文件
 |  |--inst_ram.txt      测试程序汇编代码说明
 |
-|--soc_verify/          所现的CPU的验证环境
+|--soc_verify/          所实现的CPU的验证环境
    |--rtl/              验证用SoC设计代码目录
    |  |--soc_mini_top.v SoC的顶层文件
    |  |--CONFREG/       confreg模块，用于访问实验板上的LED灯、拨码开关等外设
@@ -68,14 +68,12 @@ source create_project.tcl
 
 ## 实验步骤
 
-1. 在 minicpu_env/soc_verify/run_vivado/ 目录下打开miniCPU工程。
-2. 对miniCPU工程中的inst_ram重新定制，选择对应func的coe文件（minicpu_env/func/inst_ram.coe）。
-3. 运行miniCPU工程的仿真（进入仿真界面后，直接点击run all），开始调试。可以修改 minicpu_env/soc_verify/testbench/ 目录下的minicpu_tb.v文件中的switch值观察led输出值是否符合预期（每次修改switch值之后都要重新仿真）。（因为本实验的测试程序为斐波那契数程序，斐波那契数列是：0，1，1，2，3，5，……从第三项开始，每一项都等于前两项之和。**规定数列第三项为f(1),即f(1)=1，f(2)=2,f(3)=3,f(4)=5, …… 。**修改拨码开关switch值相当于修改n，led输出值对应f(n)。
+1. 在 `minicpu_env/soc_verify/run_vivado/` 目录下打开miniCPU工程。
+2. 对miniCPU工程中的`inst_ram`重新定制，选择对应func的coe文件（`minicpu_env/func/`inst_ram`.coe`）。
+3. 运行miniCPU工程的仿真（进入仿真界面后，直接点击run all），开始调试。可以修改 `minicpu_env/soc_verify/testbench/` 目录下的`minicpu_tb.v`文件中的switch值观察led输出值是否符合预期（每次修改switch值之后都要重新仿真）。（因为本实验的测试程序为斐波那契数程序，斐波那契数列是：0，1，1，2，3，5，……从第三项开始，每一项都等于前两项之和。**规定数列第三项为f(1),即f(1)=1，f(2)=2,f(3)=3,f(4)=5, …… 。**修改拨码开关switch值相当于修改n，led输出值对应f(n)。
 4. myCPU仿真通过后，综合实现后生成bit流文件，进行上板验证。
 
 ## 验收标准
 
 - [ ] 仿真通过给定的测试程序,led输出值符合斐波那契数程序正确值。
 - [ ] 上板后修改拨码开关switch值能够在led显示正确的斐波那契数结果。
-
-TODO:待补充图片。

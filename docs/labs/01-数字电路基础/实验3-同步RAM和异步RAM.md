@@ -26,7 +26,7 @@ CPU 取指和访存都要用到 RAM。FPGA 上的 RAM 有两种常见风格：
 
 ## 实验内容
 
-具体的实验环境位于 dc_env/exp3/ 目录下，其目录结构如下：
+具体的实验环境位于 `dc_env/exp3/` 目录下，其目录结构如下：
 ```
 |--block_ram_top.v       同步RAM（Block RAM）的源码顶层文件。
 |--distributed_ram_top.v 异步RAM（Distributed RAM）的源码顶层文件。
@@ -87,4 +87,5 @@ CPU 取指和访存都要用到 RAM。FPGA 上的 RAM 有两种常见风格：
 
 ## 验收标准
 
-TODO:待补充
+- [ ] 仿真结合波形观察同步RAM和异步RAM的读写时序
+- [ ] 比较同步RAM和异步RAM的时序结果和资源利用率

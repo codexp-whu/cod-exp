@@ -2,59 +2,67 @@
 
 !!! info "原书参考"
 
-    [《CPU设计实战：LoongArch版》8.1.2 实践任务15：添加AXI总线支持](https://bookdown.org/loongson/_book3/chapter-axi-bus.html)
+    [《CPU设计实战：LoongArch版》8.1.2 实践任务15：添加AXI总线支持](https://bookdown.org/loongson/_book3/chapter-axi-bus.html#subsec-exp15)
 
 ## 实验目标
 
-- 理解 AXI4 协议：五个独立通道、读写地址/数据分离、outstanding 能力。
-- 实现类 SRAM 请求到 AXI 事务的**协议转换桥**。
-- CPU 经真实 AXI 总线访问存储器，功能测试全部通过。
+- 将 CPU 顶层接口改造为 **AXI 总线接口**，实现类SRAM-AXI转接桥，在 AXI 总线的 SoC 验证环境中完成固定延迟功能验证。
 
-## 知识背景
+## 环境介绍
 
-### AXI 的五个通道
+!!! warning
 
-AXI4 把一次传输拆到独立握手通道上：
+    本实验的验证环境**不再使用 `soc_hs_bram/` 子目录，而应使用 `soc_axi/` 子目录**！
 
-| 通道 | 方向 | 职责 |
-| ---- | ---- | ---- |
-| AR | 主→从 | 读地址 |
-| R | 从→主 | 读数据 + 响应 |
-| AW | 主→从 | 写地址 |
-| W | 主→从 | 写数据 |
-| B | 从→主 | 写响应 |
+伴随着CPU对外访问接口由带握手机制的block RAM更换为**AXI总线接口**，验证环境进一步调整：`gettrace/`、`func/` 和 `myCPU/` 子目录的位置和用途依然维持不变，只是 `soc_verify/` 子目录下改用 `soc_axi/` 子目录：
 
-每个通道各自 `valid/ready` 握手，互不阻塞——读和写可以并行，地址可以领先数据（outstanding）。这与"一问一答"的类 SRAM 是两种世界观。
-
-### 转换桥
-
-CPU 侧仍是类 SRAM（一拍一个请求），从端是 AXI。转换桥的状态机：
-
-```text
-空闲 → 发 AW/AR（地址通道握手）→ [写：发 W（数据）等 B（响应） / 读：等 R（数据）]
-     → 组装类 SRAM 应答 → 回空闲
+```
+|--mycpu_env/                实验环境根目录
+|--gettrace/                 生成参考trace的部分。
+|--func/                     实验任务所用的功能验证测试程序。
+|--myCPU/                    自己实现的CPU的RTL代码。
+|--soc_verify/               自己实现的CPU的SoC系统验证环境
+   |--soc_axi/               CPU对外连接AXI接口时对应的验证环境。
+      |--rtl/                SoC_Lite设计代码目录。
+      |  |--soc_lite_top.v   SoC_Lite的顶层文件。
+      |  |--CONFREG/         confreg模块，用于访问CPU与开发板上数码管、拨码开关等外设。
+      |  |--ram_wrap/        以支持随机延迟访问封装的AXI RAM模块。
+      |  |--axi_wrap/        AXI的1x1转接口，连接CPU和Crossbar，用于抹平仿真和上板的差异。
+      |  |--xilinx_ip/       定制的Xilinx IP，包含clk_pll、axi_ram和axi_crossbar_1x2。
+      |--testbench/          功能仿真验证平台。
+      |  |--mycpu_tb.v       功能仿真顶层，该模块会抓取debug信息与golden_trace.txt进行比对。
+      |--run_vivado/         Vivado工程的运行目录。
+         |--constraints/     Vivado工程的设计约束。
+         |--mycpu_axi_prj/   Vivado工程文件所在目录。
 ```
 
-要点：
+## 实验内容
 
-- **通道间依赖**：可以等 `ready` 再置 `valid`（简单稳妥），但绝不能 `ready` 来了又撤 `valid`；
-- 写事务的 **B 响应**与读事务的 **R last** 标志，是"事务完成"的判定点；
-- CPU 一次只发一个请求的话，outstanding=1 即可，桥可大幅简化。
+本实践任务要求在实验十四实现的CPU基础上完成以下工作：
 
-## 任务要求
+- 将CPU顶层接口修改为**AXI总线接口**。CPU对外只有一个AXI接口，需在内部完成**取指和数据访问的仲裁**。
+- 推荐实现一个**类SRAM-AXI的2×1转接桥**：对内提供两个类SRAM端口（取指、访存）并完成仲裁，对外封装为AXI接口，与实验十四完成的类SRAM接口CPU拼接。
 
-1. 实现 AXI 从端接口的存储器（或使用环境提供的 AXI-SRAM）；
-2. 实现类 SRAM → AXI 的协议转换桥，接入实验 14 的 CPU 总线；
-3. 功能测试全部通过；
-4. 画出一次读事务、一次写事务的通道握手时序图（来自你的仿真波形）。
+!!! tips
+    可以参考OpenLA500处理器核的AXI总线实现！
+
+!!! info "测试程序请选择EXP15"
+
+## 实验步骤
+
+1. 将所实现CPU的代码更新至`mycpu_env/myCPU/`目录中。
+2. 修改func配置文件——`mycpu_env/func/include/test_config.h`，选择exp15的配置，编译。（`make EXP=15`）
+3. 打开`gettrace` 工程——`mycpu_env/gettrace/gettrace.xpr`。运行`gettrace` 工程的仿真（进入仿真界面后，直接点击run all等待仿真运行完成），生成新的参考trace文件`golden_trace.txt`（`mycpu_env/gettrace/golden_trace.txt`）。要等仿真运行完成，`golden_trace.txt`才有完整的内容。
+4. 进入 `mycpu_env/soc_verify/soc_axi/run_vivado/` 目录下启动验证myCPU的工程。如果该目录下尚未创建工程，请利用该目录下的 `create_project.tcl` 文件创建工程。
+5. 对工程中的`axi_ram`重新定制。
+6. 在验证myCPU的工程中运行仿真（进入仿真界面后，直接点击run all），进行功能验证与调试，直至仿真测试通过。
+7. 在验证myCPU的工程中综合实现后生成bit流文件，进行上板验证。
 
 ## 验收标准
 
-- [ ] 五通道握手协议无违例（valid/ready 语义正确）；
-- [ ] 功能测试全部通过；
-- [ ] 实验报告含真实仿真波形标注的通道时序图。
+- [ ] 实验15 测试程序（n1~n58，共58个功能点）仿真PASS。
+- [ ] 上板两个双色LED全为绿色，数码管显示"3A00 003A"。
 
-!!! question "思考题"
+??? tips "上板验证要求"
 
-    1. AXI 允许地址通道握手后数据通道滞后（outstanding）。你的桥如果支持 outstanding=2，需要额外做什么？
-    2. 为什么写事务必须有 B 响应通道，而读不需要单独的"读响应地址"通道？
+    上板验证时，要求低8个拨码开关处于**"高4个拨下，低4个拨上"**的状态（对应访存随机延迟类型为**无延迟**），能正确运行func。

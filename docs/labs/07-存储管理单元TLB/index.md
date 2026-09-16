@@ -1,8 +1,16 @@
 # 存储管理单元（TLB）
 
-本栏实验对应《CPU设计实战：LoongArch版》[第 9 章 存储管理单元设计](https://bookdown.org/loongson/_book3/chapter-mmu-design.html)。
+**请先阅读《CPU设计实战：LoongArch版》相关章节的讲解部分，再返回当前实验讲义阅读实验要求并完成。**
 
-操作系统需要虚拟地址：进程隔离、按需调页、共享内存都靠它。MMU 负责虚实地址转换，核心部件是 **TLB**（Translation Lookaside Buffer，转址后备缓冲）。本栏先做出独立的 TLB 模块，再把 TLB 指令、CSR、例外接入 CPU。
+!!! warning
+    **所有实验要求请以当前实验讲义为准，请不要参考《CPU设计实战：LoongArch版》中的实验要求！**
+
+!!! info "原书参考"
+    本栏实验对应《CPU设计实战：LoongArch版》[第 9 章 存储管理单元设计](https://bookdown.org/loongson/_book3/chapter-mmu-design.html)。
+
+操作系统需要虚拟地址：进程隔离、按需调页、共享内存都靠它。MMU 负责虚实地址转换，核心部件是 **TLB**（Translation Lookaside Buffer）。
+
+本栏先做出独立的 TLB 模块，再把 TLB 指令、CSR、例外接入 CPU。
 
 ## 实验列表
 

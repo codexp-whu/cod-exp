@@ -56,14 +56,6 @@ nav:
       - 栏目简介: labs/02-单周期CPU设计/index.md
       - 实验5：5条指令单周期CPU: labs/02-单周期CPU设计/实验5-5条指令单周期CPU.md
       - 实验6：20条指令单周期CPU: labs/02-单周期CPU设计/实验6-20条指令单周期CPU.md
-  - Chisel入门:
-      - 从Verilog到Chisel: chisel/简介.md
-      - 环境搭建: chisel/环境搭建.md
-      - 基本语法上: chisel/基本语法上.md
-      - 基本语法中: chisel/基本语法中.md
-      - 基本语法下: chisel/基本语法下.md
-
-      - 进阶特性: chisel/进阶写法.md
   - 流水线CPU设计:
       - 栏目简介: labs/04-流水线CPU设计/index.md
       - 实验7：简单流水线CPU: labs/04-流水线CPU设计/实验7-简单流水线CPU.md
@@ -80,17 +72,30 @@ nav:
       - 实验14：类SRAM总线: labs/06-AXI总线接口/实验14-类SRAM总线.md
       - 实验15：AXI总线: labs/06-AXI总线接口/实验15-AXI总线.md
       - 实验16：AXI随机延迟验证: labs/06-AXI总线接口/实验16-AXI随机延迟验证.md
-  - 存储管理单元(TLB):
+  - 存储管理单元:
       - 栏目简介: labs/07-存储管理单元TLB/index.md
       - 实验17：TLB模块设计: labs/07-存储管理单元TLB/实验17-TLB模块设计.md
       - 实验18：TLB指令和CSR: labs/07-存储管理单元TLB/实验18-TLB指令和CSR.md
       - 实验19：TLB相关例外: labs/07-存储管理单元TLB/实验19-TLB相关例外.md
-  - 高速缓存(Cache):
+  - 高速缓存:
       - 栏目简介: labs/08-高速缓存Cache/index.md
       - 实验20：Cache模块设计: labs/08-高速缓存Cache/实验20-Cache模块设计.md
       - 实验21：集成ICache: labs/08-高速缓存Cache/实验21-集成ICache.md
       - 实验22：集成DCache: labs/08-高速缓存Cache/实验22-集成DCache.md
       - 实验23：CACOP指令: labs/08-高速缓存Cache/实验23-CACOP指令.md
+
+  - 附录A：Chisel入门:
+    - 从Verilog到Chisel: chisel/简介.md
+    - 环境搭建: chisel/环境搭建.md
+    - 基本语法上: chisel/基本语法上.md
+    - 基本语法中: chisel/基本语法中.md
+    - 基本语法下: chisel/基本语法下.md
+    - BlackBox：: chisel/BlackBox.md
+
+    - 进阶特性: chisel/进阶写法.md
+
+  - 附录B：流水线CPU导读:
+    - 五级流水线CPU导读: chisel/五级流水线导读.md
 
 
 # Markdown 扩展

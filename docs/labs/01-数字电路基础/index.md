@@ -4,8 +4,8 @@
 !!! warning
     **所有实验要求请以当前实验讲义为准，请不要参考《CPU设计实战：LoongArch版》中的实验要求！**
 
-
-本栏实验对应《CPU设计实战：LoongArch版》[第 3 章 数字逻辑电路设计基础](https://bookdown.org/loongson/_book3/chapter-digital-logic.html)，是后续所有 CPU 实验的基础。
+!!! info "原书参考"
+    本栏实验对应《CPU设计实战：LoongArch版》[第 3 章 数字逻辑电路设计基础](https://bookdown.org/loongson/_book3/chapter-digital-logic.html)，是后续所有 CPU 实验的基础。
 
 在动手设计 CPU 之前，你需要先熟练掌握三类基本部件的编写、仿真与上板流程：寄存器堆、RAM，以及一个完整的数字逻辑小系统。
 

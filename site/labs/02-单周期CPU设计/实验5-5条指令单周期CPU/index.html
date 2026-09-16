@@ -29,7 +29,7 @@
     
     
       
-        <title>实验5 5条指令单周期CPU - 武汉大学2026年秋计算机组成与体系结构A</title>
+        <title>实验5：5条指令单周期CPU - 武汉大学2026年秋计算机组成与体系结构A</title>
       
     
     
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              实验5 5条指令单周期CPU
+              实验5：5条指令单周期CPU
             
           </span>
         </div>
@@ -314,28 +314,6 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../chisel/%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
-          
-  
-  
-    
-  
-  Chisel入门
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
         <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/" class="md-tabs__link">
           
   
@@ -408,7 +386,7 @@
   
     
   
-  存储管理单元(TLB)
+  存储管理单元
 
         </a>
       </li>
@@ -430,7 +408,51 @@
   
     
   
-  高速缓存(Cache)
+  高速缓存
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../chisel/%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  附录A：Chisel入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../chisel/%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%BC%E8%AF%BB/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  附录B：流水线CPU导读
 
         </a>
       </li>
@@ -954,7 +976,7 @@
   <span class="md-ellipsis">
     
   
-    实验5 5条指令单周期CPU
+    实验5：5条指令单周期CPU
   
 
     
@@ -972,7 +994,7 @@
   <span class="md-ellipsis">
     
   
-    实验5 5条指令单周期CPU
+    实验5：5条指令单周期CPU
   
 
     
@@ -1014,65 +1036,37 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        知识背景
+        环境介绍
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="知识背景">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        数据通路
+        实验内容
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
       
-        5 条指令
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        开发环境
+        实验步骤
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        任务要求
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         验收标准
@@ -1105,7 +1099,887 @@
   <span class="md-ellipsis">
     
   
-    实验6 20条指令单周期CPU
+    实验6：20条指令单周期CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流水线CPU设计
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    流水线CPU设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C7-%E7%AE%80%E5%8D%95%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验7：简单流水线CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C8-%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验8：阻塞解决冲突
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9-%E5%89%8D%E9%80%92%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验9：前递解决冲突
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10-%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E4%B8%8E%E4%B9%98%E9%99%A4%E6%B3%95%E6%8C%87%E4%BB%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验10：算术逻辑与乘除法指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11-%E8%BD%AC%E7%A7%BB%E5%92%8C%E8%AE%BF%E5%AD%98%E6%8C%87%E4%BB%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验11：转移和访存指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异常与中断
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    异常与中断
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C12-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E5%B8%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验12：系统调用异常
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C13-%E5%85%B6%E5%AE%83%E5%BC%82%E5%B8%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验13：其它异常
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AXI总线接口
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AXI总线接口
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C14-%E7%B1%BBSRAM%E6%80%BB%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验14：类SRAM总线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C15-AXI%E6%80%BB%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验15：AXI总线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C16-AXI%E9%9A%8F%E6%9C%BA%E5%BB%B6%E8%BF%9F%E9%AA%8C%E8%AF%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验16：AXI随机延迟验证
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    存储管理单元
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    存储管理单元
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C17-TLB%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验17：TLB模块设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C18-TLB%E6%8C%87%E4%BB%A4%E5%92%8CCSR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验18：TLB指令和CSR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C19-TLB%E7%9B%B8%E5%85%B3%E4%BE%8B%E5%A4%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验19：TLB相关例外
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高速缓存
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    高速缓存
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C20-Cache%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验20：Cache模块设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C21-%E9%9B%86%E6%88%90ICache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验21：集成ICache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C22-%E9%9B%86%E6%88%90DCache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验22：集成DCache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C23-CACOP%E6%8C%87%E4%BB%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验23：CACOP指令
   
 
     
@@ -1160,17 +2034,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Chisel入门
+    附录A：Chisel入门
   
 
     
@@ -1181,12 +2055,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Chisel入门
+    附录A：Chisel入门
   
 
           </label>
@@ -1377,18 +2251,6 @@
     
       
         
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
       
     
     
@@ -1403,18 +2265,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
-          <div class="md-nav__link md-nav__container">
-            <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
     
   
-    流水线CPU设计
+    附录B：流水线CPU导读
   
 
     
@@ -1422,811 +2283,35 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             
   
-    流水线CPU设计
+    附录B：流水线CPU导读
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-            
-              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C7-%E7%AE%80%E5%8D%95%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/" class="md-nav__link">
+      <a href="../../../chisel/%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%BC%E8%AF%BB/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    实验7 简单流水线CPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C8-%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验8 阻塞解决冲突
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9-%E5%89%8D%E9%80%92%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验9 前递解决冲突
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10-%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E4%B8%8E%E4%B9%98%E9%99%A4%E6%B3%95%E6%8C%87%E4%BB%A4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验10 算术逻辑与乘除法指令
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11-%E8%BD%AC%E7%A7%BB%E5%92%8C%E8%AE%BF%E5%AD%98%E6%8C%87%E4%BB%A4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验11 转移和访存指令
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    异常与中断
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    异常与中断
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C12-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E5%B8%B8/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验12 系统调用异常
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C13-%E5%85%B6%E5%AE%83%E5%BC%82%E5%B8%B8/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验13 其它异常
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AXI总线接口
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    AXI总线接口
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C14-%E7%B1%BBSRAM%E6%80%BB%E7%BA%BF/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验14 类SRAM总线
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C15-AXI%E6%80%BB%E7%BA%BF/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验15 AXI总线
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C16-AXI%E9%9A%8F%E6%9C%BA%E5%BB%B6%E8%BF%9F%E9%AA%8C%E8%AF%81/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验16 AXI随机延迟验证
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    存储管理单元(TLB)
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    存储管理单元(TLB)
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C17-TLB%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验17 TLB模块设计
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C18-TLB%E6%8C%87%E4%BB%A4%E5%92%8CCSR/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验18 TLB指令和CSR
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C19-TLB%E7%9B%B8%E5%85%B3%E4%BE%8B%E5%A4%96/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验19 TLB相关例外
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    高速缓存(Cache)
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    高速缓存(Cache)
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C20-Cache%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验20 Cache模块设计
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C21-%E9%9B%86%E6%88%90ICache/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验21 集成ICache
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C22-%E9%9B%86%E6%88%90DCache/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验22 集成DCache
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C23-CACOP%E6%8C%87%E4%BB%A4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验23 CACOP指令
+    五级流水线CPU导读
   
 
     
@@ -2290,65 +2375,37 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        知识背景
+        环境介绍
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="知识背景">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        数据通路
+        实验内容
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
       
-        5 条指令
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        开发环境
+        实验步骤
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        任务要求
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         验收标准
@@ -2378,51 +2435,73 @@
 <h1 id="55cpu">实验5：5条指令单周期CPU<a class="headerlink" href="#55cpu" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">原书参考</p>
-<p><a href="https://bookdown.org/loongson/_book3/chapter-single-cycle-cpu.html">《CPU设计实战：LoongArch版》4.1 验证5条指令的单周期CPU / 4.3.1 实践任务5</a></p>
+<p><a href="https://bookdown.org/loongson/_book3/chapter-single-cycle-cpu.html#sec-verify-5insts-single-cycle-cpu">《CPU设计实战：LoongArch版》4.1 验证5条指令的单周期CPU / 4.3.1 实践任务5</a></p>
 </div>
 <h2 id="_1">实验目标<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>理解单周期 CPU 的数据通路：取指 → 译码 → 执行 → 访存 → 写回在一个周期内完成。</li>
 <li>熟悉实验开发环境（minicpu_env）的组织结构与使用流程。</li>
-<li>完成一个支持 5 条指令的单周期 CPU，能运行一个简单测试程序。</li>
+<li>能够仿真、上板一个支持 5 条指令的单周期 CPU，能运行一个简单测试程序。</li>
 </ul>
-<h2 id="_2">知识背景<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">数据通路<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>单周期 CPU 的核心是把指令的执行"拉直"成一条组合逻辑路径：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>PC → 指令存储器 → 译码 → (寄存器堆读) → ALU → (数据存储器) → 寄存器堆写
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                 ↑__________________________ 下一PC生成 ___________________________↑
+<h2 id="_2">环境介绍<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>整个 <strong>minicpu_env</strong> 实验开发环境的目录结构及各部分功能简介如下所示：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>|--miniCPU/             所实现CPU的RTL代码
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>|  |--minicpu_top.v     5条指令单周期CPU顶层模块
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>|  |--regfile.v         CPU中寄存器堆模块
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>|  |--tools.v           CPU中基本功能模块
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>|
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>|--func/                功能验证测试程序
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>|  |--inst_ram.coe      测试程序对应上板用的二进制纯数据文件
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>|  |--inst_ram.mif      测试程序对应功能仿真用的二进制纯数据文件
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>|  |--inst_ram.txt      测试程序汇编代码说明
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>|
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>|--soc_verify/          所现的CPU的验证环境
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>   |--rtl/              验证用SoC设计代码目录
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>   |  |--soc_mini_top.v SoC的顶层文件
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>   |  |--CONFREG/       confreg模块，用于访问实验板上的LED灯、拨码开关等外设
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>   |  |--xilinx_ip/     定制的Xilinx IP，包含clk_pll、inst_ram
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>   |
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>   |--testbench/        功能仿真验证平台
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>   |
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>   |--run_vivado/       Vivado工程的运行目录
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>      |--constraints/   Vivado工程设计的约束
 </code></pre></div>
-<p>时钟上升沿只更新 PC 和寄存器堆，其余全部是组合逻辑。每个周期结束时，本条指令的所有效果（写寄存器、写存储器、改 PC）都已就绪。</p>
-<h3 id="5">5 条指令<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
-<p>最小指令集只需覆盖"取数、运算、跳转"三种能力：</p>
-<ul>
-<li><code>lu12i.w</code>——装入一个立即数，用于构造 32 位常数；</li>
-<li><code>addi.w</code>、<code>add.w</code>——加法，让数据能流动起来；</li>
-<li><code>ld.w</code>、<code>st.w</code>（或按环境给定的等价访存指令）——访存。</li>
-</ul>
-<p>有了它们就能写出"算个数、存进内存、再读出来"的完整程序。</p>
-<h3 id="_4">开发环境<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>实验使用课程提供的 minicpu_env 环境，包含程序编译工具链、指令与数据存储器初始化文件、仿真顶层等。花时间读懂环境的目录组织和各文件的职责，比急着写代码更重要。</p>
-<h2 id="_5">任务要求<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ol>
-<li>阅读 minicpu_env 环境文档，理解各目录/文件的作用；</li>
-<li>实现支持 5 条指令的单周期 CPU 顶层及各子模块；</li>
-<li>通过环境自带的测试程序仿真验证；</li>
-<li>（如安排上板）在 FPGA 上运行并通过板上验证。</li>
-</ol>
-<h2 id="_6">验收标准<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 仿真通过给定的测试程序，波形能逐拍解释一条指令的完整执行；</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 上板验证通过（如适用）；</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 提交源码与实验报告，报告中画出你自己的数据通路框图。</li>
-</ul>
-<div class="admonition question">
-<p class="admonition-title">思考题</p>
-<ol>
-<li>单周期 CPU 的时钟周期由哪条指令决定？为什么？</li>
-<li>如果把寄存器堆改成同步读（见实验2），单周期数据通路还能成立吗？</li>
-</ol>
+从现在开始，<strong>你无需手动创建Vivado工程，我们在实验环境中为你提供了创建Vivado工程的脚本！</strong> <code>soc_verify/run_vivado/create_project.tcl</code>脚本可以实现一键创建Vivado工程！</p>
+<p>1.打开Vivado，在下方的Tcl Console中先进入<strong>miniCPU/soc_verify/run_vivado</strong>目录。
+<img alt="" src="../images/1.jpg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在Linux路径中分隔符为<code>/</code>,而Windows系统中路径中分隔符为<code>\</code>,Vivado的TCL仅支持Linux形式，请一定记住在Windows下为路径加上花括号<code>{}</code>！</p>
 </div>
+<p>2.使用<code>source</code>命令执行<code>create_project.tcl</code>脚本，等待创建Vivado工程完毕，项目文件是<code>minicpu_env/soc_verify/run_vivado/project/</code> 目录下的 <code>loongson.xpr</code>。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>source create_project.tcl
+</code></pre></div>
+<img alt="" src="../images/2.jpg" /></p>
+<p>3.完成工程创建后请一定检查项目<code>Top</code>是否设置正确，仿真时间是否足够长，IP核是否需要升级版本。</p>
+<div class="admonition tips">
+<p class="admonition-title">如何升级IP核</p>
+<p>当我们创建工程后，会看到IP核处有一个红色的锁标志，这表明创建当前IP核的Vivado版本低于我们使用的版本，请右键点击upgrade IP升级IP核。</p>
+<p><img alt="" src="../images/3.jpg" /> <img alt="" src="../images/4.jpg" /></p>
+</div>
+<details class="tips">
+<summary>仿真时间长度</summary>
+<p>当我们遇到Vivado中仿真只运行1000ns就结束时，请增大Vivado项目的仿真时间，按下图方式操作即可。可以换用<code>ms</code>,<code>s</code>等单位！</p>
+<p><img alt="" src="../images/5.jpg" /></p>
+</details>
+<h2 id="_3">实验内容<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>阅读并理解实验环境中提供的代码，<strong>补充代码中缺失的部分</strong>，使设计可以通过仿真和上板验证。</p>
+<h2 id="_4">实验步骤<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>在 <code>minicpu_env/soc_verify/run_vivado/</code> 目录下打开miniCPU工程。</li>
+<li>对miniCPU工程中的<code>inst_ram</code>重新定制，选择对应func的coe文件（<code>minicpu_env/func/</code>inst_ram<code>.coe</code>）。</li>
+<li>运行miniCPU工程的仿真（进入仿真界面后，直接点击run all），开始调试。可以修改 <code>minicpu_env/soc_verify/testbench/</code> 目录下的<code>minicpu_tb.v</code>文件中的switch值观察led输出值是否符合预期（每次修改switch值之后都要重新仿真）。（因为本实验的测试程序为斐波那契数程序，斐波那契数列是：0，1，1，2，3，5，……从第三项开始，每一项都等于前两项之和。<strong>规定数列第三项为f(1),即f(1)=1，f(2)=2,f(3)=3,f(4)=5, …… 。</strong>修改拨码开关switch值相当于修改n，led输出值对应f(n)。</li>
+<li>myCPU仿真通过后，综合实现后生成bit流文件，进行上板验证。</li>
+</ol>
+<h2 id="_5">验收标准<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 仿真通过给定的测试程序,led输出值符合斐波那契数程序正确值。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 上板后修改拨码开关switch值能够在led显示正确的斐波那契数结果。</li>
+</ul>
 
 
 
@@ -2477,13 +2556,13 @@
         
         
           
-          <a href="../%E5%AE%9E%E9%AA%8C6-20%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/" class="md-footer__link md-footer__link--next" aria-label="下一页: 实验6 20条指令单周期CPU">
+          <a href="../%E5%AE%9E%E9%AA%8C6-20%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/" class="md-footer__link md-footer__link--next" aria-label="下一页: 实验6：20条指令单周期CPU">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                实验6 20条指令单周期CPU
+                实验6：20条指令单周期CPU
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -2,52 +2,43 @@
 
 !!! info "原书参考"
 
-    [《CPU设计实战：LoongArch版》9.2.3 实践任务19：添加TLB相关例外支持](https://bookdown.org/loongson/_book3/chapter-mmu-design.html)
+    [《CPU设计实战：LoongArch版》9.2.3 实践任务19：添加TLB相关例外支持](https://bookdown.org/loongson/_book3/chapter-mmu-design.html#subsec-exp19)
 
 ## 实验目标
 
-- 实现三个 TLB 例外：**重填（PIL/PIS/PIF）、无效（PIL/PIS/PIF）、修改（PME）**——按 LoongArch 术语即 TLBR、TLBIR、TLBMR 系列。
-- 打通 CRMD.DA/PG 映射模式切换：直接翻译 ↔ 页表翻译。
-- 最终目标：**带 MMU 的 CPU 能在页映射模式下运行程序，甚至启动简单内核**。
+- 为 CPU 添加 TLB 相关例外与虚实地址映射功能，完成 MMU 的全部功能。
 
-## 知识背景
+## 实验内容
 
-### 三个例外什么时候触发
+本实践任务要求在实验十八所实现CPU的基础上完成以下工作：
 
-页映射模式（CRMD.PG=1）下，每次取指/访存的虚地址都要查 TLB：
+- 为CPU增加TLB相关异常：**TLB重填例外、load/store/取指操作页无效例外、页修改例外、页特权等级不合规例外**。
+- 在CPU中增加**DMW** CSR寄存器。
+- 为CPU增加**虚实地址映射**的功能。
 
-| 例外 | 触发条件 | 内核的典型处理 |
-| ---- | -------- | -------------- |
-| TLB 重填 | 查不到对应表项 | 走页表，`tlbfill` 填入 |
-| TLB 无效 | 表项存在但 V 位为 0 | 换页/调入后置 V 重填 |
-| TLB 修改 | store 到只读页（D=0） | 若合法则置 D 位（写复制） |
+!!! warning "地址翻译模式"
 
-三者 Ecode 同为 `0x3F`，靠 ESTAT.EsubCode 区分，且**必须区分取指（PIF）/取数（PIL/PIS）来源**。
+    CRMD 的 DA/PG 域决定翻译模式：直接映射（DA=1）时按 DMW 寄存器配置直接映射；页映射（PG=1）时虚地址先查 TLB 得到 PPN 再拼物理地址。TLB 例外的检测位置在**取指（IF）和访存（MEM）**，比 syscall 等更靠前也更频繁，要把它们纳入实验十二/十三建立的精确异常仲裁框架。
 
-### 例外现场的关键 CSR
+!!! info "测试程序请选择EXP19"
 
-- **CSR.TLBRBADV**：触发例外的虚地址（区别于通用的 BADV）；
-- **CRMD.DA/PG**：进入例外时切回直接翻译（DA=1, PG=0），`ertn` 恢复——处理程序本身跑在直接映射下，不会被再次触发 TLB 例外；
-- **ERA**、**ESTAT.EsubCode**：按实验 12/13 的精确异常框架自然延伸。
+## 实验步骤
 
-### 精确性的新考验
-
-TLB 例外发生在**取指或访存阶段**，比 syscall（ID 级）更早也更频繁。异常仲裁逻辑要把它们正确纳入"按指令序提交"的统一框架——这是本实验与前两栏异常实验的真正衔接点。
-
-## 任务要求
-
-1. 实现三类 TLB 例外的检测、编码与响应，现场 CSR 记录正确；
-2. 实现 CRMD.DA/PG 的切换与 `ertn` 恢复；
-3. 通过功能测试：在页映射模式下运行含缺页序列的程序（触发重填→内核填表→恢复执行）；
-4. （挑战）在真实/教学内核上验证：内核启动进入页映射模式后稳定运行。
+1. 将所实现CPU的代码更新至`mycpu_env/myCPU/`目录中。
+2. 修改func配置文件——`mycpu_env/func/include/test_config.h`，选择exp19的配置，编译。（`make EXP=19`）
+3. 打开`gettrace` 工程——`mycpu_env/gettrace/gettrace.xpr`。运行`gettrace` 工程的仿真（进入仿真界面后，直接点击run all等待仿真运行完成），生成新的参考trace文件`golden_trace.txt`（`mycpu_env/gettrace/golden_trace.txt`）。要等仿真运行完成，`golden_trace.txt`才有完整的内容。
+4. 进入 `mycpu_env/soc_verify/soc_axi/run_vivado/` 目录下启动验证myCPU的工程。如果该目录下尚未创建工程，请利用该目录下的 `create_project.tcl` 文件创建工程。如果该目录下已有前一实践任务创建过的工程，可以在打开工程后，更新项目中CPU实现文件的列表。
+5. 对工程中的`axi_ram`重新定制。
+6. 在验证myCPU的工程中运行仿真（进入仿真界面后，直接点击run all），进行功能验证与调试，直至仿真测试通过。
+7. 在验证myCPU的工程中综合实现后生成bit流文件，进行上板验证。
 
 ## 验收标准
 
-- [ ] TLB 例外的触发、区分（EsubCode、BADV/TLBRBADV）与返回全部正确；
-- [ ] 页映射模式功能测试通过；
-- [ ] 提交源码与实验报告。
+- [ ] 实验19 测试程序（n1~n72，共72个功能点）仿真PASS。
+- [ ] 上板两个双色LED全为绿色，数码管显示"4800 0048"。
 
-!!! question "思考题"
+!!! tip "实现提示"
 
-    1. 为什么 TLB 重填例外的入口（ECFG 中可单独设置的向量）允许与其他例外不同？这对内核性能有什么意义？
-    2. 若例外处理程序自身的取指也走页映射，会发生什么？硬件设计如何避免这一递归？
+    - 各例外的区分：TLB 查找 miss → 重填例外；命中但 V=0 → 页无效例外（还要区分取指/取数来源）；store 命中但 D=0 → 页修改例外；当前 PLV 低于表项 PLV → 特权等级不合规例外；
+    - 触发例外的虚地址记入 **TLBRBADV**（区别于通用的 BADV）；
+    - 例外的入口地址（EENTRY 或专设的 TLB 重填入口）与 `ertn` 恢复 DA/PG 的行为，请对照[LoongArch32R指令集手册](https://www.loongson.cn/uploads/images/2023041918122813624.%E9%BE%99%E8%8A%AF%E6%9E%B6%E6%9E%8432%E4%BD%8D%E7%B2%BE%E7%AE%80%E7%89%88%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C_r1p03.pdf)实现。
