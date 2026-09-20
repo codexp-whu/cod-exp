@@ -133,5 +133,5 @@ extra_javascript:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/your-course-repo
+      link: https://github.com/codexp-whu/cod-exp
       name: 课程源码仓库
