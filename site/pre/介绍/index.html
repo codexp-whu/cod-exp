@@ -2435,17 +2435,18 @@
 <p>安装WSL2+Ubuntu教程请自行查阅。</p>
 <h3 id="loongarch32">LoongArch32 交叉编译工具链<a class="headerlink" href="#loongarch32" title="Permanent link">&para;</a></h3>
 <p>自行编译func程序需要使用LoongArch32R的GCC交叉编译工具。该工具链的安装可以从 <a href="https://gitee.com/loongson-edu/la32r-toolchains/releases">LoongArch32精简版交叉工具链</a> 下安装包。</p>
-<p>下载安装包时请根据所用机器是X86还是LoongArch选择对应的版本。下载压缩包 <code>loongarch32r-linux-gnusf-*.tar.gz</code> 至Linux操作系统自身的文件系统中。需要特别提醒的是，目前X86版本LoongArch32R的GCC交叉编译工具只支持64位系统（在系统下运行<code>uname -a</code>命令显示架构为x86_64的）。接下来：</p>
+<p>下载安装包时请根据所用机器是X86还是LoongArch选择对应的版本,以下以X86为例。<strong>下载压缩包 <a href="https://gitee.com/loongson-edu/la32r-toolchains/releases/download/v0.0.3/loongson-gnu-toolchain-8.3-x86_64-loongarch32r-linux-gnusf-v2.0.tar.xz">loongson-gnu-toolchain-8.3-x86_64-loongarch32r-linux-gnusf-v2.0.tar.xz</a> </strong>至Linux操作系统自身的文件系统中。需要特别提醒的是，目前X86版本LoongArch32R的GCC交叉编译工具只支持64位系统（在系统下运行<code>uname -a</code>命令显示架构为x86_64的）。接下来：</p>
 <p><strong>在Linux环境下：</strong></p>
 <p>（1）打开一个terminal，进入压缩包所在目录，进行解压：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo tar zxvf loongarch32r-linux-gnusf-*.tar.gz -C /opt/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo tar Jxvf loongson-gnu-toolchain-8.3-x86_64-loongarch32r-linux-gnusf-v2.0.tar.xz -C /opt/
 </code></pre></div></p>
-<p>（2）确保目录<code>/opt/loongarch32r-linux-gnusf-*/bin/</code>存在，随后执行：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>echo “export PATH=/opt/loongarch32r-linux-gnusf-*/bin/:$PATH” &gt;&gt; ~/.bashrc
+<p>（2）随后执行：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>echo &#39;export PATH=/opt/loongson-gnu-toolchain-8.3-x86_64-loongarch32r-linux-gnusf-v2.0/bin/:$PATH&#39; &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc &amp;&amp; echo $PATH
 </code></pre></div>
-（3）重新打开一个terminal，输入<code>loongarch32</code>然后敲击tab键，如果能够<code>-linux-gnusf-</code>之类的补全，就说明工具链已经安装成功。此时可以编写一个<code>hello.c</code> 然后用工具链进行编译看其是否可以工作。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>loongarch32r-linux-gnusf-gcc hello.c
-</code></pre></div></p>
+（3）重新打开一个terminal，查看la32r的gcc交叉编译链版本：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a> loongarch32r-linux-gnusf-gcc -v
+</code></pre></div>
+若正确输出gcc版本即配置成功。</p>
 
 
 
