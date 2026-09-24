@@ -1,21 +1,38 @@
-console.log("extra.js loaded");
+(function () {
+    // =========================
+    // 1. 加载 GoatCounter
+    // =========================
+    const script = document.createElement("script");
 
-fetch("https://codexp-whu.goatcounter.com/counter/TOTAL.json")
-    .then(response => {
-        console.log("GoatCounter status:", response.status);
-        return response.json();
-    })
-    .then(data => {
-        console.log("GoatCounter data:", data);
+    script.setAttribute(
+        "data-goatcounter",
+        "https://codexp-whu.goatcounter.com/count"
+    );
 
-        const el = document.querySelector("#visitor-count");
+    script.async = true;
+    script.src = "https://gc.zgo.at/count.js";
 
-        console.log("visitor element:", el);
+    document.head.appendChild(script);
 
-        if (el) {
-            el.textContent = data.count;
-        }
-    })
-    .catch(error => {
-        console.error("GoatCounter error:", error);
-    });
+
+    // =========================
+    // 2. 获取累计访问量
+    // =========================
+    fetch(
+        "https://codexp-whu.goatcounter.com/counter/TOTAL.json"
+    )
+        .then(response => response.json())
+        .then(data => {
+            const el = document.querySelector("#visitor-count");
+
+            if (el) {
+                el.textContent = data.count;
+            }
+        })
+        .catch(error => {
+            console.error(
+                "GoatCounter counter error:",
+                error
+            );
+        });
+})();
