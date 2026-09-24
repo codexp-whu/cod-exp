@@ -1,32 +1,32 @@
 (function () {
-    // =========================
-    // 1. 加载 GoatCounter
-    // =========================
+    // 加载 GoatCounter 统计脚本
     const script = document.createElement("script");
 
-    script.setAttribute(
-        "data-goatcounter",
-        "https://codexp-whu.goatcounter.com/count"
-    );
+    script.dataset.goatcounter =
+        "https://codexp-whu.goatcounter.com/count";
 
     script.async = true;
     script.src = "https://gc.zgo.at/count.js";
 
     document.head.appendChild(script);
 
-
-    // =========================
-    // 2. 获取累计访问量
-    // =========================
+    // 显示累计访问量
     fetch(
         "https://codexp-whu.goatcounter.com/counter/TOTAL.json"
     )
-        .then(response => response.json())
-        .then(data => {
-            const el = document.querySelector("#visitor-count");
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
 
-            if (el) {
-                el.textContent = data.count;
+            return response.json();
+        })
+        .then(data => {
+            const counter =
+                document.querySelector("#visitor-count");
+
+            if (counter) {
+                counter.textContent = data.count;
             }
         })
         .catch(error => {
