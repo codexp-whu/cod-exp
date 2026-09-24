@@ -1,0 +1,24 @@
+.site-stats {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+
+    margin: 16px 0 24px;
+
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+.site-stats .visitor-icon {
+    font-size: 1.05rem;
+}
+
+.site-stats #visitor-count {
+    font-size: 1.35rem;
+    font-weight: 700;
+    opacity: 1;
+}
+
+.site-stats .visitor-unit {
+    font-size: 0.8rem;
+}
