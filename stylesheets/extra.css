@@ -6,42 +6,56 @@
   display: flex;
   align-items: center;
 
-  /* 与搜索框拉开距离 */
   margin-left: 1.2rem;
+  margin-right: 0.8rem;
 
-  /* 整体缩小 */
   font-size: 0.72rem;
-
   color: var(--md-primary-bg-color);
 
   white-space: nowrap;
   opacity: 0.75;
+  flex-shrink: 0;
 }
 
 .site-stat {
   display: inline-flex;
   align-items: center;
-
-  /* 图标、数字、文字之间的距离 */
-  gap: 0.2rem;
+  gap: 0.25rem;
 }
 
-.site-stat-icon {
-  font-size: 0.7rem;
-  opacity: 0.7;
+.site-stat .material-symbols-outlined {
+  font-size: 0.9rem;
+  opacity: 0.75;
 }
 
 .site-stat-divider {
   width: 1px;
-  height: 0.8rem;
-
+  height: 0.75rem;
   margin: 0 0.6rem;
-
   background: currentColor;
   opacity: 0.2;
 }
 
-/* 数字稍微突出，但不要太醒目 */
-.site-stat span:nth-child(2) {
-  font-weight: 500;
+
+/* =================================
+   平板 / 窄屏
+   隐藏访问统计，优先保证标题
+   ================================= */
+
+@media screen and (max-width: 900px) {
+  .site-stats {
+    display: none;
+  }
+}
+
+
+/* =================================
+   手机
+   进一步减少 Header 内容
+   ================================= */
+
+@media screen and (max-width: 600px) {
+  .site-stats {
+    display: none;
+  }
 }
