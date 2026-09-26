@@ -1,179 +1,619 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/BlackBox/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/BlackBox/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/BlackBox/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/BlackBox/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%BC%E8%AF%BB/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%BC%E8%AF%BB/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%BC%E8%AF%BB/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%BC%E8%AF%BB/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/%E7%AE%80%E4%BB%8B/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/%E7%AE%80%E4%BB%8B/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E7%AE%80%E4%BB%8B/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E7%AE%80%E4%BB%8B/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/chisel/%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/chisel/%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C1-%E8%B7%91%E9%A9%AC%E7%81%AF/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C1-%E8%B7%91%E9%A9%AC%E7%81%AF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C1-%E8%B7%91%E9%A9%AC%E7%81%AF/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C1-%E8%B7%91%E9%A9%AC%E7%81%AF/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C2-%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86%E4%BB%BF%E7%9C%9F/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C2-%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86%E4%BB%BF%E7%9C%9F/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C2-%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86%E4%BB%BF%E7%9C%9F/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C2-%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86%E4%BB%BF%E7%9C%9F/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C3-%E5%90%8C%E6%AD%A5RAM%E5%92%8C%E5%BC%82%E6%AD%A5RAM/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C3-%E5%90%8C%E6%AD%A5RAM%E5%92%8C%E5%BC%82%E6%AD%A5RAM/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C3-%E5%90%8C%E6%AD%A5RAM%E5%92%8C%E5%BC%82%E6%AD%A5RAM/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C3-%E5%90%8C%E6%AD%A5RAM%E5%92%8C%E5%BC%82%E6%AD%A5RAM/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C4-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E8%AF%95/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C4-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E8%AF%95/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C4-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E8%AF%95/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C4-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E8%AF%95/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C5-5%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C5-5%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C5-5%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C5-5%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C6-20%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C6-20%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C6-20%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C6-20%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10-%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E4%B8%8E%E4%B9%98%E9%99%A4%E6%B3%95%E6%8C%87%E4%BB%A4/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10-%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E4%B8%8E%E4%B9%98%E9%99%A4%E6%B3%95%E6%8C%87%E4%BB%A4/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10-%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E4%B8%8E%E4%B9%98%E9%99%A4%E6%B3%95%E6%8C%87%E4%BB%A4/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10-%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E4%B8%8E%E4%B9%98%E9%99%A4%E6%B3%95%E6%8C%87%E4%BB%A4/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11-%E8%BD%AC%E7%A7%BB%E5%92%8C%E8%AE%BF%E5%AD%98%E6%8C%87%E4%BB%A4/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11-%E8%BD%AC%E7%A7%BB%E5%92%8C%E8%AE%BF%E5%AD%98%E6%8C%87%E4%BB%A4/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11-%E8%BD%AC%E7%A7%BB%E5%92%8C%E8%AE%BF%E5%AD%98%E6%8C%87%E4%BB%A4/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11-%E8%BD%AC%E7%A7%BB%E5%92%8C%E8%AE%BF%E5%AD%98%E6%8C%87%E4%BB%A4/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C7-%E7%AE%80%E5%8D%95%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C7-%E7%AE%80%E5%8D%95%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C7-%E7%AE%80%E5%8D%95%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C7-%E7%AE%80%E5%8D%95%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C8-%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C8-%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C8-%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C8-%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9-%E5%89%8D%E9%80%92%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9-%E5%89%8D%E9%80%92%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9-%E5%89%8D%E9%80%92%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9-%E5%89%8D%E9%80%92%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C12-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E5%B8%B8/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C12-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E5%B8%B8/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C12-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E5%B8%B8/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C12-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E5%B8%B8/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C13-%E5%85%B6%E5%AE%83%E5%BC%82%E5%B8%B8/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C13-%E5%85%B6%E5%AE%83%E5%BC%82%E5%B8%B8/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C13-%E5%85%B6%E5%AE%83%E5%BC%82%E5%B8%B8/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C13-%E5%85%B6%E5%AE%83%E5%BC%82%E5%B8%B8/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C14-%E7%B1%BBSRAM%E6%80%BB%E7%BA%BF/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C14-%E7%B1%BBSRAM%E6%80%BB%E7%BA%BF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C14-%E7%B1%BBSRAM%E6%80%BB%E7%BA%BF/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C14-%E7%B1%BBSRAM%E6%80%BB%E7%BA%BF/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C15-AXI%E6%80%BB%E7%BA%BF/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C15-AXI%E6%80%BB%E7%BA%BF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C15-AXI%E6%80%BB%E7%BA%BF/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C15-AXI%E6%80%BB%E7%BA%BF/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C16-AXI%E9%9A%8F%E6%9C%BA%E5%BB%B6%E8%BF%9F%E9%AA%8C%E8%AF%81/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C16-AXI%E9%9A%8F%E6%9C%BA%E5%BB%B6%E8%BF%9F%E9%AA%8C%E8%AF%81/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C16-AXI%E9%9A%8F%E6%9C%BA%E5%BB%B6%E8%BF%9F%E9%AA%8C%E8%AF%81/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C16-AXI%E9%9A%8F%E6%9C%BA%E5%BB%B6%E8%BF%9F%E9%AA%8C%E8%AF%81/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C17-TLB%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C17-TLB%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C17-TLB%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C17-TLB%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C18-TLB%E6%8C%87%E4%BB%A4%E5%92%8CCSR/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C18-TLB%E6%8C%87%E4%BB%A4%E5%92%8CCSR/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C18-TLB%E6%8C%87%E4%BB%A4%E5%92%8CCSR/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C18-TLB%E6%8C%87%E4%BB%A4%E5%92%8CCSR/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C19-TLB%E7%9B%B8%E5%85%B3%E4%BE%8B%E5%A4%96/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C19-TLB%E7%9B%B8%E5%85%B3%E4%BE%8B%E5%A4%96/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C19-TLB%E7%9B%B8%E5%85%B3%E4%BE%8B%E5%A4%96/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C19-TLB%E7%9B%B8%E5%85%B3%E4%BE%8B%E5%A4%96/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C20-Cache%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C20-Cache%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C20-Cache%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C20-Cache%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C21-%E9%9B%86%E6%88%90ICache/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C21-%E9%9B%86%E6%88%90ICache/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C21-%E9%9B%86%E6%88%90ICache/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C21-%E9%9B%86%E6%88%90ICache/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C22-%E9%9B%86%E6%88%90DCache/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C22-%E9%9B%86%E6%88%90DCache/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C22-%E9%9B%86%E6%88%90DCache/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C22-%E9%9B%86%E6%88%90DCache/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C23-CACOP%E6%8C%87%E4%BB%A4/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C23-CACOP%E6%8C%87%E4%BB%A4/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C23-CACOP%E6%8C%87%E4%BB%A4/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C23-CACOP%E6%8C%87%E4%BB%A4/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/pre/%E4%BB%8B%E7%BB%8D/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/pre/%E4%BB%8B%E7%BB%8D/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/pre/%E4%BB%8B%E7%BB%8D/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/pre/%E4%BB%8B%E7%BB%8D/"/>
     </url>
     <url>
-         <loc>https://codexp-whu.github.io/cod-exp/pre/%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF/</loc>
-         <lastmod>2026-09-24</lastmod>
+        <loc>https://codexp-whu.github.io/cod-exp/pre/%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/pre/%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/pre/%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/BlackBox/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/BlackBox/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/BlackBox/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/CPU%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%BC%E8%AF%BB/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%BC%E8%AF%BB/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%BC%E8%AF%BB/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E4%BB%BF%E7%9C%9F%E6%B5%8B%E8%AF%95/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8A/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8B/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%AD/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%B2%E8%AE%B2/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/%E7%AE%80%E4%BB%8B/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E7%AE%80%E4%BB%8B/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E7%AE%80%E4%BB%8B/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/chisel/%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/chisel/%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/chisel/%E8%BF%9B%E9%98%B6%E5%86%99%E6%B3%95/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C1-%E8%B7%91%E9%A9%AC%E7%81%AF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C1-%E8%B7%91%E9%A9%AC%E7%81%AF/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C1-%E8%B7%91%E9%A9%AC%E7%81%AF/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C2-%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86%E4%BB%BF%E7%9C%9F/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C2-%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86%E4%BB%BF%E7%9C%9F/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C2-%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86%E4%BB%BF%E7%9C%9F/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C3-%E5%90%8C%E6%AD%A5RAM%E5%92%8C%E5%BC%82%E6%AD%A5RAM/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C3-%E5%90%8C%E6%AD%A5RAM%E5%92%8C%E5%BC%82%E6%AD%A5RAM/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C3-%E5%90%8C%E6%AD%A5RAM%E5%92%8C%E5%BC%82%E6%AD%A5RAM/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C4-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E8%AF%95/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C4-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E8%AF%95/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/01-%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E9%AA%8C4-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E8%AF%95/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C5-5%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C5-5%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C5-5%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C6-20%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C6-20%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/02-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C6-20%E6%9D%A1%E6%8C%87%E4%BB%A4%E5%8D%95%E5%91%A8%E6%9C%9FCPU/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10-%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E4%B8%8E%E4%B9%98%E9%99%A4%E6%B3%95%E6%8C%87%E4%BB%A4/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10-%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E4%B8%8E%E4%B9%98%E9%99%A4%E6%B3%95%E6%8C%87%E4%BB%A4/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10-%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E4%B8%8E%E4%B9%98%E9%99%A4%E6%B3%95%E6%8C%87%E4%BB%A4/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11-%E8%BD%AC%E7%A7%BB%E5%92%8C%E8%AE%BF%E5%AD%98%E6%8C%87%E4%BB%A4/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11-%E8%BD%AC%E7%A7%BB%E5%92%8C%E8%AE%BF%E5%AD%98%E6%8C%87%E4%BB%A4/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11-%E8%BD%AC%E7%A7%BB%E5%92%8C%E8%AE%BF%E5%AD%98%E6%8C%87%E4%BB%A4/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C7-%E7%AE%80%E5%8D%95%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C7-%E7%AE%80%E5%8D%95%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C7-%E7%AE%80%E5%8D%95%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C8-%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C8-%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C8-%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9-%E5%89%8D%E9%80%92%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9-%E5%89%8D%E9%80%92%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/04-%E6%B5%81%E6%B0%B4%E7%BA%BFCPU%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9-%E5%89%8D%E9%80%92%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C12-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E5%B8%B8/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C12-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E5%B8%B8/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C12-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E5%B8%B8/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C13-%E5%85%B6%E5%AE%83%E5%BC%82%E5%B8%B8/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C13-%E5%85%B6%E5%AE%83%E5%BC%82%E5%B8%B8/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/05-%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/%E5%AE%9E%E9%AA%8C13-%E5%85%B6%E5%AE%83%E5%BC%82%E5%B8%B8/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C14-%E7%B1%BBSRAM%E6%80%BB%E7%BA%BF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C14-%E7%B1%BBSRAM%E6%80%BB%E7%BA%BF/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C14-%E7%B1%BBSRAM%E6%80%BB%E7%BA%BF/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C15-AXI%E6%80%BB%E7%BA%BF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C15-AXI%E6%80%BB%E7%BA%BF/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C15-AXI%E6%80%BB%E7%BA%BF/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C16-AXI%E9%9A%8F%E6%9C%BA%E5%BB%B6%E8%BF%9F%E9%AA%8C%E8%AF%81/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C16-AXI%E9%9A%8F%E6%9C%BA%E5%BB%B6%E8%BF%9F%E9%AA%8C%E8%AF%81/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/06-AXI%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E9%AA%8C16-AXI%E9%9A%8F%E6%9C%BA%E5%BB%B6%E8%BF%9F%E9%AA%8C%E8%AF%81/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C17-TLB%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C17-TLB%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C17-TLB%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C18-TLB%E6%8C%87%E4%BB%A4%E5%92%8CCSR/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C18-TLB%E6%8C%87%E4%BB%A4%E5%92%8CCSR/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C18-TLB%E6%8C%87%E4%BB%A4%E5%92%8CCSR/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C19-TLB%E7%9B%B8%E5%85%B3%E4%BE%8B%E5%A4%96/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C19-TLB%E7%9B%B8%E5%85%B3%E4%BE%8B%E5%A4%96/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/07-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83TLB/%E5%AE%9E%E9%AA%8C19-TLB%E7%9B%B8%E5%85%B3%E4%BE%8B%E5%A4%96/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C20-Cache%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C20-Cache%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C20-Cache%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C21-%E9%9B%86%E6%88%90ICache/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C21-%E9%9B%86%E6%88%90ICache/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C21-%E9%9B%86%E6%88%90ICache/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C22-%E9%9B%86%E6%88%90DCache/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C22-%E9%9B%86%E6%88%90DCache/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C22-%E9%9B%86%E6%88%90DCache/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C23-CACOP%E6%8C%87%E4%BB%A4/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C23-CACOP%E6%8C%87%E4%BB%A4/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/labs/08-%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache/%E5%AE%9E%E9%AA%8C23-CACOP%E6%8C%87%E4%BB%A4/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/pre/%E4%BB%8B%E7%BB%8D/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/pre/%E4%BB%8B%E7%BB%8D/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/pre/%E4%BB%8B%E7%BB%8D/"/>
+    </url>
+    <url>
+        <loc>https://codexp-whu.github.io/cod-exp/en/pre/%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF/</loc>
+        <lastmod>2026-09-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://codexp-whu.github.io/cod-exp/en/pre/%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://codexp-whu.github.io/cod-exp/pre/%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF/"/>
     </url>
 </urlset>

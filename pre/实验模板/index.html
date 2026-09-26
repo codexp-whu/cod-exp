@@ -22,6 +22,10 @@
       
       
         
+          <link rel="alternate" href="./" hreflang="zh">
+        
+          <link rel="alternate" href="../../en/pre/%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF/" hreflang="en">
+        
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -152,6 +156,32 @@
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../en/pre/%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
     
     
       
@@ -704,16 +734,14 @@
       
         
 
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      本页目录
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2371,16 +2399,14 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      本页目录
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2460,7 +2486,7 @@
 
 <p>本页介绍如何从 GitHub 获取实验基础模板，以及各目录的结构与用法。开始实验前，请先通读本页。</p>
 <h2 id="_1">获取实验模板<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本课程实验基于龙芯官方教学实验环境 <code>cdp_ede_local</code>，对龙芯官方实验环境进行了修改，能够在DIGILENT NEXYS 100T开发板上正常运行，修改后的实验环境仓库：<a href="https://github.com/zihaojf/cdp_ede_local">cdp_ede_loca</a></p>
+<p>本课程实验基于龙芯官方教学实验环境 <code>cdp_ede_local</code>，对龙芯官方实验环境进行了修改，能够在DIGILENT NEXYS 100T开发板上正常运行，修改后的实验环境仓库：<a href="https://github.com/zihaojf/cdp_ede_local">cdp_ede_local</a></p>
 <p>首先clone到本地，<strong>建议放在windows下</strong>，不要放在WSL2中。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:zihaojf/cdp_ede_local.git
 </code></pre></div>
@@ -2512,7 +2538,7 @@
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>│   ├── tlb_verify/     # 实验 17：TLB模块验证
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>│   ├── cache_verify/   # 实验 20：Cache模块验证
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>│   ├── mul_verify/     # 乘法器验证
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>|   ├── div_verify/     # 除法器验证
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>│   ├── div_verify/     # 除法器验证
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>└── soc_verify/         # SoC 验证环境，按总线接口分四个目录
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    ├── soc_dram/       # 实验 6：分布式 RAM 接口（单周期）
 <a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    ├── soc_bram/       # 实验 7~13：块 RAM 接口（流水线/异常）
@@ -2667,6 +2693,10 @@
 
   <!-- Busuanzi 访问统计 -->
   <script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
+
+  
+  
+  
 
   <script>
     (function () {
