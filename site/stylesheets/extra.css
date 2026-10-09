@@ -1,0 +1,61 @@
+/* ================================
+   顶部访问统计
+   ================================ */
+
+.site-stats {
+  display: flex;
+  align-items: center;
+
+  margin-left: 1.2rem;
+  margin-right: 0.8rem;
+
+  font-size: 0.78rem;
+  color: var(--md-primary-bg-color);
+
+  white-space: nowrap;
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.site-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.site-stat .material-symbols-outlined {
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.site-stat-divider {
+  width: 1px;
+  height: 0.75rem;
+  margin: 0 0.6rem;
+  background: currentColor;
+  opacity: 0.2;
+}
+
+
+/* =================================
+   平板 / 窄屏
+   隐藏访问统计，优先保证标题
+   ================================= */
+
+@media screen and (max-width: 900px) {
+  .site-stats {
+    display: none;
+  }
+}
+
+
+/* =================================
+   手机
+   进一步减少 Header 内容
+   ================================= */
+
+@media screen and (max-width: 600px) {
+  .site-stats {
+    display: none;
+  }
+}

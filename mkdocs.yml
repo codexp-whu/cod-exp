@@ -1,11 +1,12 @@
 site_name: 武汉大学2026年秋计算机组成与体系结构A
-site_url: https://mydomain.org/mysite
+site_url: https://codexp-whu.github.io/cod-exp/
 site_description: 武汉大学计算机学院《计算机组成与体系结构A》课程讲义与实验指导
 site_author: 课程教学组
 copyright: Copyright &copy; 2026 武汉大学计算机学院
 
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   features:
     - navigation.tabs          # 顶层标签导航
@@ -37,6 +38,90 @@ theme:
   font:
     text: Noto Sans SC
     code: JetBrains Mono
+  
+
+# 插件
+plugins:
+  # 注意：一旦显式声明 plugins，MkDocs 内置的默认 search 不再自动加载，必须手动列回
+  - search
+  - i18n:
+      docs_structure: suffix    # 中文为默认语言（无后缀文件），英文为同目录下的 <同名>.en.md
+      fallback_to_default: true # 未翻译的页面在英文站回退显示中文内容
+      reconfigure_material: true # 自动注入语言切换器，并按语言切换 Material 界面文案
+      reconfigure_search: true  # 按语言分别建立搜索索引
+      languages:
+        - locale: zh
+          default: true
+          name: 中文
+        - locale: en
+          name: English
+          site_name: "Computer Organization and Architecture A"
+          site_description: "Wuhan University (Fall 2026)"
+          copyright: "Copyright &copy; 2026 School of Computer Science, Wuhan University"
+          # 导航译文：键必须与下方 nav 中的中文标题逐字一致（含全角冒号“：”）
+          nav_translations:
+            "首页": "Home"
+            "计算机组成与体系结构实验": "Computer Organization and Architecture Labs"
+            "实验准备": "Lab Setup"
+            "介绍": "Introduction"
+            "实验模板": "Lab Template"
+            # 顶层标签的译文同时用于顶部标签栏，需控制在 61rem(=1220px) 宽度内，
+            # 否则英文站标签栏会溢出（Material 不显示滚动条，也不自动滚动到激活项）
+            "数字电路基础": "Digital Logic"
+            "栏目简介": "Overview"
+            "实验1：跑马灯": "Lab 1: Running Light"
+            "实验2：寄存器堆仿真": "Lab 2: Register File Simulation"
+            "实验3：同步RAM和异步RAM": "Lab 3: Synchronous and Asynchronous RAM"
+            "实验4：数字逻辑电路设计与调试": "Lab 4: Digital Logic Design and Debugging"
+            "单周期CPU设计": "Single-Cycle CPU"
+            "实验5：5条指令单周期CPU": "Lab 5: Single-Cycle CPU with Five Instructions"
+            "实验6：20条指令单周期CPU": "Lab 6: Single-Cycle CPU with Twenty Instructions"
+            "流水线CPU设计": "Pipelined CPU"
+            "实验7：简单流水线CPU": "Lab 7: Simple Pipelined CPU"
+            "实验8：阻塞解决冲突": "Lab 8: Resolving Hazards with Stalls"
+            "实验9：前递解决冲突": "Lab 9: Resolving Hazards with Forwarding"
+            "实验10：算术逻辑与乘除法指令": "Lab 10: Arithmetic, Logic, Multiply and Divide Instructions"
+            "实验11：转移和访存指令": "Lab 11: Branch and Memory Access Instructions"
+            "异常与中断": "Exceptions"
+            "实验12：系统调用异常": "Lab 12: System Call Exceptions"
+            "实验13：其它异常": "Lab 13: Other Exceptions"
+            "AXI总线接口": "AXI Bus"
+            "实验14：类SRAM总线": "Lab 14: SRAM-Like Bus"
+            "实验15：AXI总线": "Lab 15: AXI Bus"
+            "实验16：AXI随机延迟验证": "Lab 16: Verifying AXI Under Random Delays"
+            "存储管理单元": "MMU / TLB"
+            "实验17：TLB模块设计": "Lab 17: TLB Module Design"
+            "实验18：TLB指令和CSR": "Lab 18: TLB Instructions and CSRs"
+            "实验19：TLB相关例外": "Lab 19: TLB-Related Exceptions"
+            "高速缓存": "Cache"
+            "实验20：Cache模块设计": "Lab 20: Cache Module Design"
+            "实验21：集成ICache": "Lab 21: Integrating the ICache"
+            "实验22：集成DCache": "Lab 22: Integrating the DCache"
+            "实验23：CACOP指令": "Lab 23: CACOP Instructions"
+            "附录A：Chisel入门": "Appendix A: Chisel"
+            "从Verilog到Chisel": "From Verilog to Chisel"
+            "环境搭建": "Environment Setup"
+            "基本语法上": "Basic Syntax, Part 1"
+            "基本语法中": "Basic Syntax, Part 2"
+            "基本语法下": "Basic Syntax, Part 3"
+            "BlackBox：": "BlackBox"
+            "进阶特性": "Advanced Features"
+            "附录B：流水线CPU导读": "Appendix B: Pipeline"
+            "五级流水线CPU导读": "A Guide to the Five-Stage Pipelined CPU"
+          # Material 的深浅色切换按钮只读 palette[].toggle.name，没有本地化默认值，需按语言覆盖
+          # 插件对 list 按下标递归合并，故只需写 toggle.name
+          theme:
+            palette:
+              - toggle:
+                  name: Switch to dark mode
+              - toggle:
+                  name: Switch to light mode
+          extra:
+            social:
+              - icon: fontawesome/brands/github
+                link: https://github.com/codexp-whu/cod-exp
+                name: Course source repository
+
 
 # 导航结构（课程讲义大纲）
 nav:
@@ -115,7 +200,6 @@ markdown_extensions:
   - pymdownx.snippets               # 代码片段包含
   - toc:
       permalink: true
-      title: 本页目录
   - attr_list                       # 属性列表（用于图片大小等）
   - md_in_html                      # 在HTML块中嵌套Markdown
   - footnotes                       # 脚注
@@ -129,9 +213,11 @@ extra_javascript:
   - javascripts/extra.js
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML  # 若使用MathJax
 
+
 # 社交链接与页脚信息
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/codexp-whu/cod-exp
       name: 课程源码仓库
+  goatcounter: "https://codexp-whu.goatcounter.com/count"

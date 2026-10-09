@@ -65,7 +65,7 @@ CPU 取指和访存都要用到 RAM。FPGA 上的 RAM 有两种常见风格：
 2. 点击“Add Sources”，选择添加设计源码（design sources），加入distributed_ram_top.v。
 3. 点击“Add Sources”，选择添加约束文件（constraints），加入ram.xdc。
 4. 点击“Add Sources”，选择添加仿真源码（simulation sources），加入ram_tb.v。
-5. 调用Xilinx库IP生成异步RAM（Distributed RAM，深度为65536，宽度为32
+5. 调用Xilinx库IP生成异步RAM（Distributed RAM，深度为 **32768** ，宽度为32
 
 !!! tips "定制异步RAM IP核"
     若不会生成异步RAM IP核，请访问：[定制异步RAM IP核](https://bookdown.org/loongson/_book3/appendix-vivado-advanced-usage.html#%E5%AE%9A%E5%88%B6%E5%BC%82%E6%AD%A5ram-ip%E6%A0%B8)

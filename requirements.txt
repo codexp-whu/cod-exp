@@ -1,0 +1,12 @@
+# 构建本讲义站点所需的 Python 依赖
+#
+# 安装：pip install -r requirements.txt
+# 预览：mkdocs serve       （http://127.0.0.1:8000/cod-exp/）
+# 构建：mkdocs build       （产物输出到 site/，本仓库直接提交构建产物）
+#
+# 注意：mkdocs-static-i18n 提供中英双语支持。中文为默认语言（docs 下无后缀的 .md），
+# 英文译文为同目录下同名的 <名称>.en.md；导航译文与英文站级文案配置在 mkdocs.yml 的
+# plugins.i18n.languages 中。
+
+mkdocs-material==9.7.7
+mkdocs-static-i18n==1.3.1
