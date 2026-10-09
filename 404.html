@@ -61,17 +61,12 @@
 
     
     
-  
 
   
   
 
-  <!-- Busuanzi 访问统计 -->
-  <script async
-      src="https://busuanzi.aspark.cc/js"
-      data-prefix="busuanzi"
-      data-style="comma"
-      pjax></script>
+  <!-- Vercount 访问统计 -->
+  <script defer src="https://events.vercount.one/js"></script>
 
   <script>
     window.__i18n_labels__ = {
@@ -92,13 +87,13 @@
         stats.innerHTML =
           '<span class="site-stat">' +
             '<span class="site-stat-icon">◉</span>' +
-            '<span id="busuanzi_site_pv">--</span>' +
+            '<span id="vercount_value_site_pv">--</span>' +
             '<span>' + window.__i18n_labels__.visit + '</span>' +
           '</span>' +
           '<span class="site-stat-divider"></span>' +
           '<span class="site-stat">' +
             '<span class="site-stat-icon">◉</span>' +
-            '<span id="busuanzi_site_uv">--</span>' +
+            '<span id="vercount_value_site_uv">--</span>' +
             '<span>' + window.__i18n_labels__.visitor + '</span>' +
           '</span>';
 
@@ -115,6 +110,7 @@
 
       boot();
 
+      // Material for MkDocs instant navigation（PJAX）切换后重新插入
       if (typeof document$ !== 'undefined' && document$.subscribe) {
         document$.subscribe(function () {
           initSiteStats();
