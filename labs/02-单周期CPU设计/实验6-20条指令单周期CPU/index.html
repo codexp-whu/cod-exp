@@ -2538,7 +2538,7 @@
 </div>
 <h2 id="_1">实验目标<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li>将单周期 CPU 从五条指令扩展到 20 条指令，覆盖算术、逻辑、移位、比较、分支、访存的完整子集。</li>
+<li>将单周期 CPU 从五条指令扩展到 20 条指令，覆盖算术、逻辑、移位、比较、分支、访存的基本子集。</li>
 <li>掌握 mycpu_env 实验开发环境的组织结构与实验流程。</li>
 <li>学会使用<strong>基于 trace 比对</strong>的自动化调试方法，并用 func 功能测试程序验证 CPU 正确性。</li>
 </ul>
@@ -2589,7 +2589,7 @@
 </code></pre></div>
 实验六我们只需要用到<code>mycpu_env/soc_verify/soc_dram</code>目录！创建Vivado脚本也在对应<code>run_vivado</code>文件夹下，使用方式与实验五相同，这里不再赘述。</p>
 <h2 id="_3">实验内容<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>我们已经在环境中提供了一个支持五条指令的单周期CPU，请你<strong>扩展该CPU实现以下20条指令：</strong></p>
+<p>我们已经在环境中提供了一个支持五条指令的单周期CPU，<strong>注意其中存在若干Bug</strong>，修复bug后请你<strong>扩展该CPU实现以下20条指令：</strong></p>
 <ul>
 <li>算术运算：<strong>add.w, sub.w, addi.w</strong></li>
 <li>比较运算：<strong>slt, sltu</strong></li>
@@ -2654,7 +2654,9 @@
 <p>在FPGA上板验证时其结果正确与否的判断只有一种方法，测试程序正确的执行行为是：</p>
 <p>1.开始，单色LED全灭，双色LED灯一红一绿，数码管显示全0；</p>
 <p>2.执行过程中，单色LED全灭，双色LED灯一红一绿，数码管高8位和低8位同步累加；</p>
-<p>3.结束时，单色LED全灭，双色LED灯亮两绿，数码管高8位和低8位数值相同，对应测试功能点数目，例如：3A 00 00 3A。</p>
+<p>3.结束时，单色LED全灭，双色LED灯亮两绿，数码管高8位和低8位数值相同，对应测试功能点数目，例如：14 00 00 14。</p>
+<p><img alt="正确效果" src="../images/7.jpg" />
+<em>测试程序pass上板效果</em></p>
 <p>如果测试程序执行过程中出错了，则数码管高8位和低8位第一次不同处即为测试出错的功能点编号，且最后的结果是单色LED全亮，双色LED灯亮两红，数码管高8位和低8位数值不同。</p>
 <p>另外，可通过修改拨码开关switch值调整程序执行速度，从而看到完整的数码管数字递增。</p>
 </div>
